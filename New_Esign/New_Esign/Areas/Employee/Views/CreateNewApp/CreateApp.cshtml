@@ -1,0 +1,19 @@
+﻿@using New_Esign.AppCode;
+
+@{
+    ViewBag.Title = "CreateApp";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+<h2>CreateApp</h2>
+@using (Html.BeginForm("CreateApp", "CreateNewApp", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    htmlCode htm = new htmlCode();
+    string str = htm.htmlView();
+
+    @Html.Raw(str)
+
+    IHtmlString stri = new HtmlString("<br /><input type='text' value='xin chao' id='codeView'/><br/><a href='https://chat.zalo.me/'>Job</a> floated by you.</br>");
+
+    @Html.Raw(stri)
+}

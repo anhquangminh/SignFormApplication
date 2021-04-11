@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\aspnet-New_Esign-20180814051213.mdf;Initial Catalog=aspnet-New_Esign-20180814051213;Integrated Security=True;User Instance=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Khang\.savecode\\MVC\\New_Esign\\New_Esign\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="ESignDB-Web.config Connection String" description="ESignDB Connection String used in web.config by the application to access the database." defaultValue="Data Source=10.224.81.131,3000;Initial Catalog=esign;Persist Security Info=True;User ID=sa;Password=foxconn168!!" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Khang\.savecode\\MVC\\New_Esign\\New_Esign\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ESignDB']/@connectionString" />
+  </parameter>
+  <parameter name="ConnectDB-Web.config Connection String" description="ConnectDB Connection String used in web.config by the application to access the database." defaultValue="Data Source=10.224.81.131,3000;Initial Catalog=bhpcdb;Persist Security Info=True;User ID=sa;Password=foxconn168!!" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Khang\.savecode\\MVC\\New_Esign\\New_Esign\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ConnectDB']/@connectionString" />
+  </parameter>
+  <parameter name="DBConnectData-Web.config Connection String" description="DBConnectData Connection String used in web.config by the application to access the database." defaultValue="Data Source=10.224.81.131,3000;initial catalog=esign;user id=sa;password=foxconn168!!;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Khang\.savecode\\MVC\\New_Esign\\New_Esign\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DBConnectData']/@connectionString" />
+  </parameter>
+</parameters>

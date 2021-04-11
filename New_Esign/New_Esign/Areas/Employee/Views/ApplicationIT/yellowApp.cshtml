@@ -1,0 +1,694 @@
+﻿@model New_Esign.Areas.Employee.Models.ITRequestModel
+
+@{
+    ViewBag.Title = "yellowApp";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+<head>
+    <link href="~/Assets/bootstrap-4.4.1-dist/css/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <style>
+        .label-ot {
+            background-color: #b46740;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            margin-bottom: 3px;
+            padding: .3em .6em .3em;
+            font-size: .8em;
+            color: white;
+            font-weight: bold;
+        }
+
+        .label-at {
+            background-color: #a36e1a;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            margin-bottom: 3px;
+            padding: .3em .6em .3em;
+            font-size: .8em;
+            color: white;
+            font-weight: bold;
+        }
+
+        .label-et {
+            background-color: #2a4a7c;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            margin-bottom: 3px;
+            padding: .3em .6em .3em;
+            font-size: .8em;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm("yellowApp", "ApplicationIT", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="mainContent">
+    <h3 class="pageTitle text-center text-primary text-uppercase"> @LanguageHelper.GetResource("yellow.Title")</h3>
+    <hr />
+    <div class="text-center text-danger for font-weight-bold" id="ErrorType"><h3>@ViewBag.ErrorType</h3></div>
+    <div class="text-center text-danger for font-weight-bold"><h3>@ViewBag.ErrorLoApply</h3></div>
+    @*Thong tin nguoi dung*@
+    <label class="label label-in label-info label-group-info"> @LanguageHelper.GetResource("yellow.inforUser")</label>
+    <div class="groupInfo">
+
+        <div class="form-group row">
+            <div class="col-md-4">
+                <span class="label label-in"> <i class="metismenu-icon pe-7s-user icon_ct"></i> @LanguageHelper.GetResource("Register.EmployeeNO") :</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.EmpNo, "", new { @class = "form-control" })
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4 col-md-offset-2">
+                <span class="label label-in"> <i class="metismenu-icon pe-7s-users icon_ct"></i>@LanguageHelper.GetResource("yellow.Name"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.Name, "", new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-mail icon_ct"></i> @LanguageHelper.GetResource("Register.E-Mail"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.Mail, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4 col-md-offset-2">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-phone icon_ct"></i>@LanguageHelper.GetResource("Register.Telephone"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.NumPhone, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NumPhone, "", new { @class = "text-danger" })
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-5">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-ticket icon_ct"></i>@LanguageHelper.GetResource("Register.Department"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.Depart, "", new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Depart, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3 col-md-offset-1">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-loop icon_ct"></i>@LanguageHelper.GetResource("Register.CostNO"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.CodeCost, "", new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <span class="label label-in"> <i class="metismenu-icon pe-7s-home icon_ct"></i>@LanguageHelper.GetResource("yellow.Factory"):</span> <span style="color:red">*</span>
+                @Html.DropDownListFor(model => model.OfficeFac, null, new { @class = "dropdown form-control btn btn-light" })
+                @Html.ValidationMessageFor(model => model.OfficeFac, "", new { @class = "text-danger" })
+                @*<div class="text-danger"> <label> Choose your factory office</label></div>*@
+            </div>
+            <div class="col-md-3"></div>
+
+            <div class="col-md-2">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-map-marker icon_ct"></i>@LanguageHelper.GetResource("yellow.location"):</span> <span style="color:red">*</span>
+                @Html.DropDownListFor(model => model.Location, new SelectList(""), new { @class = "dropdown form-control btn btn-light" })
+                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div style="color:red;" class="text-center">請注意：對於”加上MAC DHCP”的單型，”廠區”與”位置”必須選放置PC的位置 <br /> 
+        Xin lưu ý: Đối với loại đơn duy nhất " Add MAC DHCP", phải chọn "Nhà máy" và "Vị trí" nơi đặt PC
+        </div>
+
+    </div>
+    @*Thong tin tai san*@
+    <label class="label label-in label-info label-group-info">@LanguageHelper.GetResource("yellow.Detail")</label>
+    <div class="groupInfo">
+
+        <div class="form-group row">
+            <div class="col-md-5">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-door-lock icon_ct"></i> @LanguageHelper.GetResource("yellow.Mac"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.MacAd, "", new { @class = "form-control", @placeholder = "2C:4D:54:D8:60:C9" })
+                @Html.ValidationMessageFor(model => model.MacAd, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-timer icon_ct"></i> @LanguageHelper.GetResource("yellow.timeS"):</span> <span style="color:red">*</span>
+                @*<span class="label-k" > Emp ID / Mã thẻ :</span> <span style="color:red">*</span>*@
+                @*@Html.TextBoxFor(model => model.TimeStart, "", new { @class = "form-control", @type = "date" })*@
+                @Html.TextBoxFor(x => x.TimeStart, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                @Html.ValidationMessageFor(model => model.TimeStart, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-stopwatch icon_ct"></i>@LanguageHelper.GetResource("yellow.timeE"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.TimeEnd, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                @Html.ValidationMessageFor(model => model.TimeEnd, "", new { @class = "text-danger" })
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-10 text-center text-danger font-weight-bold"><label>@ViewBag.ErrorTime</label></div>
+        <div class="col-md-10 text-center text-danger"> <label> @LanguageHelper.GetResource("yellow.NoteTime")</label></div>
+    </div>
+    @*Loai don*@
+    <label class="=label label-in label-info label-group-info"><i class="metismenu-icon pe-7s-exapnd2 icon_ct"></i> @LanguageHelper.GetResource("yellow.appType"):<span style="color:red">*</span></label>
+    <div class="groupInfo">
+        <div class="col-md-12 row form-group">
+            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "USB") <label> &nbsp; @LanguageHelper.GetResource("yellow.USB")</label></div>
+            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label> &nbsp;  @LanguageHelper.GetResource("yellow.AdminAc")</label></div>
+            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label> &nbsp;  @LanguageHelper.GetResource("yellow.port")</label></div>
+            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>&nbsp;   @LanguageHelper.GetResource("yellow.openAcc")</label></div>
+            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label> &nbsp;  @LanguageHelper.GetResource("yellow.card")</label></div>
+            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "addDHCP")<label> &nbsp; @LanguageHelper.GetResource("yellow.Dhcp") </label></div>
+        </div>
+        <div class="clearfix"> @Html.ValidationMessageFor(model => model.KindofPC, "", new { @class = "text-danger" })</div>
+    </div>
+
+    <div id="plUSB" name="plUSB">
+        <label class="label label-at">  @LanguageHelper.GetResource("yellow.USBT")</label>
+        <div class="groupInfo">
+            <div class="col-md-12 row form-group">
+                <div class="col-md-5">
+                    @Html.RadioButtonFor(model => model.USB_read, "USB port reading function")
+                    <label>&nbsp; @LanguageHelper.GetResource("yellow.USBR")</label>
+                </div>
+                <div class="col-md-5">
+                    @Html.RadioButtonFor(model => model.USB_read, "USB port write function")
+                    <label>&nbsp; @LanguageHelper.GetResource("yellow.USBW")</label>
+                </div>
+            </div>
+            @*@Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control col-md-8" })
+                @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control col-md-8" })*@
+        </div>
+    </div>
+    <div id="plAdmin" name="plAdmin">
+        <label class="label label-ot label-info label-group-info">@LanguageHelper.GetResource("yellow.GeneralSec")</label>
+        <div class="groupInfo">
+            <div class="form-group row">
+                <div class="col-md-5 col-md-offset-1">
+                    <span class="label label-ot"><i class="metismenu-icon pe-7s-box1 icon_ct"></i>@LanguageHelper.GetResource("yellow.PCName"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control " })
+                </div>
+                <div class="col-md-5 col-md-offset-1">
+                    <span class="label label-ot"><i class="metismenu-icon pe-7s-timer icon_ct"></i> @LanguageHelper.GetResource("yellow.IP"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div id="plYellowCard" name="plYellowCard">
+        <label class="label label-et label-info label-group-info"> @LanguageHelper.GetResource("yellow.cardForm")</label>
+        <div class="groupInfo">
+            <div class="form-group row">
+                <label class="col-md-2">
+                    <span class="label label-et"><i class="metismenu-icon pe-7s-box1 icon_ct"></i> @LanguageHelper.GetResource("yellow.PCtype"):</span> <span style="color:red">*</span>
+                </label>
+
+                <div class="form-group col-md-4 row">
+                    <div class="col-md-5">
+                        @Html.RadioButtonFor(model => model.KindofPC, "Desktop")
+                        <label>&nbsp; Desktop</label>
+                    </div>
+                    <div class="col-md-5">
+                        @Html.RadioButtonFor(model => model.KindofPC, "Laptop")
+                        <label>&nbsp; Laptop</label>
+                    </div>
+                </div>
+                <div class="clear">
+                    @Html.ValidationMessageFor(model => model.KindofPC, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-5">
+                    <span class="label label-et"> <i class="metismenu-icon pe-7s-note2 icon_ct"></i>  @LanguageHelper.GetResource("yellow.Brand"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.ComputerBrand, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ComputerBrand, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-5 col-md-offset-2">
+                    <span class="label label-et"> <i class="metismenu-icon pe-7s-bandaid icon_ct"></i> @LanguageHelper.GetResource("yellow.Spec"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.ComputerSpeci, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ComputerSpeci, "", new { @class = "text-danger" })
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-5">
+                    <span class="label label-et"><i class="metismenu-icon pe-7s-keypad icon_ct"></i>   @LanguageHelper.GetResource("yellow.Seri"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.SeriNum, "", new { @class = "form-control" })
+                </div>
+                <div class="col-md-5 col-md-offset-2">
+                    <span class="label label-et"><i class="metismenu-icon pe-7s-help2 icon_ct"></i>   @LanguageHelper.GetResource("yellow.color"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.ColorPC, "", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-5">
+                    <span class="label label-et"><i class="metismenu-icon pe-7s-calculator icon_ct"></i> @LanguageHelper.GetResource("yellow.Asset"):</span><span style="color:red">*</span>
+                    <div>
+                        @Html.TextBoxFor(model => model.AssetCode, "", new { @class = "form-control", @Value = "NA" })
+                        @*@Html.ValidationMessageFor(model => model.AssetCode, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+
+                @*<div class="col-md-5">
+                        <span class="label label-et"> <i class="metismenu-icon pe-7s-home icon_ct"></i>  @LanguageHelper.GetResource("yellow.FacApp"):</span> <span style="color:red">*</span>
+                        <div>
+                            @Html.DropDownListFor(model => model.factoryApply, null, new { @class = "form-control dropdown  btn btn-light" })
+                        </div>
+                    </div>*@
+                @*<div class="col-md-5 col-md-offset-2">
+                    <span class="label label-et"><i class="metismenu-icon pe-7s-map-marker icon_ct"></i>  @LanguageHelper.GetResource("yellow.LocApp"):</span> <span style="color:red">*</span>*@
+                @*@Html.HiddenFor(model => model.LocationApply)*@
+                @*<div>
+                        <select class="my_select_box" multiple data-placeholder="@LanguageHelper.GetResource("yellow.LocApp")">
+                            <option value="B03">B03</option>
+                            <option value="B04">B04</option>
+                            <option value="B05">B05</option>
+                            <option value="B06">B06</option>
+                            <option value="C02">C02</option>
+                            <option value="C03">C03</option>
+                            <option value="BN3">BN3</option>
+                        </select>
+                    </div>*@
+
+                @*@Html.DropDownListFor(model => model.locationMulti, null, new { id = "LocationApply2", multiple = "multiple" })
+                        @Html.HiddenFor(model => model.LocationApply)
+                    </div>*@
+                <div class="col-md-5 col-md-offset-2">
+                    <span class="label label-et"><i class="metismenu-icon pe-7s-map-marker icon_ct"></i>  @LanguageHelper.GetResource("yellow.LocApp"):</span> <span style="color:red">*</span>
+                    @Html.HiddenFor(model => model.LocationApply)
+                    <div>
+                        <select id="sl2" class="my_select_box form-control" multiple data-placeholder="@LanguageHelper.GetResource("yellow.LocApp")"></select>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-5">
+                    <span class="label label-et"><i class="metismenu-icon pe-7s-calculator icon_ct"></i> @LanguageHelper.GetResource("yellow.fileconfirm"):</span>
+                    <div>
+                        <a href='http://10.224.81.136:8686/UploadFiles/yealowformComputer.doc' download target="_blank">Download</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div id="AddMac" name="AddMac">        
+        <div class="groupInfo">
+            <div class="form-group row">
+                <label class="col-md-2">
+                    <span class="label label-et"><i class="metismenu-icon pe-7s-box1 icon_ct"></i> @LanguageHelper.GetResource("yellow.PCtype"):</span>
+                </label>
+
+                <div class="form-group col-md-4 row">
+                    <div class="col-md-5">
+                        @Html.RadioButtonFor(model => model.USB_Write, "Office")
+                        <label>&nbsp; Office</label>
+                    </div>
+                    <div class="col-md-5">
+                        @Html.RadioButtonFor(model => model.USB_Write, "Line")
+                        <label>&nbsp; Line</label>
+                    </div>
+                </div>
+                <div class="clear">
+                    @Html.ValidationMessageFor(model => model.KindofPC, "", new { @class = "text-danger" })
+                </div>
+            </div>           
+        </div>
+    </div>
+    <div>
+        @*@Html.DropDownList("LocationApply", new SelectList(""), " ", new { @class= "multi-select form-control", multiple="multiple" })*@
+    </div>
+    <div class="col-md-10 text-center text-danger"><label> @LanguageHelper.GetResource("yellow.upload")</label></div>
+    <label class="label label-in label-group-info" style="background-color:#b3486b"><i class="metismenu-icon pe-7s-bottom-arrow icon_ct"></i>  @LanguageHelper.GetResource("yellow.upload"):<span style="color:red"></span></label>
+    <div class="groupInfo">
+        <div class="col-md-10 text-center text-danger font-weight-bold" id="ErrorType"><label>@ViewBag.FileLimit</label></div>
+        <div style="padding-left:2em;">
+            @Html.TextBox("file", "", new { type = "file", @class = "col-md-12" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <span class="label label-in col-md-2" style="background-color:#5cb85c"><i class="metismenu-icon pe-7s-compass icon_ct"></i>  @LanguageHelper.GetResource("yellow.reason"):</span> <span style="color:red">*</span>
+            @Html.TextAreaFor(m => m.Reason, 5, 10, new { @class = "form-control col-md-12" })
+            @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
+            <div class="text-danger text-center"><label> @LanguageHelper.GetResource("yellow.reaNote")</label></div>
+        </div>
+
+    </div>
+    <div class="form-group row" style="padding-bottom:20px">
+        <div class="col-md-5"></div>
+        <input type="submit" value="@LanguageHelper.GetResource("yellow.submit")" id="submit" name="submit" class="col-md-2 btn btn-success" />
+        <div class="col-md-5"></div>
+    </div>
+    @*<div class="khangtest">
+        <td><input type="button" value="check" onclick="check()" /></td>
+        <input type="hidden" class="form-control" name="testKQ" id="testKQ" />
+        <input type="hidden" class="form-control" name="testKQ1" id="testKQ1" />
+        <input type="hidden" class="form-control" name="testKQ2" id="testKQ2" />
+        <table id="myTable" class="table ">
+            <thead class="thead-light">
+                <tr>
+                    <th>sign name </th>
+                    <th>emp name </th>
+                    <th>emp no </th>
+                    <th colspan="2">Modify</th>
+                    <th>sign name </th>
+                </tr>
+            </thead>
+            <tr>
+                <td><select name="position[]" class="gender my_select_sign"><option value="anhkhang">TEst1</option><option value="anhkhang">TEst1</option><option value="anhkhang2">TEst2</option><option value="anhkhang3">TEst3</option></select></td>
+                <td> <input class="btn-block" type="text" name="pname[]" value="" /></td>
+                <td> <input class="btn-block" type="text" name="pno[]" value="" /></td>*@
+    @*<td> <input class="btn-block" type="text" name="pname1[]" value="" /></td>*@
+    @*<td>
+            <select name="position[]" class="gender">
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+        </td>*@
+    @*<td><input type="button" value="Create row" onclick="myCreate(this)" /></td>
+                    <td><input type="button" value="Delete" onclick="deleteRow(this)" /></td>
+                </tr>
+
+            </table>
+
+        </div>*@
+</div>
+}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        //$('.timepicker').datetimepicker({ datepicker: false, format: 'H:i' });
+        if ($('input:radio[name=ApplicationType]:checked').length > 0) {
+            var selectedRadio = $('input:radio[name=ApplicationType]:checked').val();;
+            if (selectedRadio == "yellowCard") {
+                $('#plYellowCard').slideDown();
+                $('#plUSB').slideUp();
+                $('#plAdmin').slideUp();
+                $('#AddMac').slideUp();
+
+            } else if (selectedRadio == "USB") {
+                $('#plYellowCard').slideUp();
+                $('#plAdmin').slideDown();
+                $('#plUSB').slideDown();
+                $('#AddMac').slideUp();
+            }
+            else if (selectedRadio == "addDHCP") {
+                $('#plYellowCard').slideUp();
+                $('#plAdmin').slideUp();
+                $('#plUSB').slideUp();
+                $('#AddMac').slideDown();
+            }
+            else {
+                $('#plYellowCard').slideUp();
+                $('#plUSB').slideUp();
+                $('#plAdmin').slideDown();
+                $('#AddMac').slideUp();
+            }
+
+        } else {
+            $('#plYellowCard').hide();
+            $('#plAdmin').hide();
+            $('#plUSB').hide();
+            $('#AddMac').hide();
+        }
+        // get lai du lieu khi su dung ma the khac
+
+        // subscribe to change events
+        $('input:radio[name=ApplicationType]').change(function () {
+            var selectedRadio = $('input:radio[name=ApplicationType]:checked').val();;
+            if (selectedRadio == "yellowCard") {
+                $('#plYellowCard').slideDown();
+                $('#plUSB').slideUp();
+                $('#plAdmin').slideUp();
+                $('#AddMac').slideUp();
+
+            } else if (selectedRadio == "USB") {
+                $('#plYellowCard').slideUp();
+                $('#plAdmin').slideDown();
+                $('#plUSB').slideDown();
+                $('#AddMac').slideUp();
+            }
+            else if (selectedRadio == "addDHCP") {
+                $('#plYellowCard').slideUp();
+                $('#plUSB').slideUp();
+                $('#plAdmin').slideUp();
+                $('#AddMac').slideDown();
+            }
+            else {
+                $('#plYellowCard').slideUp();
+                $('#plUSB').slideUp();
+                $('#plAdmin').slideDown();
+                $('#AddMac').slideUp();
+            }
+        });
+
+        //LAY THONG TIN MA THE
+        $("#EmpNo").change(function () {
+            var reg = $("#EmpNo").val();
+            //var reg = $("#UserID").val();
+            //var json = { empNo: reg };
+            $.ajax({
+                type: "Get",
+                url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                contentType: "application/json; charset=utf-8",
+                data: { id: reg },
+                success: function (data) {
+
+                    $("#Name").val(data.USER_NAME);
+                    $("#Depart").val(data.DEPARTMENT_NAME);
+                    $("#Mail").val(data.NOTES_ID);
+                    $("#CodeCost").val(data.CURRENT_OU_CODE);
+                },
+                error: function (error) {
+                    alert(error);
+                },
+            });
+        });
+
+        $("#OfficeFac").on('autocompletechange change', function () {
+            //var getdata = $("#OfficeFac").val();
+
+            $.get("/ApplicationIT/getLocation", { facID: $("#OfficeFac").val() }, function (data) {
+                $("#Location").empty();
+                $("#sl2").empty();
+                $(".chosen-results").empty();
+                $.each(data, function (index, row) {
+
+                    //<label>   <input value='" + row.Location + "' type='checkbox' name='List' /> "+row.Location+" </label>
+
+                    //$("#Location").append("<label>   <input value='" + row.Location + "' type='checkbox' name='List' /> " + row.Location +" </label>")
+                    //$("#Location").append("<option value='" + row.Location + "'>" + row.Location + "  </option>")
+                    $("#Location").append("<option value='" + row.Location + "'>" + row.Location + "  </option>")
+
+
+                    var select = document.getElementById('sl2');
+                    var opt = document.createElement('option');
+                    opt.value = row.Location;
+                    opt.innerHTML = row.Location;
+                    select.appendChild(opt);
+                });
+
+                $('#sl2').val('').trigger('chosen:updated');
+                $(".my_select_box").chosen({
+                    no_results_text: "Oops, nothing found!",
+                    width: "62%"
+                });
+
+            });            
+        }).change();
+
+        //$("#factoryApply").on('autocompletechange change', function () {
+           
+        //    $.get("/ApplicationIT/getLocatApp", { facID: $("#factoryApply").val() }, function (data) {
+        //        $("#LocationApply").empty();
+
+        //        $.each(data, function (index, row) {
+
+        //            //<label>   <input value='" + row.Location + "' type='checkbox' name='List' /> "+row.Location+" </label>
+
+        //            //$("#Location").append("<label>   <input value='" + row.Location + "' type='checkbox' name='List' /> " + row.Location +" </label>")
+        //            //$("#Location").append("<option value='" + row.Location + "'>" + row.Location + "  </option>")
+        //            $("#LocationApply").append("<option value='" + row.Location + "'>" + row.Location + "  </option>")
+        //        });
+        //    });
+
+        //}).change();
+
+
+        $("#Site").on('autocompletechange change', function () {
+            var getdata = $("#Site").val();
+
+            $.get("/ApplicationIT/setViewBuKh", { SiteName: $("#Site").val() }, function (data) {
+                $("#BU").empty();
+                $.each(data, function (index, row) {
+                    //<label>   <input value='" + row.Location + "' type='checkbox' name='List' /> "+row.Location+" </label>
+                    //$("#Location").append("<label>   <input value='" + row.Location + "' type='checkbox' name='List' /> " + row.Location +" </label>")
+                    //$("#Location").append("<option value='" + row.Location + "'>" + row.Location + "  </option>")
+                    $("#BU").append("<option value='" + row.BUName + "'>" + row.BUName + "  </option>")
+                });
+            });
+
+        }).change();
+
+        // muitil  select 
+        //$("#factoryApply").on('autocompletechange change', function () {
+        //    var getdata = $("#factoryApply").val();
+        //    $.get("/ApplicationIT/getLocation", { facID: getdata }, function (data) {
+        //        $("#sl2").empty();
+        //        $(".chosen-results").empty();
+        //        $.each(data, function (index, row) {
+        //            var select = document.getElementById('sl2');
+        //            var opt = document.createElement('option');
+        //            opt.value = row.Location;
+        //            opt.innerHTML = row.Location;
+        //            select.appendChild(opt);
+        //        });
+        //        $('#sl2').val('').trigger('chosen:updated');
+        //        $(".my_select_box").chosen({
+        //            no_results_text: "Oops, nothing found!",
+        //            width: "62%"
+        //        });
+        //    });
+
+        //}).change();
+
+         $('.my_select_box').on('change', function (evt, params) {
+            var selectedValue = '';
+            $.each($(this).find("option:selected"), function (index, item) {
+                selectedValue += item.value + ";";
+            });
+            $("#LocationApply").val(selectedValue);
+        });
+
+        $("#ErrorType").fadeOut(10000);
+        // kiem tra kich thuoc files
+        //function onBeforeUpload(args) {
+        //    var uploadObj = document.getElementById("file").e
+        //       // ej2_instances[0];
+        //    // get the file size in bytes
+        //    var sizeInBytes = args.fileData.size;
+        //    // get the file size in standard format
+        //    alert("File size is: " + uploadObj.bytesToSize(sizeInBytes))
+        //};
+
+        //multi khoa
+        //$(".my_select_box").chosen({
+        //    disable_search_threshold: 10,
+        //    no_results_text: "Oops, nothing found!",
+        //    width: "100%"
+        //});
+        //$('.my_select_box').on('change', function (evt, params) {
+        //    var selectedValue = '';
+        //    $.each($(this).find("option:selected"), function (index, item) {
+        //        selectedValue += item.value + ";";
+        //    });
+        //    //$("#LocationApply").val(selectedValue);
+        //});
+
+        //multi select khang
+        //$("#LocationApply2").chosen({
+        //    disable_search_threshold: 10,
+        //    no_results_text: "Oops, nothing found!",
+        //    width: "100%"
+        //});
+
+        //$('#LocationApply2').on('change', function (evt, params) {
+        //    var selectedValue = '';
+        //    $.each($(this).find("option:selected"), function (index, item) {
+        //        selectedValue += item.value + ";";
+        //    });
+        //    $("#LocationApply").val(selectedValue);
+        //});      
+       
+    });
+
+    // test them nguoi ky
+    var arr = new Array();
+    var n = 0;
+
+    //function myCreateFunction() {
+    //    n++;
+    //    var table = document.getElementById("myTable");
+    //    var row = table.insertRow(n);
+    //    var cell1 = row.insertCell(0);
+    //    var cell2 = row.insertCell(1);
+    //    var cell3 = row.insertCell(2);
+    //    var cell4 = row.insertCell(3);
+    //    cell1.innerHTML = '<td>' + n + '</td>';
+    //    cell2.innerHTML = '<td> <input class="btn-block" type="text" name="pname[]" value="' + n + '" /></td>';
+    //    cell3.innerHTML = '<td><input type="button" value="Create row" onclick="myCreate(this)" /></td>'
+    //    cell4.innerHTML = '<td><input type="button" value="Delete" onclick="deleteRow(this)"/></td>'
+    //}
+    function check() {
+        var values = $("select[name='position[]']")
+            .map(function () { return $(this).val(); }).get();
+        $("#testKQ").val(values);
+
+        alert(values);
+    }
+    function myCreate(row) {
+        var i = row.parentNode.parentNode.rowIndex;
+        var table = document.getElementById("myTable");
+        var row = table.insertRow(i + 1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        //var cell3 = row.insertCell(2);
+        //var cell3 = row.insertCell(3);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+
+        cell1.innerHTML = '<td><select name="position[]" class="gender my_select_sign"><option value="課級 / Cấp phòng">Cap phong</option><option value="部級 / Cấp bộ phận">TEst1</option><option value="anhkhang2">TEst2</option><option value="anhkhang3">TEst3</option></select></td>';
+        //cell1.innerHTML = '';
+        cell2.innerHTML = '<td><input class="btn-block" type="text" name="pname[]"   /></td>';
+        //cell3.innerHTML = '<td> <input class="btn-block" type="text" name="pname1[]" value="' + n + '"  /></td>';
+        //cell4.innerHTML = "<td><select name="position[]" class="gender"><option value='" + row.FormName + "'>" + row.FormDisplayName + "</option></select></td>";
+        cell3.innerHTML = '<td> <input class="btn-block" type="text" name="pno[]" value="" /></td>';
+        cell4.innerHTML = '<td><input type="button" value="Create row" onclick="myCreate(this)" /></td>';
+        cell5.innerHTML = '<td><input type="button" value="Delete" onclick="deleteRow(this)"/></td>';
+
+       // myFunction();
+        n++;
+    }
+    function deleteRow(btn) {
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+        //myFunction();
+        n--;
+    }
+    function myFunction() {
+        for (var i = 1; i < n + 3; i++) {
+            document.getElementById("myTable").rows[i].cells[0].innerHTML = '<td>' + (i) + '</td>';
+        }
+
+    }
+    $("#submit").click(function (e) {
+        //var values = $("input[name='pname[]']")
+        //    .map(function () { return $(this).val(); }).get();
+        //$("#testKQ").val(values);
+
+       
+        //var values2 = $("input[name='pname1[]']")
+        //    .map(function () { return $(this).val(); }).get();
+        //$("#testKQ2").val(values2);
+        //$("#testKQ").val(values);
+        //var values1 = $("select[name='position[]']")
+        //    .map(function () { return $(this).val(); }).get();
+        //$("#testKQ1").val(values1);
+        var values1 = $("input[name='pname[]']")
+            .map(function () { return $(this).val(); }).get();
+        $("#testKQ1").val(values1);
+
+        var values2 = $("input[name='pno[]']")
+            .map(function () { return $(this).val(); }).get();
+        $("#testKQ2").val(values2);
+
+        var values = $("select[name='position[]']")
+            .map(function () { return $(this).val(); }).get();
+        $("#testKQ").val(values);
+
+        //alert(values);
+    });
+
+</script>
+

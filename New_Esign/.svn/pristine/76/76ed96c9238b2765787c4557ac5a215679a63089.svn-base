@@ -1,0 +1,19 @@
+﻿@model New_Esign.Areas.Employee.Models.EmpModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "APP_ESIGN", new { area = "Administrators" }, FormMethod.Post, new {  @class = "form-group" }))
+{
+   <div>
+       @Html.TextBoxFor(m=>m.ApplicantName)
+   </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

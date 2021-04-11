@@ -1,0 +1,713 @@
+﻿@model New_Esign.Areas.Administrators.Models.ApprovalApp
+@using New_Esign.Common;
+@using New_Esign.AppCode;
+@using System.Data;
+@using System.Data.SqlClient;
+
+@{
+    ViewBag.Title = "EditApp";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+<fieldset class="card-header">
+    <h2 class="text-xl-center">
+        <i class="fas fa-fw fa-file-alt"></i>  FG  次集團 <br />聯絡單
+    </h2>
+</fieldset>
+@{ 
+    string link = Model.EmpModels.Username.ToString();
+    //string link = "/UploadFiles/2020070711140207-Website Organization.pdf";
+}
+<div>
+    @*<a href="~/UploadFiles/2020070711140207-Website Organization.pdf" target="_blank">Download test</a>*@
+    
+</div>
+@using (Html.BeginForm("EditApp", "APP_ESIGN", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+    var check = Model.EmpModels.Checkwait.Trim();
+    var emp = session.UserID.Trim();
+    string te = Model.EmpModels.APPSTATES.Trim().ToString();
+    string te2 = Model.EmpModels.ApplicantNo.Trim().ToString();
+    var newCode = new NewCode();
+
+    var signList = newCode.getListManager(session.UserID.Trim());
+    string[] signemp = signList.Split(';');
+    string signemp1 = signemp[0];
+    string signemp2 = signemp[1];
+    var signname11 = newCode.getNameEmp(signemp1);
+    var signname22 = newCode.getNameEmp(signemp2);
+
+    SQLServerDBHelper db = new SQLServerDBHelper("EsignDB");
+    string sqlQuery = @"select * from SubmitSign where FormID = '7' ";
+    DataTable tb = new DataTable();
+    tb = db.DoSQLSelect(sqlQuery);
+
+    string nameSign = "";
+    if (tb.Rows.Count > 0)
+    {
+        for (int i = 0; i < tb.Rows.Count; i++)
+        {
+            nameSign += tb.Rows[i]["SignName"].ToString() + ";";
+        }
+    }
+
+    string[] signName = nameSign.Split(';');
+
+    if (te == "010" && emp == te2)
+    {
+        <fieldset class="form-group card-body border">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group col-md-4 row">
+                <div class="col-md-12 form-group row">
+                    <label class="col-md-4">订单号</label>
+
+                    @Html.TextBoxFor(model => model.EmpModels.APPNO, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+
+                </div>
+            </div>
+            <legend>
+                申请人详细信息
+            </legend>
+            <div class="form-group row">
+                <div class="form-group col-md-4 row border">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">工號</label>
+
+                        @Html.TextBoxFor(model => model.EmpModels.ApplicantNo, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">申請人</label>
+                        @Html.TextBoxFor(model => model.EmpModels.ApplicantName, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">部門代碼</label>
+
+                        @Html.TextBoxFor(model => model.EmpModels.ApplicantCode, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+
+                    </div>
+                </div>
+                <div class="form-group col-md-8 border">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">申請人郵箱</label>
+                        @Html.TextBoxFor(model => model.EmpModels.ApplicantMail, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                        @*<input class="form-control col-md-6" type="text" id="USERMAIL" readonly="readonly" />*@
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">申請人聯繫方式</label>
+                        @Html.TextBoxFor(model => model.EmpModels.ApplicantPhone, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+
+                        @*<input class="form-control col-md-6" type="text" />*@
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">申请部门</label>
+                        @Html.TextBoxFor(model => model.EmpModels.ApplicantDep, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+
+                        @*<input class="form-control col-md-6" type="text" id="DEPARTMENT" readonly="readonly" />*@
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="card-header form-group border">
+            <legend>
+                申请详情
+            </legend>
+            <div class="row form-group">
+                <div class="col-md-6 row border">
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">受文單位</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Recipientunit, "", new { @class = "form-control col-md-7" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">會辦單位</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Organizer, "", new { @class = "form-control col-md-7" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">副本呈送</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Copysubmission, "", new { @class = "form-control col-md-7" })
+                    </div>
+                </div>
+                <div class="col-md-6 border">
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">頁    次</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Page, "", new { @class = "form-control col-md-7" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">發文單位</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Issuer, "", new { @class = "form-control col-md-7" })
+                        @*<input class="form-control col-md-7" type="text" />*@
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">文    號</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Documentnumber, "", new { @class = "form-control col-md-7" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">日    期</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Daycreate, "", new { @class = "form-control col-md-7" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2"></div>
+                <label class="col-md-2">主  旨</label>
+                @Html.TextBoxFor(model => model.EmpModels.Title, "", new { @class = "form-control col-md-7" })
+                <div class="col-md-2"></div>
+            </div>
+            <div class="form-group">
+                <label>說  明</label>
+                @Html.TextAreaFor(model => model.EmpModels.AppContent, 10, 10, new { @class = "form-control" })
+            </div>
+            <div class="form-group border row">
+                <label class="col-md-2">file attach</label>
+                @Html.TextBoxFor(m => m.EmpModels.FileName, new { @class = "form-control col-md-6" })
+                <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 10px">
+                    @*@Html.ActionLink("Download", "DownloadFilesApp", new { appno = Model.EmpModels.APPNO })*@
+                    <a href='@link' download target="_blank">Download</a>
+                </div>
+                <label class="col-md-2">Attach files</label>
+                <div class="col-md-6">
+                    @Html.TextBox("file", "", new { type = "file" })
+                    @*@Html.TextBoxFor(model => model.EmpModels.files, "", new { @type = "file", @multiple = "multiple", @class = "form-control" })*@
+                    @Html.ValidationMessageFor(model => model.EmpModels.files, "", new { @class = "text-danger" })
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide col-md-10">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </fieldset>
+        <fieldset class="card-body">
+
+
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <td>Signer off Type</td>
+                        <td>Signer name</td>
+                        <td>Signer no</td>
+                        <td>Status</td>
+                        <td>Notes</td>
+                        <td>Time approval</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @*@foreach (var approver in Model.APPROVEs)
+                    {
+
+                        <tr>
+                            <td>@approver.PROCESSNAME</td>
+                            <td>@approver.APPROVERNAME</td>
+                            <td>@approver.APPROVEREMP</td>
+                            <td>@approver.STATUS</td>
+                            <td>@approver.NOTES</td>
+                            <td>@approver.TIMEAPPROVE</td>
+                        </tr>
+                    }*@
+                    @for(int i=0;i < Model.APPROVEs.Count;i++)
+                    {
+                    <tr>
+                        <td>@Model.APPROVEs[i].STATUS</td>
+                        <td>@Model.APPROVEs[i].APPROVERNAME</td>
+                        <td>@Model.APPROVEs[i].APPROVEREMP</td>
+                        <td>@Model.APPROVEs[i].STATUS</td>
+                        <td>@Model.APPROVEs[i].NOTES</td>
+                        <td>@Model.APPROVEs[i].TIMEAPPROVE</td>
+                    </tr>
+                    }
+                </tbody>
+
+
+
+            </table>
+            <br />
+            <br />
+            <br />
+            <fieldset class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 row">
+                        <div class="form-group row col-md-12">
+                            <label class="col-md-3"> @signName[0]</label>
+                            <div class="col-md-9 row">
+                                <input type="text" value="@session.UserID" readonly="readonly" class="form-control col-md-3" />
+                                <div class="col-md-1"></div>
+                                <input type="text" value="@session.UserName" class="form-control col-md-3" readonly="readonly" />
+
+                            </div>
+                        </div>
+
+                        @{
+                            if (signname11 != signname22)
+                            {
+                                <div class="form-group row col-md-12">
+                                    <label class="col-md-3">@signName[1]</label>
+                                    <div class="col-md-9 row">
+                                        <input type="text" value="@signemp1" class="form-control col-md-3" readonly="readonly" />
+                                        @*@Html.TextBoxFor(model => model.Signer1No, "", new { @class = "form-control col-md-3" })*@
+                                        <div class="col-md-1"></div>
+                                        <input type="text" value="@signname11" class="form-control col-md-3" readonly="readonly" />
+                                        @*@Html.TextBoxFor(model => model.Signer1Name, "", new { @class = "form-control col-md-3", @readonly = "readonly" })*@
+
+                                    </div>
+                                </div>
+                            }
+
+
+
+                        }
+                        <div class="form-group row col-md-12">
+                            <label class="col-md-3">@signName[2]</label>
+                            <div class="col-md-9 row">
+                                <input type="text" value="@signemp2" class="form-control col-md-3" readonly="readonly" />
+                                @*@Html.TextBoxFor(model => model.Signer2No, "", new { @class = "form-control col-md-3" })*@
+                                <div class="col-md-1"></div>
+                                <input type="text" value="@signname22" class="form-control col-md-3" readonly="readonly" />
+                                @*@Html.TextBoxFor(model => model.Signer2Name, "", new { @class = "form-control col-md-3", @readonly = "readonly" })*@
+
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-12">
+                            <label class="col-md-3">@signName[3]</label>
+                            <div class="col-md-9 row">
+                                @Html.TextBoxFor(model => model.EmpModels.Signer3No, "", new { @class = "form-control col-md-3" })
+                                <div class="col-md-1"></div>
+                                @Html.TextBoxFor(model => model.EmpModels.Signer3Name, "", new { @class = "form-control col-md-3", @readonly = "readonly" })
+
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-12">
+                            <label class="col-md-3">@signName[4]</label>
+                            <div class="col-md-9 row">
+                                @Html.TextBoxFor(model => model.EmpModels.Signer4No, "", new { @class = "form-control col-md-3" })
+                                <div class="col-md-1"></div>
+                                @Html.TextBoxFor(model => model.EmpModels.Signer4Name, "", new { @class = "form-control col-md-3", @readonly = "readonly" })
+
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-12">
+                            <label class="col-md-3">@signName[5] </label>
+                            <div class="col-md-9 row">
+                                @Html.TextBoxFor(model => model.EmpModels.Signer5No, "", new { @class = "form-control col-md-3" })
+                                <div class="col-md-1"></div>
+                                @Html.TextBoxFor(model => model.EmpModels.Signer5Name, "", new { @class = "form-control col-md-3", @readonly = "readonly" })
+
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-12">
+                            <label class="col-md-3">@signName[6]</label>
+                            <div class="col-md-9 row">
+                                @Html.TextBoxFor(model => model.EmpModels.Signer6No, "", new { @class = "form-control col-md-3" })
+                                <div class="col-md-1"></div>
+                                @Html.TextBoxFor(model => model.EmpModels.Signer6Name, "", new { @class = "form-control col-md-3", @readonly = "readonly" })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </fieldset>
+            @{
+                if (check == emp)
+                {
+                    <div class="form-group">
+                        <label>笔记</label>
+                        @Html.TextAreaFor(m => m.NoteApproval, 3, 10, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group row">
+                        <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 30px">
+                            <input type="submit" value="Submit" name="ApprovalButton" class="btn btn-outline-success col-sm-2 col-md-2 col-lg-2" />
+                        </div>
+                        <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 30px">
+                            <a href="@Url.Action("Index", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">Return</a>
+                        </div>
+                        <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 30px">
+                            <input type="submit" value="Delete" name="ApprovalButton" class="btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" />
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px">
+                        @*@Html.ActionLink("Return", "Index")*@
+                        <a href="@Url.Action("Index", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">Return</a>
+                    </div>
+                }
+            }
+
+        </fieldset>
+    }
+
+    else
+    {
+        <fieldset class="form-group card-body border">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group col-md-4 row">
+                <div class="col-md-12 form-group row">
+                    <label class="col-md-4">订单号</label>
+
+                    @Html.TextBoxFor(model => model.EmpModels.APPNO, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+
+                </div>
+            </div>
+            <legend>
+                申请人详细信息
+            </legend>
+            <div class="form-group row">
+                <div class="form-group col-md-4 row border">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">工號</label>
+
+                        @Html.TextBoxFor(model => model.EmpModels.ApplicantNo, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">申請人</label>
+                        @Html.TextBoxFor(model => model.EmpModels.ApplicantName, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">部門代碼</label>
+
+                        @Html.TextBoxFor(model => model.EmpModels.ApplicantCode, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+
+                    </div>
+                </div>
+                <div class="form-group col-md-8 border">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">申請人郵箱</label>
+                        @Html.TextBoxFor(model => model.EmpModels.ApplicantMail, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                        @*<input class="form-control col-md-6" type="text" id="USERMAIL" readonly="readonly" />*@
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">申請人聯繫方式</label>
+                        @Html.TextBoxFor(model => model.EmpModels.ApplicantPhone, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+
+                        @*<input class="form-control col-md-6" type="text" />*@
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">申请部门</label>
+                        @Html.TextBoxFor(model => model.EmpModels.ApplicantDep, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+
+                        @*<input class="form-control col-md-6" type="text" id="DEPARTMENT" readonly="readonly" />*@
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="card-header form-group border">
+            <legend>
+                申请详情
+            </legend>
+            <div class="row form-group">
+                <div class="col-md-6 row border">
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">受文單位</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Recipientunit, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">會辦單位</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Organizer, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">副本呈送</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Copysubmission, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-md-6 border">
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">頁    次</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Page, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">發文單位</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Issuer, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                        @*<input class="form-control col-md-7" type="text" />*@
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">文    號</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Documentnumber, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">日    期</label>
+                        @Html.TextBoxFor(model => model.EmpModels.Daycreate, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2"></div>
+                <label class="col-md-2">主  旨</label>
+                @Html.TextBoxFor(model => model.EmpModels.Title, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                <div class="col-md-2"></div>
+            </div>
+            <div class="form-group">
+                <label>說  明</label>
+                @Html.TextAreaFor(model => model.EmpModels.AppContent, 10, 10, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="form-group border row">
+                <label class="col-md-2">file attach</label>
+                @Html.TextBoxFor(m => m.EmpModels.FileName, new { @class = "form-control col-md-6", @readonly = "readonly" })
+                <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 10px">
+                    @*@Html.ActionLink("Download", "DownloadFilesApp", new { appno = Model.EmpModels.APPNO })*@
+                    <a href='@link' download target="_blank">Download</a>
+                </div>
+            </div>
+
+        </fieldset>
+        <fieldset class="card-body">
+
+
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <td>Signer off Type</td>
+                        <td>Signer name</td>
+                        <td>Signer no</td>
+                        <td>Status</td>
+                        <td>Notes</td>
+                        <td>Time approval</td>
+                        <td>test</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @*@foreach (var approver in Model.APPROVEs)
+                    {
+
+                        <tr>
+                            <td>@approver.PROCESSNAME</td>
+                            <td>@approver.APPROVERNAME</td>
+                            <td>@approver.APPROVEREMP</td>
+                            <td>@approver.STATUS</td>
+                            <td>@approver.NOTES</td>
+                            <td>@approver.TIMEAPPROVE</td>
+                            <td><input type="text" id="@approver.STATUS" /></td>
+                        </tr>
+                    }*@
+                    @for (int i = 0; i < Model.APPROVEs.Count; i++)
+                     {
+                        <tr>
+                            <td>@Model.APPROVEs[i].STATUS</td>
+                            <td>@Model.APPROVEs[i].APPROVERNAME</td>
+                            <td>@Model.APPROVEs[i].APPROVEREMP</td>
+                            <td>@Model.APPROVEs[i].STATUS</td>
+                            <td>@Model.APPROVEs[i].NOTES</td>
+                            <td>@Model.APPROVEs[i].TIMEAPPROVE</td>
+                            <td>@Html.TextBoxFor(m=>m.APPROVEs[i].NOTES, new { @class = "form-control col-md-6" })</td>
+                        </tr>
+                     }
+                </tbody>
+
+            </table>
+            <br />
+            <br />
+            <br />
+            @*<div >
+                    <input type="submit" value="提交" class="btn btn-outline-success col-sm-2 col-md-2 col-lg-2" />
+                </div>*@
+
+
+
+            @{
+                if (check == emp)
+                {
+                    <div class="form-group">
+                        <label>笔记</label>
+                        @Html.TextAreaFor(m => m.NoteApproval, 3, 10, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group row">
+                        <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 30px">
+                            <input type="submit" value="Approval" name="ApprovalButton" class="btn btn-outline-success col-sm-2 col-md-2 col-lg-2" />
+                        </div>
+                        <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 30px">
+                            <a href="@Url.Action("Index", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">Return</a>
+                        </div>
+                        <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 30px">
+                            <input type="submit" value="Reject" name="ApprovalButton" class="btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" />
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px">
+                        @*@Html.ActionLink("Return", "Index")*@
+                        <a href="@Url.Action("Index", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">Return</a>
+                    </div>
+                }
+            }
+
+        </fieldset>
+    }
+}
+
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $(function () {
+                $('#AlertBox').removeClass('hide');
+                $('#AlertBox').delay(10000).slideUp(500);
+            });
+            //$("#Signer1No").change(function () {
+            //    var reg = $("#Signer1No").val();
+            //    //var reg = $("#UserID").val();
+            //    //var json = { empNo: reg };
+            //    $.ajax({
+            //        type: "Get",
+            //        url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+            //        contentType: "application/json; charset=utf-8",
+            //        data: { id: reg },
+            //        success: function (data) {
+
+            //            $("#Signer1Name").val(data.USER_NAME);
+            //            //$("#Department").val(data.DEPARTMENT_NAME);
+            //            //$("#Email").val(data.NOTES_ID);
+            //            //$("#CodeCost").val(data.CURRENT_OU_CODE);
+            //        },
+            //        error: function (error) {
+
+            //            alert(error);
+            //        },
+            //    });
+            //});
+            //$("#Signer2No").change(function () {
+            //    var reg = $("#Signer2No").val();
+            //    //var reg = $("#UserID").val();
+            //    //var json = { empNo: reg };
+            //    $.ajax({
+            //        type: "Get",
+            //        url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+            //        contentType: "application/json; charset=utf-8",
+            //        data: { id: reg },
+            //        success: function (data) {
+
+            //            $("#Signer2Name").val(data.USER_NAME);
+            //            //$("#Department").val(data.DEPARTMENT_NAME);
+            //            //$("#Email").val(data.NOTES_ID);
+            //            //$("#CodeCost").val(data.CURRENT_OU_CODE);
+            //        },
+            //        error: function (error) {
+
+            //            alert(error);
+            //        },
+            //    });
+            //});
+            $("#Signer3No").change(function () {
+                var reg = $("#Signer3No").val();
+                //var reg = $("#UserID").val();
+                //var json = { empNo: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+
+                        $("#Signer3Name").val(data.USER_NAME);
+                        //$("#Department").val(data.DEPARTMENT_NAME);
+                        //$("#Email").val(data.NOTES_ID);
+                        //$("#CodeCost").val(data.CURRENT_OU_CODE);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    },
+                });
+            });
+            $("#Signer4No").change(function () {
+                var reg = $("#Signer4No").val();
+                //var reg = $("#UserID").val();
+                //var json = { empNo: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+
+                        $("#Signer4Name").val(data.USER_NAME);
+                        //$("#Department").val(data.DEPARTMENT_NAME);
+                        //$("#Email").val(data.NOTES_ID);
+                        //$("#CodeCost").val(data.CURRENT_OU_CODE);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    },
+                });
+            });
+            $("#Signer5No").change(function () {
+                var reg = $("#Signer5No").val();
+                //var reg = $("#UserID").val();
+                //var json = { empNo: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+
+                        $("#Signer5Name").val(data.USER_NAME);
+                        //$("#Department").val(data.DEPARTMENT_NAME);
+                        //$("#Email").val(data.NOTES_ID);
+                        //$("#CodeCost").val(data.CURRENT_OU_CODE);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    },
+                });
+            });
+            $("#Signer6No").change(function () {
+                var reg = $("#Signer6No").val();
+                //var reg = $("#UserID").val();
+                //var json = { empNo: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+
+                        $("#Signer6Name").val(data.USER_NAME);
+                        //$("#Department").val(data.DEPARTMENT_NAME);
+                        //$("#Email").val(data.NOTES_ID);
+                        //$("#CodeCost").val(data.CURRENT_OU_CODE);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    },
+                });
+            });
+
+
+            @*function() {
+                var reg = @session.UserID.Trim();
+                //var reg = $("#UserID").val();
+                //var json = { empNo: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+
+                        $("#Username").val(data.USER_NAME);
+                        $("#Department").val(data.DEPARTMENT_NAME);
+                        $("#Email").val(data.NOTES_ID);
+                        $("#CodeCost").val(data.CURRENT_OU_CODE);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    },
+                });
+            }*@
+        });
+    </script>
+}

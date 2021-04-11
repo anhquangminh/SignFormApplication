@@ -1,0 +1,12 @@
+E:\Khang.savecode\MVC\New_Esign\NewModel\bin\Release\NewModel.dll.config
+E:\Khang.savecode\MVC\New_Esign\NewModel\bin\Release\NewModel.dll
+E:\Khang.savecode\MVC\New_Esign\NewModel\bin\Release\NewModel.pdb
+E:\Khang.savecode\MVC\New_Esign\NewModel\bin\Release\EntityFramework.dll
+E:\Khang.savecode\MVC\New_Esign\NewModel\bin\Release\EntityFramework.SqlServer.dll
+E:\Khang.savecode\MVC\New_Esign\NewModel\bin\Release\EntityFramework.xml
+E:\Khang.savecode\MVC\New_Esign\NewModel\bin\Release\EntityFramework.SqlServer.xml
+E:\Khang.savecode\MVC\New_Esign\NewModel\obj\Release\NewModel.csprojAssemblyReference.cache
+E:\Khang.savecode\MVC\New_Esign\NewModel\obj\Release\NewModel.csproj.CoreCompileInputs.cache
+E:\Khang.savecode\MVC\New_Esign\NewModel\obj\Release\NewModel.csproj.CopyComplete
+E:\Khang.savecode\MVC\New_Esign\NewModel\obj\Release\NewModel.dll
+E:\Khang.savecode\MVC\New_Esign\NewModel\obj\Release\NewModel.pdb

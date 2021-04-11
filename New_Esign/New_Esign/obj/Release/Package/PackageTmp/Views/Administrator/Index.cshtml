@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = LanguageHelper.GetResource("AdministratorPage");
+    Layout = "~/Areas/Administrators/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<div class="list_function">
+    @*Language
+    <a href="~/Administrators/Languages">
+        <div class="item item_response">
+            <div class="item_icon">
+                <img src="~/Assets/multi-language.png">
+            </div>
+            <div class="item_title">@LanguageHelper.GetResource("Admin.Menu.LanguagesManager")</div>
+        </div>
+    </a>
+    *@
+    @*Resources*@
+    <a href="@Url.Action("Index","Resources",new {area="Administrators" })">
+        <div class="item item_response">
+            <div class="item_icon">
+                <img src="~/Assets/translate.png">
+            </div>
+            <div class="item_title">@LanguageHelper.GetResource("Admin.Menu.ResourcesManager")</div>
+        </div>
+    </a>
+    @*Form*@
+    <a href="@Url.Action("Index","Forms",new {area="Administrators" })">
+        <div class="item item_response">
+            <div class="item_icon">
+                <img src="~/Assets/folder-form.png">
+            </div>
+            <div class="item_title">@LanguageHelper.GetResource("Admin.Menu.FormListManager")</div>
+        </div>
+    </a>
+    @*Form Content*@
+    <a href="@Url.Action("Index","FormContent",new {area="Administrators" })">
+        <div class="item item_response">
+            <div class="item_icon">
+                <img src="~/Assets/form.png">
+            </div>
+            <div class="item_title">@LanguageHelper.GetResource("Admin.Menu.FormContentManager")</div>
+        </div>
+    </a>
+    @*Form Content*@
+    <a href="@Url.Action("Index","Approver",new {area="Administrators" })">
+        <div class="item item_response">
+            <div class="item_icon">
+                <img src="~/Assets/approver.png">
+            </div>
+            <div class="item_title">@LanguageHelper.GetResource("Approver.Title")</div>
+        </div>
+    </a>
+    <div class="clearfix"></div>
+</div>
+

@@ -1,0 +1,21 @@
+﻿@model New_Esign.Areas.Employee.Controllers.MultiselectModel
+
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm())
+{
+
+}
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+    <script src="~/Scripts/select2.min.js"></script>
+
+}

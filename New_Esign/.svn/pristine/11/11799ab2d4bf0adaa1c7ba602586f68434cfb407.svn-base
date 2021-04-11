@@ -1,0 +1,54 @@
+﻿@model New_Esign.Areas.Employee.Models.FORM_IT_01Model
+@using New_Esign.Common;
+@using New_Esign.AppCode;
+
+@{
+    ViewBag.Title = "signingProcess";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+<h2>signingProcess</h2>
+@using (Html.BeginForm("signingProcess", "ApplicationType", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+    var emp = session.UserID.Trim();
+    var name = session.UserName;
+<table class="table">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Status</th>
+            <th>Emp</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @for (int i = 0; i < Model.approvalApps.Count; i++)
+        {
+        <tr>
+            <td>@Model.approvalApps[i].step</td>
+            <td>@Model.approvalApps[i].statusName</td>
+            @{
+                if (i == 0)
+                {
+                    <td>@Html.TextBoxFor(m => m.approvalApps[i].signEmpNo , new { @Value = "" + emp + "", @class = "form-control" , @readonly = "readonly" })</td>
+                    <td>@Html.TextBoxFor(m => m.approvalApps[i].SignName , new { @Value = "" + name + "", @class = "form-control" , @readonly = "readonly" })</td>
+                }
+                else
+                {
+                    <td>@Html.TextBoxFor(m => m.approvalApps[i].signEmpNo, new { @class = "form-control" })</td>
+                    <td>@Html.TextBoxFor(m => m.approvalApps[i].SignName, new { @class = "form-control" })</td>
+                }
+            }
+
+        </tr>
+        }
+
+    </tbody>
+
+</table>
+
+<input type="submit" value="Submit" class="btn btn-success" />
+
+}

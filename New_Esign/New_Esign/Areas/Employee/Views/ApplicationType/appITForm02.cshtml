@@ -1,0 +1,401 @@
+﻿@model New_Esign.Areas.Employee.Models.EmpModel
+@using New_Esign.Common;
+@using New_Esign.AppCode;
+@using System.Data;
+@using System.Data.SqlClient;
+
+@{
+    ViewBag.Title = "appITForm01";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+           
+@{
+    var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+    var newCode = new NewCode();
+
+    var signList = newCode.getListManager(session.UserID.Trim());
+    string[] signemp = signList.Split(';');
+    string signemp1 = signemp[0];
+    string signemp2 = signemp[1];
+    var signname11 = newCode.getNameEmp(signemp1);
+    var signname22 = newCode.getNameEmp(signemp2);
+
+    SQLServerDBHelper db = new SQLServerDBHelper("EsignDB");
+    string sqlQuery = @"select * from SubmitSign where FormID = '7' ";
+    DataTable tb = new DataTable();
+    tb = db.DoSQLSelect(sqlQuery);
+
+    string nameSign = "";
+    if(tb.Rows.Count > 0)
+    {
+        for(int i = 0;i < tb.Rows.Count; i++)
+        {
+            nameSign += tb.Rows[i]["SignName"].ToString() + ";";
+        }
+    }
+
+    string[] signName = nameSign.Split(';');
+    
+    //string sign1 = signName[0];
+
+}
+@using (Html.BeginForm("appITForm02", "ApplicationType", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="mainContent">
+    <h3 class="pageTitle text-center text-primary text-uppercase">
+        <i class="fas fa-fw fa-file-alt"></i>  FG Subgroup <br /> <br />Contact form
+    </h3>
+    <hr />
+    <div class="">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <label class="font-weight-bold">
+            Applicant details
+        </label>
+        <div class="form-group row">
+            <div class="form-group col-md-4 row border" >
+                <div class="col-md-12 form-group row" style="padding-top:10px;">
+                    <label class="col-md-4">Employee no<span style="color:red">*</span>:</label>
+                    <input value="@session.UserID" type="text" class="form-control col-md-6" readonly="readonly" />
+                    @*@Html.TextBoxFor(model => model.UserID, "", new { @class = "form-control col-md-6",@value=session.UserID })*@
+                    @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+                    @*<input class="form-control col-md-6" type="text" id="USER_EMP" name="USER_EMP" />*@
+                </div>
+                <div class="col-md-12 form-group row">
+                    <label class="col-md-4">Employee name<span style="color:red">*</span>:</label>
+                    <input value="@session.UserName" type="text" class="form-control col-md-6" readonly="readonly" />
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    @*<input class="form-control col-md-6" type="text" id="USER_NAME" readonly="readonly" />*@
+                </div>
+                <div class="col-md-12 form-group row">
+                    <label class="col-md-4">Cost code<span style="color:red">*</span>:</label>
+                    <input value="@session.CostCode" type="text" class="form-control col-md-6" readonly="readonly" />
+                    @*@Html.TextBoxFor(model => model.CodeCost, "", new { @class = "form-control col-md-6" })*@
+                    @Html.ValidationMessageFor(model => model.CodeCost, "", new { @class = "text-danger" })
+                    @*<input class="form-control col-md-6" type="text" id="CODE_COST" readonly="readonly" />*@
+                </div>
+            </div>
+            <div class="form-group col-md-8 border">
+                <div class="col-md-12 form-group row" style="padding-top:10px;">
+                    <label class="col-md-4">Mail<span style="color:red">*</span>:</label>
+                    <input value="@session.Mail" type="text" class="form-control col-md-6" />
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                    @*<input class="form-control col-md-6" type="text" id="USERMAIL" readonly="readonly" />*@
+                </div>
+                <div class="col-md-12 form-group row">
+                    <label class="col-md-4">Phone<span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.ApplicantPhone, "", new { @class = "form-control col-md-6" })
+                    @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+
+                    @*<input class="form-control col-md-6" type="text" />*@
+                </div>
+                <div class="col-md-12 form-group row">
+                    <label class="col-md-4">Department<span style="color:red">*</span>:</label>
+                    <input value="@session.Department" type="text" class="form-control col-md-6" readonly="readonly" />
+                    @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+
+                    @*<input class="form-control col-md-6" type="text" id="DEPARTMENT" readonly="readonly" />*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <label class="font-weight-bold">
+            Document detail
+        </label>
+        <div class="row form-group">
+            <div class="col-md-6 row border" style="padding-top:10px;">
+                <div class="form-group col-md-12 row">
+                    <label class="col-md-4">Recipient unit <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Recipientunit, "", new { @class = "form-control col-md-7" })
+                </div>
+                <div class="form-group col-md-12 row">
+                    <label class="col-md-4">Organizer <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Organizer, "", new { @class = "form-control col-md-7" })
+                </div>
+                <div class="form-group col-md-12 row">
+                    <label class="col-md-4">Copy submission:</label>
+                    @Html.TextBoxFor(model => model.Copysubmission, "", new { @class = "form-control col-md-7" })
+                </div>
+            </div>
+            <div class="col-md-6 border">
+                <div class="form-group col-md-12 row" style="padding-top:10px;">
+                    <label class="col-md-4">Page :</label>
+                    @Html.TextBoxFor(model => model.Page, "", new { @class = "form-control col-md-7" })
+                </div>
+                <div class="form-group col-md-12 row">
+                    <label class="col-md-4">Issuer <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Issuer, "", new { @class = "form-control col-md-7" })
+                    @*<input class="form-control col-md-7" type="text" />*@
+                </div>
+                <div class="form-group col-md-12 row">
+                    <label class="col-md-4">Document number</label>
+                    @Html.TextBoxFor(model => model.Documentnumber, "", new { @class = "form-control col-md-7" })
+                </div>
+                <div class="form-group col-md-12 row">
+                    <label class="col-md-4">Day create</label>
+                    @Html.TextBoxFor(model => model.Daycreate, "", new { @class = "form-control col-md-7" })
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-1"></div>
+            <label class="col-md-2">Title <span style="color:red">*</span>:</label>
+            @Html.TextBoxFor(model => model.Title, "", new { @class = "form-control col-md-8" })
+            <div class="col-md-1"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-1"></div>
+            <label class="col-md-2">Document content <span style="color:red">*</span>:</label>
+            @Html.TextAreaFor(model => model.AppContent, 10, 10, new { @class = "form-control col-md-8" })
+        </div>
+        <div class="form-group row">
+            <div class="col-md-1"></div>
+            <label class="col-md-2">Attach files <span style="color:red">*</span>:</label>
+            <div class="col-md-8">
+                @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple", @class = "form-control col-md-12" })
+                @Html.ValidationMessageFor(model => model.files, "", new { @class = "text-danger" })
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="AlertBox" class="alert @TempData["AlertType"] hide col-md-10">
+                        @TempData["AlertMessage"]
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="card-body" style="margin-top:10px;">
+        <div class="form-group row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 row">
+                <div class="form-group row col-md-12">
+                    <label class="col-md-3"> @signName[0]</label>
+                    <div class="col-md-9 row">
+                        <input type="text" value="@session.UserID" readonly="readonly" class="form-control col-md-3" />
+                        <div class="col-md-1"></div>
+                        <input type="text" value="@session.UserName" class="form-control col-md-3" readonly="readonly" />
+                        @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger", @readonly = "readonly" })
+                    </div>
+                </div>
+
+                @{
+                    if (signname11 != signname22)
+                    {
+                        <div class="form-group row col-md-12">
+                            <label class="col-md-3">@signName[1]</label>
+                            <div class="col-md-9 row">
+                                <input type="text" value="@signemp1" class="form-control col-md-3" readonly="readonly" />
+                                @*@Html.TextBoxFor(model => model.Signer1No, "", new { @class = "form-control col-md-3" })*@
+                                <div class="col-md-1"></div>
+                                <input type="text" value="@signname11" class="form-control col-md-3" readonly="readonly" />
+                                @*@Html.TextBoxFor(model => model.Signer1Name, "", new { @class = "form-control col-md-3", @readonly = "readonly" })*@
+                                @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    }
+
+                }
+                <div class="form-group row col-md-12">
+                    <label class="col-md-3">@signName[2]</label>
+                    <div class="col-md-9 row">
+                        <input type="text" value="@signemp2" class="form-control col-md-3" readonly="readonly" />
+                        @*@Html.TextBoxFor(model => model.Signer2No, "", new { @class = "form-control col-md-3" })*@
+                        <div class="col-md-1"></div>
+                        <input type="text" value="@signname22" class="form-control col-md-3" readonly="readonly" />
+                        @*@Html.TextBoxFor(model => model.Signer2Name, "", new { @class = "form-control col-md-3", @readonly = "readonly" })*@
+                        @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="col-md-3">@signName[3]</label>
+                    <div class="col-md-9 row">
+                        @Html.TextBoxFor(model => model.Signer3No, "", new { @class = "form-control col-md-3" })
+                        <div class="col-md-1"></div>
+                        @Html.TextBoxFor(model => model.Signer3Name, "", new { @class = "form-control col-md-3", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="col-md-3">@signName[4]</label>
+                    <div class="col-md-9 row">
+                        @Html.TextBoxFor(model => model.Signer4No, "", new { @class = "form-control col-md-3" })
+                        <div class="col-md-1"></div>
+                        @Html.TextBoxFor(model => model.Signer4Name, "", new { @class = "form-control col-md-3", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="col-md-3">@signName[5] </label>
+                    <div class="col-md-9 row">
+                        @Html.TextBoxFor(model => model.Signer5No, "", new { @class = "form-control col-md-3" })
+                        <div class="col-md-1"></div>
+                        @Html.TextBoxFor(model => model.Signer5Name, "", new { @class = "form-control col-md-3", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="col-md-3">@signName[6]</label>
+                    <div class="col-md-9 row">
+                        @Html.TextBoxFor(model => model.Signer6No, "", new { @class = "form-control col-md-3" })
+                        <div class="col-md-1"></div>
+                        @Html.TextBoxFor(model => model.Signer6Name, "", new { @class = "form-control col-md-3", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px">
+        <input type="submit" value="提交" class="btn btn-outline-success col-sm-2 col-md-2 col-lg-2" />
+    </div>
+</div>
+}
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $(function () {
+                $('#AlertBox').removeClass('hide');
+                $('#AlertBox').delay(10000).slideUp(500);
+            });
+            //$("#Signer1No").change(function () {
+            //    var reg = $("#Signer1No").val();
+            //    //var reg = $("#UserID").val();
+            //    //var json = { empNo: reg };
+            //    $.ajax({
+            //        type: "Get",
+            //        url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+            //        contentType: "application/json; charset=utf-8",
+            //        data: { id: reg },
+            //        success: function (data) {
+
+            //            $("#Signer1Name").val(data.USER_NAME);
+            //            //$("#Department").val(data.DEPARTMENT_NAME);
+            //            //$("#Email").val(data.NOTES_ID);
+            //            //$("#CodeCost").val(data.CURRENT_OU_CODE);
+            //        },
+            //        error: function (error) {
+
+            //            alert(error);
+            //        },
+            //    });
+            //});
+            //$("#Signer2No").change(function () {
+            //    var reg = $("#Signer2No").val();
+            //    //var reg = $("#UserID").val();
+            //    //var json = { empNo: reg };
+            //    $.ajax({
+            //        type: "Get",
+            //        url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+            //        contentType: "application/json; charset=utf-8",
+            //        data: { id: reg },
+            //        success: function (data) {
+
+            //            $("#Signer2Name").val(data.USER_NAME);
+            //            //$("#Department").val(data.DEPARTMENT_NAME);
+            //            //$("#Email").val(data.NOTES_ID);
+            //            //$("#CodeCost").val(data.CURRENT_OU_CODE);
+            //        },
+            //        error: function (error) {
+
+            //            alert(error);
+            //        },
+            //    });
+            //});
+            $("#Signer3No").change(function () {
+                var reg = $("#Signer3No").val();
+                //var reg = $("#UserID").val();
+                //var json = { empNo: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+
+                        $("#Signer3Name").val(data.USER_NAME);
+                        //$("#Department").val(data.DEPARTMENT_NAME);
+                        //$("#Email").val(data.NOTES_ID);
+                        //$("#CodeCost").val(data.CURRENT_OU_CODE);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    },
+                });
+            });
+            $("#Signer4No").change(function () {
+                var reg = $("#Signer4No").val();
+                //var reg = $("#UserID").val();
+                //var json = { empNo: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+
+                        $("#Signer4Name").val(data.USER_NAME);
+                        //$("#Department").val(data.DEPARTMENT_NAME);
+                        //$("#Email").val(data.NOTES_ID);
+                        //$("#CodeCost").val(data.CURRENT_OU_CODE);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    },
+                });
+            });
+            $("#Signer5No").change(function () {
+                var reg = $("#Signer5No").val();
+                //var reg = $("#UserID").val();
+                //var json = { empNo: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+
+                        $("#Signer5Name").val(data.USER_NAME);
+                        //$("#Department").val(data.DEPARTMENT_NAME);
+                        //$("#Email").val(data.NOTES_ID);
+                        //$("#CodeCost").val(data.CURRENT_OU_CODE);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    },
+                });
+            });
+            $("#Signer6No").change(function () {
+                var reg = $("#Signer6No").val();
+                //var reg = $("#UserID").val();
+                //var json = { empNo: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+
+                        $("#Signer6Name").val(data.USER_NAME);
+                        //$("#Department").val(data.DEPARTMENT_NAME);
+                        //$("#Email").val(data.NOTES_ID);
+                        //$("#CodeCost").val(data.CURRENT_OU_CODE);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    },
+                });
+            });
+        
+        });
+    </script>
+}

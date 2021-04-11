@@ -1,0 +1,10 @@
+﻿@model New_Esign.Areas.Administrators.Models.LanguageModel
+@{
+    ViewBag.Title = @LanguageHelper.GetResource("Admin.Menu.LanguagesManager");
+    Layout = "~/Areas/Administrators/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2><img class="page-title-img" src="~/Assets/multi-language.png" /> @ViewBag.Title</h2>
+<hr />
+
+

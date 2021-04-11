@@ -1,0 +1,95 @@
+﻿@model New_Esign.Areas.Employee.Models.CreateNewForm
+
+@{
+    ViewBag.Title = "CreateForm";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+<h2>@LanguageHelper.GetResource("Admin.Forms.Add")</h2>
+@using (Html.BeginForm("CreateForm", "ApplicationType", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div style="margin:20px">
+        <label>
+            @LanguageHelper.GetResource("Register.Department")
+        </label>
+        @Html.DropDownListFor(model => model.Department, null, "--Department--", new { @class = "dropdown-toggle form-control btn btn-light" })
+        <label>
+           @LanguageHelper.GetResource("FormName")
+        </label>
+        @Html.TextBoxFor(model => model.FormDisplayName, new { @class = "form-control" })
+        <label>
+            @LanguageHelper.GetResource("Site")
+        </label>
+
+        @Html.DropDownListFor(model => model.Site, null, "-Choose Site -", new { @class = "dropdown-toggle form-control btn btn-light" })
+    </div>
+
+
+    <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px; margin-bottom:30px">
+        <input type="submit" value="@LanguageHelper.GetResource("Next")" class="btn btn-outline-success col-sm-1 col-md-1 col-lg-1 font-weight-bold" />
+    </div>
+}
+
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#Site").change(function () {
+                $.get("/ApplicationType/getFormName", { depart: $("#Site").val() }, function (data) {
+                    $("#FormName").empty();
+                    $.each(data, function (index, row) {
+                        $("#FormName").append("<option value='" + row.FormName + "'>" + row.FormDisplayName + "</option>")
+                    });
+                });
+            });
+
+            $("#USER_EMP").change(function () {
+                var reg = $("#USER_EMP").val();
+                var json = { empNo: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'http://10.224.69.100/postman/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+
+                        $("#USER_NAME").val(data.USER_NAME);
+                        $("#DEPARTMENT").val(data.DEPARTMENT_NAME);
+                        $("#USERMAIL").val(data.NOTES_ID);
+                        $("#CODE_COST").val(data.CURRENT_OU_CODE);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    }
+                });
+
+            });
+
+            //var max_fields = 10;
+            //var wrapper = $(".container1");
+            //var add_button = $(".add_form_field");
+
+            //var x = 0;
+            //$(add_button).click(function (e) {
+            //    e.preventDefault();
+            //    if (x < max_fields) {
+            //        $(wrapper).append("<div class='form-group row'><input type='text' name='Minh" + x + "' id='Minh" + x + "' class='form-control col-md-4'/><input type='text' name='mytext[]' id='khang" + x + "' class='form-control col-md-4'/><a href='#' class='delete form-control col-md-4 text-center'>Delete</a></div>"); //add input box
+            //        x++;
+            //    } else {
+            //        alert('You Reached the limits')
+            //    }
+            //});
+
+            //$(wrapper).on("click", ".delete", function (e) {
+            //    e.preventDefault();
+            //    $(this).parent('div').remove();
+            //    x--;
+            //});
+
+        });
+    </script>
+}
+
+

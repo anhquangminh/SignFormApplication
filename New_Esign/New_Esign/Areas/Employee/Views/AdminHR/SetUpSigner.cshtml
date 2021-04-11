@@ -1,0 +1,263 @@
+﻿@model New_Esign.Areas.Employee.Models.FORM_IT_01Model
+@using New_Esign.Common;
+@using New_Esign.AppCode;
+@using System.Data;
+@using System.Data.SqlClient;
+
+
+@{
+    ViewBag.Title = "SetUpSigner";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+
+}
+
+<h2>SetUpSigner / Thiết lập mẫu đơn mới cho bộ phận HR</h2>
+
+
+@using (Html.BeginForm("SetUpSigner", "AdminHR", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+<div class="container">
+
+    @switch (Model.Title1Example)
+    {
+        case "batdau":
+            {
+                <fieldset class="card-body">
+                    <div class="form-group row">
+                        <div class="form-group row col-md-1 col-md-1 col-lg-1">
+
+                        </div>
+                        <label class="col-md-2 form-group"><h5>@LanguageHelper.GetResource("Employee.ChooseApp"):</h5></label>
+                        <div class="form-group row col-md-2 col-md-2 col-lg-2">
+                            @Html.DropDownListFor(model => model.Title1, null, new { @class = "dropdown-toggle form-control btn btn-light" })
+                        </div>
+                        <div class="form-group row col-md-1 col-md-1 col-lg-1">
+
+                        </div>
+                        <div class="form-group row col-md-6 col-md-6 col-lg-6">
+                            @Html.DropDownListFor(model => model.Title2, new SelectList(""), new { @class = "dropdown-toggle form-control btn btn-light" })
+                        </div>
+                    </div>
+                </fieldset>
+                @*<div class="text-center text-danger for font-weight-bold"><label class="label">@ViewBag.ErrorType</label></div>*@
+                <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px">
+                    <input type="submit" value="Next" class="btn btn-outline-success col-sm-1 col-md-1 col-lg-1 font-weight-bold" name="Approval" />
+                </div>
+                break;
+            }
+
+        case "Tieptheo":
+            {
+                <label>thanh cong lan 1</label>
+                <div class="card-body" style="margin-top:10px;">
+                    <table class="table" id="myTable">
+                        <thead>
+                            <tr>
+                                @*<th>序號 / STT</th>*@
+                                <th>簽核類型 / Loại hình ký</th>
+                                <th></th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @for (int i = 0; i < Model.approvalApps.Count; i++)
+                            {
+
+                            <tr>
+                                @*<td>@Model.approvalApps[i].step</td>*@
+
+                                @*<select name="position[]" class="gender my_select_sign btn-block"><option value="@Model.approvalApps[i].statusName">@Model.approvalApps[i].statusName</option></select>*@
+
+                                @*<input class="btn-block" type="text" name="position[]" value="@Model.approvalApps[i].statusName" />*@
+
+
+                                @{
+                                    if (i == 0)
+                                    {
+
+                                        <td>  <input class="form-control" type="text" name="position[]" value="@Model.approvalApps[i].statusName" readonly /></td>
+                                        <td><input type="button" value="@LanguageHelper.GetResource("Admin.Approver.Title.Add")" onclick="myCreate(this)" /></td>
+                                       
+
+                                    }
+                                    else
+                                    {
+                                        <td>  <input class="form-control" type="text" name="position[]" value="@Model.approvalApps[i].statusName" /></td>
+                                        <td><input type="button" value="@LanguageHelper.GetResource("Admin.Approver.Title.Add")" onclick="myCreate(this)" /></td>
+                                        <td><input type="button" value="@LanguageHelper.GetResource("Admin.DeleteConfirm")" onclick="deleteRow(this)" /></td>
+
+                                    }
+                                }
+
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <input type="hidden" class="form-control" name="testKQ" id="testKQ" />
+                <input type="hidden" class="form-control" name="Title3Example" value="@Model.Title3Example" />
+                <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px">
+                    <button onclick="sbApplication()" type="button" class="btn btn-outline-success col-sm-2 col-md-2 col-lg-2">@LanguageHelper.GetResource("yellow.submit")</button>
+                    <div id="divCheckbox" style="display: none;">
+                        <input type="submit" value="submit_ok" class="btn btn-outline-success col-sm-2 col-md-2 col-lg-2" id="submit" name="Approval" />
+                    </div>
+
+                </div>
+                break;
+            }
+        case "khongthayduoc":
+            {
+                <label class="text-danger">Application have not a list of signers </label>
+                <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px">
+                    <input type="submit" value="Return" class="btn btn-outline-success col-sm-1 col-md-1 col-lg-1 font-weight-bold" name="Approval" />
+                </div>
+                break;
+            }
+        case "thanhcong":
+            {
+                <h4 class="text-success">successfully  </h4>
+                <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px">
+                    <input type="submit" value="goHome" class="btn btn-outline-success col-sm-1 col-md-1 col-lg-1 font-weight-bold" name="Approval" />
+                </div>
+                break;
+            }
+        case "thatbai":
+            {
+                <label class="text-danger">failed  </label>
+                <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px">
+                    <input type="submit" value="Next" class="btn btn-outline-success col-sm-1 col-md-1 col-lg-1 font-weight-bold" name="Approval" />
+                </div>
+                break;
+            }
+        case "khongquyen":
+            {
+                <label class="text-danger">You have not rule  </label>
+                <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px">
+                    <input type="submit" value="goHome" class="btn btn-outline-success col-sm-1 col-md-1 col-lg-1 font-weight-bold" name="Approval" />
+                </div>
+                break;
+            }
+        default:
+            {
+                <fieldset class="card-body">
+                    <div class="form-group row">
+                        <div class="form-group row col-md-1 col-md-1 col-lg-1">
+
+                        </div>
+                        <label class="col-md-2 form-group"><h5>@LanguageHelper.GetResource("Employee.ChooseApp"):</h5></label>
+                        <div class="form-group row col-md-2 col-md-2 col-lg-2">
+                            @Html.DropDownListFor(model => model.Title1, null, new { @class = "dropdown-toggle form-control btn btn-light" })
+                        </div>
+                        <div class="form-group row col-md-1 col-md-1 col-lg-1">
+
+                        </div>
+                        <div class="form-group row col-md-6 col-md-6 col-lg-6">
+                            @Html.DropDownListFor(model => model.Title2, new SelectList(""), new { @class = "dropdown-toggle form-control btn btn-light" })
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="text-center text-danger for font-weight-bold"><label class="label">@ViewBag.ErrorType</label></div>
+                <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px">
+                    <input type="submit" value="Next" class="btn btn-outline-success col-sm-1 col-md-1 col-lg-1 font-weight-bold" name="Approval" />
+                </div>
+                break;
+            }
+    }
+
+</div>
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#Title1").on('autocompletechange change', function () {
+                var getdata = $("#Department").val();
+
+                $.get("/CreateNewApp/getFormName", { depart: $("#Title1").val() }, function (data) {
+                    $("#Title2").empty();
+                    $.each(data, function (index, row) {
+
+                        $("#Title2").append("<option value='" + row.FormName + "'>" + row.FormDisplayName + "</option>")
+                    });
+                });
+
+            }).change();
+
+
+            //var max_fields = 10;
+            //var wrapper = $(".container1");
+            //var add_button = $(".add_form_field");
+
+            //var x = 0;
+            //$(add_button).click(function (e) {
+            //    e.preventDefault();
+            //    if (x < max_fields) {
+            //        $(wrapper).append("<div class='form-group row'><input type='text' name='Minh" + x + "' id='Minh" + x + "' class='form-control col-md-4'/><input type='text' name='mytext[]' id='khang" + x + "' class='form-control col-md-4'/><a href='#' class='delete form-control col-md-4 text-center'>Delete</a></div>"); //add input box
+            //        x++;
+            //    } else {
+            //        alert('You Reached the limits')
+            //    }
+            //});
+
+            //$(wrapper).on("click", ".delete", function (e) {
+            //    e.preventDefault();
+            //    $(this).parent('div').remove();
+            //    x--;
+            //});
+
+            // tren them o vao du lieu
+
+        });
+
+        //them hang va cot
+        function myCreate(row) {
+            var i = row.parentNode.parentNode.rowIndex;
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(i + 1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            ////var cell3 = row.insertCell(3);
+            //var cell3 = row.insertCell(2);
+            //var cell4 = row.insertCell(3);
+            //var cell5 = row.insertCell(4);           
+
+            cell1.innerHTML = ' <td>  <input class="form-control" type="text" name="position[]" /></td>';
+
+            //cell2.innerHTML = '<td><input class="btn-block nextNo" type="text" name="pno[]" /></td>';
+            //cell3.innerHTML = '<td><input class="btn-block" type="text" name="pname[]"  id="nameSig"/></td>';
+            cell2.innerHTML = '<td><input type="button" value="@LanguageHelper.GetResource("Admin.Approver.Title.Add")" onclick="myCreate(this)" /></td>';
+            cell3.innerHTML = '<td><input type="button" value="@LanguageHelper.GetResource("Admin.DeleteConfirm")" onclick="deleteRow(this)"/></td>';
+             //myFunction();  
+            
+        }
+    
+        function deleteRow(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            //myFunction();
+            n--;
+        }
+
+        function sbApplication() {
+            var checkFlag = true;     
+            var values = $("input[name='position[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#testKQ").val(values);
+            var arrayValues = values.toString().split(',');
+            var filtered = arrayValues.filter(Boolean);           
+            if (checkFlag == true) {
+               
+                    $("#submit").click();               
+            }
+            else { alert("無明確的錯誤 / Không có lỗi dõ dàng"); }
+
+
+            // $("#submit").click();
+        }
+
+    </script>
+}

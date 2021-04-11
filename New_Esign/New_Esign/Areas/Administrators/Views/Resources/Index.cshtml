@@ -1,0 +1,168 @@
+﻿@using New_Esign.Areas.Administrators.Models
+@model ResourceManagerModel
+@{
+    ViewBag.Title = LanguageHelper.GetResource("Admin.Menu.ResourcesManager");
+    Layout = "~/Areas/Administrators/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2><img class="page-title-img" src="~/Assets/translate.png" /> @ViewBag.Title</h2>
+<hr />
+<div class="form-group">
+    @using (Html.BeginForm("Index", "Resources", new { area = "Administrators", page = 1 }, FormMethod.Get))
+    {
+        <span class="label label-primary">@LanguageHelper.GetResource("Admin.Resources.ChoseLanguage")</span>
+        @Html.DropDownListFor(m => m.Language, Model.listLanguage, new { @class = "form-control list-box tri-state valid data_input_list_box", onChange = "this.form.submit();" })
+    }
+</div>
+
+<span class="label label-default label-title-group" data-form="addResourceGroup" title="Click to show/hidden quick form!">Quick add resource</span>
+<div class="group3k" id="addResourceGroup">
+    @using (Html.BeginForm("Index", "Resources", new { area = "Administrators" }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.Partial("_Message")
+        <div class="form-group">
+            <div class="col-lg-1">
+
+            </div>
+            <div class="col-lg-4 margin-bottom-control">
+                @Html.HiddenFor(m => m.Language)
+                @Html.HiddenFor(m => m.curentPage)
+                <span class="label label-primary">@LanguageHelper.GetResource("Admin.Resources.AddName")</span>
+                @Html.TextBoxFor(m => m.ResourceName, new { @class = "form-control text-box single-line" })
+                @if (Model.invalidModel)
+                {
+                    @Html.ValidationMessageFor(m => m.ResourceName, "", new { @class = "text-danger" })
+                }
+
+            </div>
+            <div class="col-lg-4">
+                <span class="label label-primary">@LanguageHelper.GetResource("Admin.Resources.AddValue")</span>
+                @Html.TextBoxFor(m => m.ResourceValue, new { @class = "form-control text-box single-line" })
+                @if (Model.invalidModel)
+                {
+                    @Html.ValidationMessageFor(m => m.ResourceValue, "", new { @class = "text-danger" })
+                }
+            </div>
+            <div class="col-lg-2">
+                <span class="label">.</span>
+                <input type="submit" class="btn btn-primary btn-block button_excute" value="@LanguageHelper.GetResource("Admin.AddNew")" />
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    }
+</div>
+
+<hr />
+<div class="div-table-responsive">
+    <table class="table table-bordered table-responsive table-hover">
+        <tr class="table-header">
+            <th>Resource Name</th>
+            <th>Resource Value</th>
+            <th>@LanguageHelper.GetResource("Admin.Task")</th>
+        </tr>
+        @foreach (ResourceModel rm in Model.listResource)
+            {
+            <tr>
+                <td>@rm.resourceName</td>
+                <td>@rm.resourceValue</td>
+                <td class="list-todo">
+                    <span><img src="~/Assets/edit_blue.png" onclick="EditResource(this)" data-toggle="modal" data-target="#editResource" data-lang="@Model.Language" data-name="@rm.resourceName" data-value="@rm.resourceValue" title="@LanguageHelper.GetResource("Edit") @rm.resourceName" /></span>
+                    <span><img src="~/Assets/delete.png" onclick="DeleteResource(this)" data-toggle="modal" data-target="#deleteResource" data-lang="@Model.Language" data-name="@rm.resourceName" title="@LanguageHelper.GetResource("Delete") @rm.resourceName" /></span>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    @Html.Partial("_Pager")
+</div>
+
+@*Edit form*@
+<div>
+    @*@Html.Partial("_Edit")*@
+    <div id="editResource" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">@LanguageHelper.GetResource("Admin.EditForm.Title") >>> <span id="editNameTitle"></span></h4>
+                </div>
+                @using (Html.BeginForm("Edit", "Resources", new { area = "Administrators" }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-body">
+                        <div class="form-group">
+                            @Html.HiddenFor(m => m.Language)
+                            @Html.HiddenFor(m => m.curentPage)
+                            <div class="col-lg-12 dialog-row">
+                                <span class="label label-primary label-size-90">@LanguageHelper.GetResource("Admin.Resources.AddName"):</span>
+                                @Html.TextBoxFor(m => m.ResourceName, new { @class = "form-control text-box single-line EditName" })
+                            </div>
+                            <div class="col-lg-12  dialog-row">
+                                <span class="label label-primary label-size-90">@LanguageHelper.GetResource("Admin.Resources.AddValue"):</span>
+                                @Html.TextBoxFor(m => m.ResourceValue, new { @class = "form-control text-box single-line EditValue" })
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">@LanguageHelper.GetResource("Close")</button>
+                            <button type="submit" onclick="EditSubmit(this.form)" class="btn btn-primary">@LanguageHelper.GetResource("SaveChanges")</button>
+                        </div>
+                }
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+@*Delete form*@
+<div>
+    <div id="deleteResource" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">@LanguageHelper.GetResource("Admin.DeleteConfirm")</h4>
+                </div>
+                @using (Html.BeginForm("Delete", "Resources", new { area = "Administrators" }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-body">
+                        @Html.HiddenFor(m => m.Language)
+                        @Html.HiddenFor(m => m.curentPage)
+                        @Html.HiddenFor(m => m.ResourceName, new { @class = "deleteVal" })
+                        <span>
+                            @LanguageHelper.GetResource("Admin.Resources.DeleteQuestion") <span style="color:red;">[@Model.Language]</span> @Html.LabelFor(m => m.ResourceName) ?
+                        </span>
+                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">@LanguageHelper.GetResource("Close")</button>
+                            <button type="submit" onclick="this.form.submit();" class="btn btn-primary">@LanguageHelper.GetResource("Admin.DeleteConfirm")</button>
+                        </div>
+                }
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+<script type="text/javascript">
+    function EditResource(ele) {
+        var languageId = $(ele).data("lang")
+        var resourceName = $(ele).data("name");
+        var resourceValue = $(ele).data("value");
+        $(".EditName").val(resourceName);
+        $(".EditName").attr("disabled", "disabled");
+        $("#editNameTitle").text(resourceName);
+        $(".EditValue").val(resourceValue);
+    }
+    function EditSubmit(form) {
+        $(".EditName").removeAttr("disabled");
+        form.submit();
+    }
+    function DeleteResource(ele) {
+        var resourceName = $(ele).data("name");
+        var resourceValue = $(ele).data("value");
+        $(".deleteVal").val(resourceName);
+    }
+</script>

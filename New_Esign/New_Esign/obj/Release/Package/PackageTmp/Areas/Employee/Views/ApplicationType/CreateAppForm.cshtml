@@ -1,0 +1,320 @@
+﻿@model New_Esign.Areas.Employee.Models.FORM_IT_01Model
+@using New_Esign.Common;
+@using New_Esign.AppCode;
+
+
+@{
+    ViewBag.Title = "CreateAppForm";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+
+<h2>CreateAppForm</h2>
+@using (Html.BeginForm("CreateAppForm", "ApplicationType", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+    var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+    var emp = session.UserID.Trim();
+    var name = session.UserName;
+    <h2></h2>
+
+    <fieldset class="card-header">
+        <h2 class="text-xl-center">
+            <i class="fas fa-fw fa-file-alt"></i>  @*@Model.Title20*@@Html.TextBoxFor(model => model.Title20, "", new { @class = "form-control" })
+        </h2>
+    </fieldset>
+
+    <fieldset class="form-group card-body border ">
+        <legend class="border-bottom-0 row" id="title2">
+            @*@Model.Title2*@
+            @Html.TextBoxFor(model => model.Title2, "", new { @class = "form-control col-md-6" })
+        </legend>
+        <div class="form-group row border ">
+            <div class="row1 col-md-6">
+                <div>
+
+                </div>
+                @*<label>@Model.Title4 @Html.TextBoxFor(model => model.Title4, "", new { @class = "form-control col-md-6" })<span style="color:red">*</span>:</label>*@
+                @Html.TextBoxFor(model => model.Title4, "", new { @class = "form-control col-md-6" })
+                @Html.TextBoxFor(model => model.Title4Content, "", new { @class = "form-control col-md-6" })
+                <br />
+                @*<label>@Model.Title0 <span style="color:red">*</span>:</label>*@
+                @Html.TextBoxFor(model => model.Title0, "", new { @class = "form-control col-md-8" })
+                @Html.TextBoxFor(model => model.Title0Content, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title0Example*@" })
+                <br />
+                @*<label>@Model.Title1 <span style="color:red">*</span>:</label>*@
+                @Html.TextBoxFor(model => model.Title1, "", new { @class = "form-control col-md-8" })
+                @Html.TextBoxFor(model => model.Title1Content, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title1Example*@ " })
+
+            </div>
+            <div class="row1 col-md-6">
+                @*<label>@Model.Title3 <span style="color:red">*</span>:</label>*@
+                @Html.TextBoxFor(model => model.Title3, "", new { @class = "form-control col-md-8" })
+                @Html.TextBoxFor(model => model.Title3Content, "", new { @class = "form-control col-md-8" })
+                <br />
+                @*<label>@Model.Title5 <span style="color:red">*</span>:</label>*@
+                @Html.TextBoxFor(model => model.Title5, "", new { @class = "form-control col-md-8" })
+                @Html.TextBoxFor(model => model.Title5Content, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title5Example*@ " })
+                <br />
+                @*<label>@Model.Title17 <span style="color:red">*</span>:</label>*@
+                @Html.TextBoxFor(model => model.Title17, "", new { @class = "form-control col-md-8" })
+                @Html.TextBoxFor(model => model.Title17Content, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title17Example*@ " })
+
+            </div>
+
+        </div>
+        @*<legend class="border-top row">@Model.Title6</legend>*@
+        @Html.TextBoxFor(model => model.Title6, "", new { @class = "form-control col-md-6" })
+        <br />
+        <div class="form-group row border  ">
+            <div class="row1 col-md-6 ">
+
+                @*<label>@Model.Title7 <span style="color:red">*</span>:</label>*@
+                @Html.TextBoxFor(model => model.Title7, "", new { @class = "form-control col-md-8" })
+                @Html.TextBoxFor(model => model.Title7Content, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title7Example*@ " })
+            </div>
+            <div class="row1 col-md-6 ">
+                @*<label>@Model.Title8 <span style="color:red">*</span>:</label>*@
+                @Html.TextBoxFor(model => model.Title8, "", new { @class = "form-control col-md-8" })
+                @Html.TextBoxFor(model => model.Title8Content, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title8Example*@ " })
+
+            </div>
+
+        </div>
+        <legend class="border-top row">@*@Model.Title9*@@Html.TextBoxFor(model => model.Title9, "", new { @class = "form-control col-md-6" })</legend>
+        <br />
+        <div class="form-group row">
+            <div class="row1 col-md-6">
+
+
+                @*<label>@Model.Title10 <span style="color:red">*</span>:</label>*@
+                @Html.TextBoxFor(model => model.Title10, "", new { @class = "form-control col-md-8" })
+                @Html.TextBoxFor(model => model.Title10Content, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title10Example*@ " })
+                <br />
+                @*<label>@Model.Title11 <span style="color:red">*</span>:</label>*@
+                @Html.TextBoxFor(model => model.Title11, "", new { @class = "form-control col-md-8" })
+                @Html.TextBoxFor(model => model.Title11Content, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title11Example*@ " })
+
+
+            </div>
+            <div class="row1 col-md-6 ">
+                @*<label>@Model.Title12 <span style="color:red">*</span>:</label>*@
+                @Html.TextBoxFor(model => model.Title12, "", new { @class = "form-control col-md-8" })
+                @Html.TextBoxFor(model => model.Title12Content, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title12Example*@ " })
+                <br />
+                @*<label>@Model.Title13 <span style="color:red">*</span>:</label>*@
+                @Html.TextBoxFor(model => model.Title13, "", new { @class = "form-control col-md-8" })
+                @Html.TextBoxFor(model => model.Title13Content, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title13Example*@ " })
+
+            </div>
+
+        </div>
+    </fieldset>
+    <fieldset class="card-header form-group border">
+        <legend class="border-top row">
+            @*@Model.Title25*@@Html.TextBoxFor(model => model.Title6, "", new { @class = "form-control col-md-6" })
+        </legend>
+        <div class="form-group row">
+            <div class="row1 col-md-6">
+
+
+                @Html.TextBoxFor(model => model.Title14, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title14*@ " })
+                @Html.TextBoxFor(model => model.Title14Content, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title14Example*@ " })
+
+                <br />
+                @Html.TextBoxFor(model => model.Title16, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title16*@ " })
+
+                @Html.TextBoxFor(model => model.Title16Content, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title16Example*@ " })
+
+            </div>
+            <div class="row1 col-md-6 ">
+                @*<label>@Model.Title15 :</label>*@
+                @Html.TextBoxFor(model => model.Title15, "", new { @class = "form-control col-md-8", @placeholder = " @*Model.Title15*@ " })
+
+                @Html.TextBoxFor(model => model.Title15Content, "", new { @class = "form-control col-md-8", @placeholder = "@*Model.Title15Example*@ " })
+                <br />
+                @*@Model.Title22*@ @Html.TextBoxFor(model => model.Title22, "", new { @class = "form-control col-md-8" })
+                @*@Html.TextBox("file", "", new { type = "file" })*@
+                @Html.TextBox("file", "", new { type = "file", @class = "form-control col-md-8" })
+
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label style="color:red;"><h5>注：Chú ý:</h5> </label>
+            @Html.TextAreaFor(m => m.Title19, 20, 50, new { @class = "form-control" })
+        </div>
+
+
+    </fieldset>
+
+    @*<fieldset>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>序號 / STT</th>
+                        <th>簽核類型 / Loại hình ký</th>
+                        <th>簽核工號 / Mã thẻ người ký</th>
+                        <th>簽核人 / Người phê duyệt</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int i = 0; i < Model.approvalApps.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model.approvalApps[i].step</td>
+                            <td>@Model.approvalApps[i].statusName</td>
+                            @{
+                                if (i == 0)
+                                {
+                                    <td>@Html.TextBoxFor(m => m.approvalApps[i].signEmpNo, new { @Value = "" + emp + "", @class = "form-control", @readonly = "readonly" })</td>
+                                    <td>@Html.TextBoxFor(m => m.approvalApps[i].SignName, new { @Value = "" + name + "", @class = "form-control", @readonly = "readonly" })</td>
+                                }
+                                else
+                                {
+                                    <td>@Html.TextBoxFor(m => m.approvalApps[i].signEmpNo, new { @class = "form-control", @id = "signEmpNo" + i + "" })</td>
+                                    <td>@Html.TextBoxFor(m => m.approvalApps[i].SignName, new { @class = "form-control", @id = "signEmpName" + i + "" })</td>
+                                }
+                            }
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </fieldset>*@
+
+    @*<table id="myTable" class="table ">
+        <thead class="thead-light">
+            <tr>
+                <th>STT</th>
+                <th>Router</th>
+                <th colspan="2">Modify</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>1</td>
+            <td> <input class="btn-block" type="text" name="pname[]" value="" /></td>
+            @*<td><button onclick="myCreate(this)">Create row</button></td>*@
+    @*<td><input type="button" value="Create row" onclick="myCreate(this)" /></td>
+                <td><input type="button" value="Delete" onclick="deleteRow(this)" /></td>
+            </tr>
+
+        </table>*@
+
+    <table id="myTable" class="table ">
+        <thead class="thead-light">
+            <tr>
+                <th>STT</th>
+                <th>簽核類型/ </th>
+                @*<th>Position</th>*@
+                @*<th>Position 4</th>*@
+                <th colspan="2">Modify</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>1</td>
+            <td> <input class="btn-block" type="text" name="pname[]" value="" /></td>
+            @*<td> <input class="btn-block" type="text" name="pname1[]" value="" /></td>*@
+            @*<td>
+                <select name="position[]" class="gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </td>*@
+            <td><input type="button" value="Create row" onclick="myCreate(this)" /></td>
+            <td><input type="button" value="Delete" onclick="deleteRow(this)" /></td>
+        </tr>
+
+    </table>
+
+
+    <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px; margin-bottom:30px">
+        <input type="submit" value="Next / 下一个" class="btn btn-outline-success col-sm-1 col-md-1 col-lg-1 font-weight-bold" id="submit" />
+    </div>
+    <input type="hidden" class="form-control" name="testKQ" id="testKQ" />
+    <input type="hidden" class="form-control" name="testKQ1" id="testKQ1" />
+    <input type="hidden" class="form-control" name="testKQ2" id="testKQ2" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+
+        var arr = new Array();
+        var n = 0;
+
+        //function myCreateFunction() {
+        //    n++;
+        //    var table = document.getElementById("myTable");
+        //    var row = table.insertRow(n);
+        //    var cell1 = row.insertCell(0);
+        //    var cell2 = row.insertCell(1);
+        //    var cell3 = row.insertCell(2);
+        //    var cell4 = row.insertCell(3);
+        //    cell1.innerHTML = '<td>' + n + '</td>';
+        //    cell2.innerHTML = '<td> <input class="btn-block" type="text" name="pname[]" value="' + n + '" /></td>';
+        //    cell3.innerHTML = '<td><input type="button" value="Create row" onclick="myCreate(this)" /></td>'
+        //    cell4.innerHTML = '<td><input type="button" value="Delete" onclick="deleteRow(this)"/></td>'
+        //}
+        function myCreate(row) {
+            var i = row.parentNode.parentNode.rowIndex;
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(i + 1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            //var cell3 = row.insertCell(2);
+            //var cell3 = row.insertCell(3);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+
+            //cell1.innerHTML = '<td>' + (i+1)+ '</td>';
+            cell2.innerHTML = '<td><input class="btn-block" type="text" name="pname[]" value="' + n + '"  /></td>';
+            //cell3.innerHTML = '<td> <input class="btn-block" type="text" name="pname1[]" value="' + n + '"  /></td>';
+            //cell4.innerHTML = "<td><select name="position[]" class="gender"><option value='" + row.FormName + "'>" + row.FormDisplayName + "</option></select></td>";
+            cell3.innerHTML = '<td><input type="button" value="Create row" onclick="myCreate(this)" /></td>'
+            cell4.innerHTML = '<td><input type="button" value="Delete" onclick="deleteRow(this)"/></td>'
+
+            myFunction();
+            console.log(i);
+            n++;
+        }
+        function deleteRow(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            myFunction();
+            n--;
+        }
+        function myFunction() {
+            for (var i = 1; i < n + 3; i++) {
+                document.getElementById("myTable").rows[i].cells[0].innerHTML = '<td>' + (i) + '</td>';
+            }
+
+        }
+        var json = {};
+        function check() {
+            var values = $("input[name='pname[]']")
+                .map(function () { return $(this).val(); }).get();
+
+            alert(values);
+        }
+
+        $("#submit").click(function (e) {
+            var values = $("input[name='pname[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#testKQ").val(values);
+            //var values2 = $("input[name='pname1[]']")
+            //    .map(function () { return $(this).val(); }).get();
+            //$("#testKQ2").val(values2);
+            //$("#testKQ").val(values);
+            //var values1 = $("select[name='position[]']")
+            //    .map(function () { return $(this).val(); }).get();
+            //$("#testKQ1").val(values1);
+        });
+
+    </script>
+}
+

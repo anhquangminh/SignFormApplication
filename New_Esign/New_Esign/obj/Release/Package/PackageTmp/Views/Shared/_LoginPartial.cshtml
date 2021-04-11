@@ -1,0 +1,19 @@
+﻿@if (UserHelper.isLogged())
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink(LanguageHelper.GetResource(" ") + UserHelper.getUserId(), "Index", "Administrator", new { area = "" }, htmlAttributes: new { title = LanguageHelper.GetResource("AdministratorPage") })
+        </li>
+        <li>@Html.ActionLink(LanguageHelper.GetResource("LogOff"), "LogOff", "Account", new { area = "" }, null)</li>
+        <li>@Html.Partial("_LanguagePartial")</li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+
+        <li>@Html.ActionLink(LanguageHelper.GetResource("Register"), "Register", "Account", new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink(LanguageHelper.GetResource("Login"), "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink2" })</li>
+        <li>@Html.Partial("_LanguagePartial")</li>
+    </ul>
+}

@@ -1,0 +1,83 @@
+﻿@model NewModel.EF.Approver
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Administrators/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Approver</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BU.BUName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BU.BUName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Site.SiteName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Site.SiteName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApproverType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApproverType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApproverEmpNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApproverEmpNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApproverEmpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApproverEmpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SetupEmp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SetupEmp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SetupTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SetupTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LevelApprover)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LevelApprover)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ApproverID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

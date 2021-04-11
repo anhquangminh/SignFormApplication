@@ -1,0 +1,137 @@
+﻿@using New_Esign.Areas.Administrators.Models
+@model ApproverManagerModel
+
+@{
+    string classname = "";
+    ViewBag.Title = LanguageHelper.GetResource("Approver.Title");
+    Layout = "~/Areas/Administrators/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2><img class="page-title-img" src="~/Assets/approver.png" /> @ViewBag.Title</h2> 
+<div>
+    <a href="@Url.Action("Create", "Approver", new { area = "Administrators" })">
+        <span class="label label-success label-size-100">@LanguageHelper.GetResource("Admin.Approver.Title.Add")</span>
+    </a>
+</div>
+<div class="search-group">
+    @using (Html.BeginForm("Index", "Approver", new { area = "Administrators" }, FormMethod.Get))
+    {
+        <div class="form-group">
+            <div style="float:right;">
+                @Html.HiddenFor(m => m.CurentPage)
+                @Html.TextBoxFor(m => m.SearchData, new { @class = "form-control" })
+                <input type="submit" class="form-control glyphicon-search form-control-auto-width search-button btn btn-primary" value="@LanguageHelper.GetResource("Button.Search")" />
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    }
+</div>
+@Html.Partial("_Message")
+@if (!string.IsNullOrWhiteSpace(Model.SearchData))
+{
+    <span class="label label-default label-title-group" data-form="approverData">
+        @LanguageHelper.GetResource("SearchResult")
+    </span>
+    classname = "group3k";
+}
+
+<div class="@classname" id="approverData">
+    <div class="div-table-responsive">
+        <table class="table table-bordered table-responsive table-hover">
+            <tr class="table-header">
+                <th>@LanguageHelper.GetResource("Site")</th>
+                <th>@LanguageHelper.GetResource("BU")</th>
+                <th>@LanguageHelper.GetResource("ApproverEmpNo")</th>
+                <th>@LanguageHelper.GetResource("ApproverEmpName")</th>
+                <th>@LanguageHelper.GetResource("ApproverType")</th>
+                <th>@LanguageHelper.GetResource("Admin.Approver.SetupName")</th>
+                <th>@LanguageHelper.GetResource("Admin.Approver.SetupTime")</th>
+                <th>@LanguageHelper.GetResource("Admin.Task")</th>
+            </tr>
+            @if (Model.ListApproverModel != null && Model.ListApproverModel.Count > 0)
+            {
+                foreach (ApproverModel am in Model.ListApproverModel)
+                {
+                    <tr>
+                        <td>@am.SiteId</td>
+                        <td>@am.BuName</td>
+                        <td>@am.ApproverEmpNo</td>
+                        <td>@am.ApproverEmpName</td>
+                        <td>@am.ApproverType</td>
+                        <td>@am.SetupName</td>
+                        <td>@am.SetupTime</td>
+                        <td class="list-todo">
+                            <span><a href="@Url.Action("Detail","Approver",new {area="Administrators",ID=am.ApproverID})">
+                                <img src="~/Assets/edit_blue.png" onclick="EditApprover(this)" data-url="@Url.Action("Detail","Approver",new {area="Administrators",ID=am.ApproverID})" data-toggle="modal" data-target="#editApprover" data-site="@am.SiteId" data-bu="@am.BUID" data-id="@am.ApproverEmpNo" title="@LanguageHelper.GetResource("Edit") @am.ApproverEmpName" /></a></span>
+                            <span><img src="~/Assets/delete.png" onclick="DeleteApprover(this)" data-toggle="modal" data-target="#deleteApprover" data-aid="@am.ApproverID" data-site="@am.SiteId" data-bu="@am.BuName" data-emp="@am.ApproverEmpNo" data-name="@am.ApproverEmpName" data-type="@am.ApproverType" title="@LanguageHelper.GetResource("Delete") @am.ApproverEmpName" /></span>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="8" class="no-data">@LanguageHelper.GetResource("NoData")</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
+@Html.Partial("_Pager")
+
+@*Delete form*@
+<div>
+    <div id="deleteApprover" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">@LanguageHelper.GetResource("Admin.DeleteConfirm")</h4>
+                </div>
+                @using (Html.BeginForm("Delete", "Approver", new { area = "Administrators" }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-body">
+                        @Html.HiddenFor(m => m.CurentPage)
+                        @Html.HiddenFor(m => m.DeleteApproverId, new { @class = "deleteVal" })
+                        <span>
+                            @LanguageHelper.GetResource("Admin.Approver.DeleteQuestion") <span style="color:brown;" id="aID">[]</span> <span style="color:red;" id="aName"></span> ?
+                        </span>
+                        <hr />
+                        <div>@LanguageHelper.GetResource("Site"): <b><span id="aSite"></span></b></div>
+                        <div>@LanguageHelper.GetResource("BU"): <b><span id="aBU"></span></b></div>
+                        <div>@LanguageHelper.GetResource("ApproverEmpNo"): <b><span id="aEmp"></span></b></div>
+                        <div>@LanguageHelper.GetResource("ApproverType"): <b><span id="aType"></span></b></div>
+                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">@LanguageHelper.GetResource("Close")</button>
+                            <button type="submit" onclick="this.form.submit();" class="btn btn-primary">@LanguageHelper.GetResource("Admin.DeleteConfirm")</button>
+                        </div>
+                }
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+<script type="text/javascript">
+    function DeleteApprover(ele) {
+        var aID = $(ele).data("aid");
+        var site = $(ele).data("site");
+        var bu = $(ele).data("bu");
+        var emp = $(ele).data("emp");
+        var name = $(ele).data("name");
+        var aType = $(ele).data("type");
+        $(".deleteVal").val(aID);
+        $("#aID").html("[" + aID + "]");
+        $("#aName").html(name);
+        $("#aSite").html(site);
+        $("#aBU").html(bu);
+        $("#aEmp").html(emp);
+        $("#aType").html(aType);
+    }
+    function EditApprover(ele) {
+        var url = $(ele).data("url");
+        location.href = url;
+    }
+</script>

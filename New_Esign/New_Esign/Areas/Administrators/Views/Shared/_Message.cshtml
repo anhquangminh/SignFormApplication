@@ -1,0 +1,12 @@
+﻿@*Message div*@
+@if (Ultils.GetCookie("Error") != null && !string.IsNullOrWhiteSpace(Ultils.GetCookie("Error")))
+            {
+    <div class="mgs mgs-fail"><span>@Ultils.GetCookie("Error")</span></div>
+
+    Ultils.WriteCookie("Error", null);
+}
+@if (Ultils.GetCookie("Success") != null && !string.IsNullOrWhiteSpace(Ultils.GetCookie("Success")))
+{
+    <div class="mgs mgs-success"><span>@Ultils.GetCookie("Success")</span></div>
+    Ultils.WriteCookie("Success", null);
+}

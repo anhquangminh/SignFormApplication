@@ -1,0 +1,6 @@
+﻿@Html.DropDownList("LanguageSelector", new List<SelectListItem>
+{
+    new SelectListItem { Text="English",Value=LanguageHelper.languageEN, Selected=LanguageHelper.languageId==LanguageHelper.languageEN?true:false },
+    new SelectListItem { Text="Tiếng Việt",Value=LanguageHelper.languageVI,Selected=LanguageHelper.languageId==LanguageHelper.languageVI?true:false },
+    new SelectListItem { Text="中文",Value=LanguageHelper.languageCH,Selected=LanguageHelper.languageId==LanguageHelper.languageCH?true:false },
+}, new { @class = "selectLanguage",title="Display language", onChange = "SelectLanguageChange()" })

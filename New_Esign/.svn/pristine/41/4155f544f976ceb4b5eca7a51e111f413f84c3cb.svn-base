@@ -1,0 +1,56 @@
+﻿@{
+    PagerModel pager = null;
+    if (ViewBag.Pager != null)
+    {
+        pager = (PagerModel)ViewBag.Pager;
+    }
+}
+<nav>
+    <ul class="pagination justify-content-center">
+        @if (pager != null)
+        {
+            //Previous
+            if (pager.curentPage == 1)
+            {
+                <li class="page-item disabled">
+                    <a class="disabled">@LanguageHelper.GetResource("Previous")</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    @Html.ActionLink(@LanguageHelper.GetResource("Previous"), pager.GetAction, pager.GetControler, new { area = pager.GetArea, page = (pager.curentPage - 1) }, new { @class = "page-link" })
+                </li>
+            }
+            //Page list
+            for (int i = 1; i <= pager.totalPage; i++)
+            {
+                if (i == pager.curentPage)
+                {
+                    <li class="page-item active">
+                        <a class="disabled">@i.ToString()</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        @Html.ActionLink(i.ToString(), pager.GetAction, pager.GetControler, new { area = pager.GetArea, page = i }, new { @class = "page-link" })
+                    </li>
+                }
+            }
+            //Page next
+            if (pager.curentPage == pager.totalPage || pager.curentPage > pager.totalPage)
+            {
+                <li class="page-item disabled">
+                    <a class="disabled">@LanguageHelper.GetResource("Next")</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    @Html.ActionLink(@LanguageHelper.GetResource("Next"), pager.GetAction, pager.GetControler, new { area = pager.GetArea, page = (pager.curentPage + 1) }, new { @class = "page-link" })
+                </li>
+            }
+        }
+    </ul>
+</nav>

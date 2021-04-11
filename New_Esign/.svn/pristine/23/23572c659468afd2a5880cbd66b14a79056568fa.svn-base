@@ -1,0 +1,46 @@
+﻿<nav id="sidebar">
+    <div class="sidebar-header">
+        <div class="images">
+            <img src="~/Assets/Menu.jpg" alt="" class="img-rounded" width="210" />
+        </div>
+        <div>
+            <h5>
+                @if (!UserHelper.isLogged())
+                {
+                    @Html.ActionLink(LanguageHelper.GetResource("Login"), "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink" })
+                }
+                else
+                {
+                    @LanguageHelper.GetResource("Hello") <b>@Html.ActionLink(UserHelper.getUserName(), "Index", "Administrator", new { area = "" }, htmlAttributes: new { title = LanguageHelper.GetResource("AdministratorPage") })</b>
+                    <i style="float:right"> @Html.ActionLink(LanguageHelper.GetResource("LogOff"), "LogOff", "Account", new { area = "" },null)</i>
+                }
+            </h5>
+        </div>
+    </div>
+   
+    <ul class="list-unstyled components">
+        <li class="active">
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">@LanguageHelper.GetResource("File E-Sign")<i class="glyphicon glyphicon-home" style="float:right"></i></a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#menuQuery" aria-expanded="false">@LanguageHelper.GetResource("MenuQueryDoc")<i class="glyphicon glyphicon-chevron-down"></i></a>
+                    <ul class="collapse list-unstyled" id="menuQuery">
+                        <li>@Html.ActionLink(LanguageHelper.GetResource("Query Doc"), "Index", "Query", new { area = "" }, null)</li>
+                        
+                        <li><a href="#">@LanguageHelper.GetResource("Pending Doc")</a></li>
+                        <li><a href="#">@LanguageHelper.GetResource("Closed Doc")</a></li>
+                        <li><a href="#">@LanguageHelper.GetResource("Canceled Doc")</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">@LanguageHelper.GetResource("New Application")</a></li>
+                <li><a href="#">@LanguageHelper.GetResource("Waiting For Your Approval")</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">@LanguageHelper.GetResource("System Management")<i class="glyphicon glyphicon-wrench"></i></a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>@Html.ActionLink(LanguageHelper.GetResource("Modify Password"),"Index","ChangePass",new { area=""},null)</li>
+            </ul>
+        </li>
+    </ul>
+</nav>

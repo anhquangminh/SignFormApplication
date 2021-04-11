@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A4E756E7-B015-49C7-9436-50343D68A336}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NewModel</RootNamespace>
+    <AssemblyName>NewModel</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.EJ2, Version=18.2400.0.58, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.EJ2.MVC4.18.2.0.58\lib\net40\Syncfusion.EJ2.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=18.2450.0.58, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.18.2.0.58\lib\net45\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dao\AccountDao.cs" />
+    <Compile Include="Dao\CodeDao.cs" />
+    <Compile Include="EF\Account.cs" />
+    <Compile Include="EF\Application.cs" />
+    <Compile Include="EF\Approver.cs" />
+    <Compile Include="EF\ApproverType.cs" />
+    <Compile Include="EF\APPROVE_SIGN.cs" />
+    <Compile Include="EF\AssignDetail_Info.cs" />
+    <Compile Include="EF\Assign_Info.cs" />
+    <Compile Include="EF\BU.cs" />
+    <Compile Include="EF\DATA_APP_ESIGN.cs" />
+    <Compile Include="EF\DATA_DEPARTMENT.cs" />
+    <Compile Include="EF\DBConnectData.cs" />
+    <Compile Include="EF\Department.cs" />
+    <Compile Include="EF\EMODULEFUNCTION.cs" />
+    <Compile Include="EF\EPERMISSION.cs" />
+    <Compile Include="EF\FACTORY.cs" />
+    <Compile Include="EF\FileDetail.cs" />
+    <Compile Include="EF\FileDetailsModel.cs" />
+    <Compile Include="EF\Form.cs" />
+    <Compile Include="EF\FormContent.cs" />
+    <Compile Include="EF\FormSign.cs" />
+    <Compile Include="EF\Language.cs" />
+    <Compile Include="EF\Location_Fac.cs" />
+    <Compile Include="EF\MasterData.cs" />
+    <Compile Include="EF\MasterData_FormType.cs" />
+    <Compile Include="EF\MasterData_POChange.cs" />
+    <Compile Include="EF\MasterData_Sign.cs" />
+    <Compile Include="EF\MaterialOut_Apply_D.cs" />
+    <Compile Include="EF\MaterialOut_Apply_D_Temp.cs" />
+    <Compile Include="EF\MaterialOut_Apply_H.cs" />
+    <Compile Include="EF\Permission.cs" />
+    <Compile Include="EF\Resource.cs" />
+    <Compile Include="EF\Site.cs" />
+    <Compile Include="EF\SubmitSign.cs" />
+    <Compile Include="EF\sysdiagram.cs" />
+    <Compile Include="EF\SystemConfig.cs" />
+    <Compile Include="EF\User.cs" />
+    <Compile Include="EF\User_History.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Scripts\jquery-1.9.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\" />
+    <Folder Include="NewFolder1\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

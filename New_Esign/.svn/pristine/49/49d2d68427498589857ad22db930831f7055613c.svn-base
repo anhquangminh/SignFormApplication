@@ -1,0 +1,8 @@
+﻿
+@{
+    ViewBag.Title = "Error Page";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+<h2 class="text-danger text-center">Bị lỗi rồi vui lòng liên hệ IT: Béo hoặc Phệ </h2>
+

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - @LanguageHelper.GetResource("ApplicationName")</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top container-fluid" id="navButton">
+        <div>
+            <button type="button" id="sidebarCollapse" class="btn navbar-btn">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+            <div class="navbar-nav">
+                @Html.Partial("_LanguagePartial")
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid body-content">
+        @Html.Partial("_Menu")
+        @RenderBody()
+        @{
+            string pathStr = "";
+            try
+            {
+                object[] path = HttpContext.Current.Request.RequestContext.RouteData.Values.Values.ToArray();
+                for (int i = 0; i < path.Length; i++)
+                {
+                    pathStr = pathStr + "/" + path[i].ToString();
+                }
+            }
+            catch (Exception exc) { }
+        }
+        <hr />
+        <footer id="path" data-area="@HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"]" data-path="@pathStr">
+            <p>&copy; @Html.ActionLink(DateTime.Now.Year.ToString(), "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink" })  - @LanguageHelper.GetResource("FooterContent")</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/esign")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

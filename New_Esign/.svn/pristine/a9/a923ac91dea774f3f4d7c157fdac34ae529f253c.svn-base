@@ -1,0 +1,51 @@
+﻿@using New_Esign.Areas.Administrators.Models
+@model FormsModel
+@{
+    ViewBag.Title = LanguageHelper.GetResource("Admin.Menu.FormListManager");
+    Layout = "~/Areas/Administrators/Views/Shared/_LayoutAdmin.cshtml";
+    string classname = "";
+}
+<h2><img class="page-title-img" src="~/Assets/folder-form.png" /> @ViewBag.Title</h2>
+<div>
+    <a href="@Url.Action("Detail", "Forms", new { area = "Administrators" })">
+        <span class="label label-success label-size-100">@LanguageHelper.GetResource("Admin.Forms.Add")</span>
+    </a>
+</div>
+@using (Html.BeginForm("Index", "Forms", new { area = "Administrators" }, FormMethod.Get, new { @id = "filterForm" }))
+{
+    <div class="search-group">
+        <div class="form-group">
+            <div style="float:right;">
+                @Html.HiddenFor(m => m.CurentPage)
+                @Html.TextBoxFor(m => m.SearchData, new { @class = "form-control" })
+                <input type="submit" class="form-control glyphicon-search form-control-auto-width search-button btn btn-primary" value="@LanguageHelper.GetResource("Button.Search")" />
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-3">
+            <span class="label label-default">@LanguageHelper.GetResource("Site")</span>
+            @Html.DropDownList(Model.SelectedSite, (IEnumerable<SelectListItem>)Model.SiteSelector, new { @id = "SiteSelector", @name = "SiteSelector", @class = "form-control formSelector", data_field = "SelectedSite", onchange = "Filter(this);" })
+            @Html.HiddenFor(m => m.SelectedSite)
+        </div>
+        <div class="col-lg-3 div-bu">
+            <span class="label label-default">@LanguageHelper.GetResource("BU")</span>
+            @Html.DropDownList(Model.SelectedBU, (IEnumerable<SelectListItem>)Model.BUSelector, new { @id = "BUSelector", @name = "BUSelector", @class = "form-control formSelector", data_field = "SelectedBU", onchange = "Filter(this);" })
+            @Html.HiddenFor(m => m.SelectedBU)
+        </div>
+        <div class="clear"></div>
+    </div>
+}
+@Html.Partial("_Message")
+@if (!string.IsNullOrWhiteSpace(Model.SearchData))
+{
+    <span class="label label-default label-title-group" data-form="FormListData">
+        @LanguageHelper.GetResource("SearchResult")
+    </span>
+    classname = "group3k";
+}
+
+<div class="@classname" id="FormListData">
+</div>

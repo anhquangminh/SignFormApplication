@@ -1,0 +1,1048 @@
+﻿@model New_Esign.Areas.Employee.Models.ITRequestModel
+
+@using New_Esign.Common;
+@using New_Esign.AppCode;
+@using System.Data;
+@using System.Data.SqlClient;
+@{
+    /**/
+
+    ViewBag.Title = "formSign";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+
+<style>
+    .form-control[readonly] {
+        background-color: #eaeeef;
+    }
+
+    .icon_ct {
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+    }
+</style>
+
+@using (Html.BeginForm("formSign", "ApplicationIT", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    // lay thong tin
+    var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+    var emp = session.UserID.Trim();
+
+    SQLServerDBHelper db = new SQLServerDBHelper("EsignDB");
+    string sqlQuery = @"select * from DATA_APP_ESIGN where APPNO = '" + Model.AppNo + "' ";
+    DataTable tb = new DataTable();
+    tb = db.DoSQLSelect(sqlQuery);
+    string empCheck = "";
+    string empCreate = "";
+    string empState = " ";
+    if (tb.Rows.Count > 0)
+    {
+        empCheck = tb.Rows[0]["Checkwait"].ToString().Trim();
+        empCreate = tb.Rows[0]["USEREMP"].ToString().Trim();
+        empState = tb.Rows[0]["APPSTATUS"].ToString().Trim();
+    }
+
+    string link = Model.filePath;
+    string[] linkQ = link.Split('.');
+    //menu chinh
+    @Html.TextBoxFor(m => m.ApplicationType, "", new { style = "display: none;" })
+    @Html.TextBoxFor(m => m.filePath, "", new { style = "display: none;" })
+    @Html.TextBoxFor(m => m.fileName, "", new { style = "display: none;" })
+
+    if (empState == "申請人 / Người xin đơn" && empCheck == emp)
+    {
+<div class=" container card" style="background:#ffffff;">
+    <h3 class="pageTitle" style="text-align: center; padding:2px;color:#0065B6;"> @LanguageHelper.GetResource("yellow.Title")</h3>
+    <hr />
+    <div class="form-group row">
+        <div class="col-md-4">
+            <span class="label label-in"> <i class="metismenu-icon pe-7s-ticket icon_ct"></i>  @LanguageHelper.GetResource("yellow.OrderNo"): </span>
+            @Html.TextBoxFor(model => model.AppNo, "", new { @class = "form-control", @readonly = "readonly" })
+        </div>
+
+    </div>
+    <label class="label label-in label-info col-md-2">@LanguageHelper.GetResource("yellow.inforUser")</label>
+    <div class="groupInfo">
+        <div class="form-group row">
+            <div class="col-md-4">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-cart icon_ct"></i>  @LanguageHelper.GetResource("Register.EmployeeNO"):</span> <span style="color:red">*</span>
+                @*<span class="label-k"> Emp ID / Mã thẻ :</span> <span style="color:red">*</span>*@
+                @Html.TextBoxFor(model => model.EmpNo, "", new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4 col-md-offset-2">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-user icon_ct"></i> @LanguageHelper.GetResource("yellow.Name"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.Name, "", new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-mail icon_ct"></i> @LanguageHelper.GetResource("Register.E-Mail"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.Mail, "", new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4 col-md-offset-2">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-call icon_ct"></i>@LanguageHelper.GetResource("Register.Telephone"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.NumPhone, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NumPhone, "", new { @class = "text-danger" })
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-5">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-note2 icon_ct"></i> @LanguageHelper.GetResource("Register.Department"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.Depart, "", new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Depart, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3 col-md-offset-1">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-ticket icon_ct"></i> @LanguageHelper.GetResource("Register.CostNO"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.CodeCost, "", new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="form-group row">
+            @*<div class="col-md-2">
+                    <span class="label label-in"><i class="metismenu-icon pe-7s-graph1 icon_ct"></i> Site :</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.Site, "", new { @class = "form-control", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.Site, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    <span class="label label-in"><i class="metismenu-icon pe-7s-comment icon_ct"></i> BU :</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.BU, "", new { @class = "form-control", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.BU, "", new { @class = "text-danger" })
+                </div>*@
+            <div class="col-md-2">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-home icon_ct"></i> @LanguageHelper.GetResource("yellow.Factory"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.OfficeFac, "", new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.OfficeFac, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4"></div>
+
+            <div class="col-md-2">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-map icon_ct"></i> @LanguageHelper.GetResource("yellow.location"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.Location, "", new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <label class="label label-in label-info col-md-2"> @LanguageHelper.GetResource("yellow.Detail")</label>
+    <div class="groupInfo">
+        <div class="form-group row">
+            <div class="col-md-5">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-settings icon_ct"></i> @LanguageHelper.GetResource("yellow.Mac"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.MacAd, "", new { @class = "form-control" })
+                @*@Html.ValidationMessageFor(model => model.MacAd, "", new { @class = "text-danger" })*@
+            </div>
+            <div class="col-md-1"></div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-timer icon_ct"></i> @LanguageHelper.GetResource("yellow.timeS"):</span> <span style="color:red">*</span>
+                @*<span class="label-k"> Emp ID / Mã thẻ :</span> <span style="color:red">*</span>*@
+                @Html.TextBoxFor(model => model.TimeStart, "", new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.TimeStart, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4 col-md-offset-2">
+                <span class="label label-in"><i class="metismenu-icon pe-7s-stopwatch icon_ct"></i> @LanguageHelper.GetResource("yellow.timeE"):</span> <span style="color:red">*</span>
+                @Html.TextBoxFor(model => model.TimeEnd, "", new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.TimeEnd, "", new { @class = "text-danger" })
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <br />
+    <label class="label label-in label-info col-md-2">@LanguageHelper.GetResource("yellow.appType")</label>
+    <div class="groupInfo">
+        @switch (Model.ApplicationType)
+        {
+            case "yellowCard":
+                {
+
+                    <div class="form-group row">
+                        <label class="col-md-2">
+                            <span class="label label-in"><i class="metismenu-icon pe-7s-edit icon_ct"></i> @LanguageHelper.GetResource("yellow.appType"):</span> <span style="color:red"></span>
+                        </label>
+                        <div class="col-md-10 row ">
+                            @*<div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "USB")<label>USB</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label>Admin acount</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label>445 port </label></div>
+                            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>Open Access Permission</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label>Tem vang</label></div>*@
+                            <label class="label " style="color:black"> @LanguageHelper.GetResource("yellow.card") </label>
+
+                        </div>
+                    </div>
+                    <div id="plYellowCard" name="plYellowCard" class="form-group border-bottom" style="background:#FFFFFF;padding-left:10px">
+                        <legend> @LanguageHelper.GetResource("yellow.cardForm")</legend>
+                        <div class="form-group row">
+                            <div class="col-md-5">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-albums icon_ct"></i> @LanguageHelper.GetResource("yellow.Brand"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.ComputerBrand, "", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ComputerBrand, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-ribbon icon_ct"></i> @LanguageHelper.GetResource("yellow.Spec"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.ComputerSpeci, "", new { @class = "form-control" })
+                                @*@Html.ValidationMessageFor(model => model.ComputerSpeci, "", new { @class = "text-danger" })*@
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-keypad icon_ct"></i> @LanguageHelper.GetResource("yellow.Seri"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.SeriNum, "", new { @class = "form-control" })
+
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                            <div class="col-md-4 col-md-offset-2">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-help2 icon_ct"></i> @LanguageHelper.GetResource("yellow.color"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.ColorPC, "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-culture icon_ct"></i> @LanguageHelper.GetResource("yellow.FacApp"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.factoryApply, "", new { @class = "form-control ", @readonly = "readonly" })
+
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                            <div class="col-md-4 col-md-offset-2">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-map-2 icon_ct"></i> @LanguageHelper.GetResource("yellow.LocApp"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.LocationApply, "", new { @class = "form-control ", @readonly = "readonly" })
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-display1 icon_ct"></i> @LanguageHelper.GetResource("yellow.PCtype"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.KindofPC, "", new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                            <div class="col-md-4 col-md-offset-2">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-album icon_ct"></i> @LanguageHelper.GetResource("yellow.Asset"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.AssetCode, "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    break;
+                }
+
+            case "USB":
+                {
+                    <div class="form-group row">
+                        <label class="col-md-2">
+                            <span class="label label-in"><i class="metismenu-icon pe-7s-edit icon_ct"></i> @LanguageHelper.GetResource("yellow.appType"):</span> <span style="color:red"></span>
+                        </label>
+                        <div class="col-md-10 row ">
+                            @*<div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "USB")<label>USB</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label>Admin acount</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label>445 port </label></div>
+                            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>Open Access Permission</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label>Tem vang</label></div>*@
+                            <label class="label" style="color:black"> @LanguageHelper.GetResource("yellow.USB")</label>
+                        </div>
+                    </div>
+                    <div class="form-group border-bottom" id="plUSB" name="plUSB" style="background:#FFFFFF;padding-left:10px">
+                        <label>Kind of USB @LanguageHelper.GetResource("yellow.USBT")</label>
+
+                        <div class="form-group col-md-8 row">
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.USB_read, "", new { @class = "form-control " })
+                                @*<label>USB port reading function</label>*@
+                            </div>
+                            @*<div class="col-md-6">
+                                @Html.RadioButtonFor(model => model.USB_read, "USB port write function")
+                                <label>USB port write function</label>
+                            </div>*@
+                        </div>
+
+
+                        @*@Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control col-md-8" })
+                        @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control col-md-8" })*@
+                    </div>
+                    <div id="plAdmin" name="plAdmin" class="form-group border-bottom" style="background:#FFFFFF;padding-left:10px">
+
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-album icon_ct"></i>  @LanguageHelper.GetResource("yellow.PCName"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control " })
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-4 col-md-offset-2">
+                                <span class="label label-in"> <i class="metismenu-icon pe-7s-battery icon_ct"></i>@LanguageHelper.GetResource("yellow.IP"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+
+                    </div>
+
+                    break;
+                }
+            case "AdminAcount":
+                {
+                    <div class="form-group row">
+                        <label class="col-md-2">
+                            <span class="label label-in"><i class="metismenu-icon pe-7s-news-paper icon_ct"></i>  @LanguageHelper.GetResource("yellow.appType"):</span> <span style="color:red"></span>
+                        </label>
+                        <div class="col-md-10 row ">
+                            @*<div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "USB")<label>USB</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label>Admin acount</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label>445 port </label></div>
+                            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>Open Access Permission</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label>Tem vang</label></div>*@
+                            <label class="label" style="color:black"> @LanguageHelper.GetResource("yellow.AdminAc") </label>
+                        </div>
+                    </div>
+                    <div id="plAdmin" name="plAdmin" class="form-group border-bottom" style="background:#FFFFFF;padding-left:10px">
+
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-display2 icon_ct"></i>  @LanguageHelper.GetResource("yellow.PCName"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control " })
+
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-4 col-md-offset-2">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-battery icon_ct"></i> @LanguageHelper.GetResource("yellow.IP"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+
+                    </div>
+
+                    break;
+                }
+            case "Port445":
+                {
+
+                    <div class="form-group row">
+                        <label class="col-md-2">
+                            <span class="label label-in"><i class="metismenu-icon pe-7s-notebook icon_ct"></i>  @LanguageHelper.GetResource("yellow.appType"):</span> <span style="color:red"></span>
+                        </label>
+                        <div class="col-md-10 row ">
+                            @*<div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "USB")<label>USB</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label>Admin acount</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label>445 port </label></div>
+                            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>Open Access Permission</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label>Tem vang</label></div>*@
+                            <label class="label" style="color:black"> @LanguageHelper.GetResource("yellow.port") </label>
+
+                        </div>
+                    </div>
+                    <div id="plAdmin" name="plAdmin" class="form-group border-bottom" style="background:#FFFFFF;padding-left:10px">
+
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-display1 icon_ct"></i> @LanguageHelper.GetResource("yellow.PCName"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control " })
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-4 col-md-offset-2">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-battery icon_ct"></i> @LanguageHelper.GetResource("yellow.IP"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+
+                    </div>
+
+                    break;
+                }
+            case "OpenAccess":
+                {
+                    <div class="form-group row">
+                        <label class="col-md-2">
+                            <span class="label label-in"> <i class="metismenu-icon pe-7s-diskette icon_ct"></i> @LanguageHelper.GetResource("yellow.appType"):</span> <span style="color:red"></span>
+                        </label>
+                        <div class="col-md-10 row ">
+                            @*<div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "USB")<label>USB</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label>Admin acount</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label>445 port </label></div>
+                            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>Open Access Permission</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label>Tem vang</label></div>*@
+                            <label class="label" style="color:black">@LanguageHelper.GetResource("yellow.openAcc")</label>
+                        </div>
+                    </div>
+                    <div id="plAdmin" name="plAdmin" class="form-group border-bottom" style="background:#FFFFFF;padding-left:10px">
+
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-disk icon_ct"></i> @LanguageHelper.GetResource("yellow.PCName"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control " })
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-4 col-md-offset-2">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-battery icon_ct"></i>@LanguageHelper.GetResource("yellow.IP"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+
+                    </div>
+
+                    break;
+                }
+            case "addDHCP":
+                {
+                    <div class="form-group row">
+                        <label class="col-md-2">
+                            <span class="label label-in"> <i class="metismenu-icon pe-7s-diskette icon_ct"></i> @LanguageHelper.GetResource("yellow.appType"):</span> <span style="color:red"></span>
+                        </label>
+                        <div class="col-md-10 row ">
+                            @*<div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "USB")<label>USB</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label>Admin acount</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label>445 port </label></div>
+                            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>Open Access Permission</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label>Tem vang</label></div>*@
+                            <label class="label" style="color:black">Add Mac DHCP</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2">
+                            <span class="label label-in"><i class="metismenu-icon pe-7s-notebook icon_ct"></i> PC Type:  @*@LanguageHelper.GetResource("yellow.appType")*@:</span> <span style="color:red"></span>
+                        </label>
+                        <div class="col-md-10 row ">
+                            @*<div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "USB")<label>USB</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label>Admin acount</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label>445 port </label></div>
+                            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>Open Access Permission</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label>Tem vang</label></div>*@
+                            <label class="label" style="color:black"> @Html.TextBoxFor(model => model.USB_read, "", new { @class = "form-control " , @readonly = "readonly" }) </label>
+
+                        </div>
+                    </div>
+                    <div id="plAdmin" name="plAdmin" class="form-group border-bottom" style="background:#FFFFFF;padding-left:10px">
+
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-disk icon_ct"></i> @LanguageHelper.GetResource("yellow.PCName"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control " })
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-4 col-md-offset-2">
+                                <span class="label label-in"><i class="metismenu-icon pe-7s-battery icon_ct"></i>@LanguageHelper.GetResource("yellow.IP"):</span> <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+
+                    </div>
+
+                    break;
+                }
+
+        }
+        @*<div class="form-group row">
+            <label class="col-md-2"><span class="label" style="background:#00AA00;color:#FFFFFF"> Upload file :</span> <span style="color:red"></span></label>
+            @Html.TextBox("file", "", new { type = "file", @class = "form-control col-md-6" })
+        </div>*@
+    </div>
+    @if (linkQ.Length > 1)
+    {
+        <label class="label label-in col-md-2" style="background-color:#b3486b"><i class="metismenu-icon pe-7s-bottom-arrow icon_ct"></i>  @LanguageHelper.GetResource("yellow.dowload"):<span style="color:red"></span></label>
+        <div class="groupInfo">
+            <div style="padding-left:2em;">
+                <a href='@link' download target="_blank">Download</a>
+            </div>
+        </div>
+    }
+    <div class="col-md-10 text-center text-danger"><label> @LanguageHelper.GetResource("yellow.upload")</label></div>
+    <label class="label label-in label-group-info" style="background-color:#b3486b"><i class="metismenu-icon pe-7s-bottom-arrow icon_ct"></i>  @LanguageHelper.GetResource("yellow.upload"):<span style="color:red"></span></label>
+    <div class="groupInfo">
+        <div class="col-md-10 text-center text-danger font-weight-bold" id="ErrorType"><label>@ViewBag.FileLimit</label></div>
+        <div style="padding-left:2em;">
+            @Html.TextBox("file", "", new { type = "file", @class = "col-md-12" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-12">
+            <span class="label label-in" style="background-color:#5cb85c"><i class="metismenu-icon pe-7s-compass icon_ct"></i> @LanguageHelper.GetResource("yellow.reason"):</span> <span style="color:red">*</span>
+            @Html.TextAreaFor(m => m.Reason, 5, 10, new { @class = "form-control col-md-12" })
+        </div>
+        @*<div class="text-danger text-center"><label>Please fill in the reason of apply clearly, otherwise it will be rejected easily!</label></div>*@
+
+    </div>
+</div>
+
+
+
+        <div class="container card" style="margin-top: 20px;">
+            @if (emp == empCheck && emp == empCreate && empState == "申請人 / Người xin đơn")
+            {
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <label style="color:red;margin-top:10px" class="label"><h5> @LanguageHelper.GetResource("yellow.note"):</h5> </label>
+                        @Html.TextAreaFor(m => m.USB_Write, 10, 20, new { @class = "form-control col-md-12" })
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-1"></div>
+
+                    <button name="ApprovalButton" type="submit" class="col-md-2 btn btn-outline-success col-sm-2 col-md-2 col-lg-2" value="Submit">@LanguageHelper.GetResource("yellow.submit")</button>
+                    @*<input type="submit" value="@LanguageHelper.GetResource("yellow.Approval")" name="ApprovalButton" class="col-md-2 btn btn-outline-success" />*@
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1"></div>
+
+                    <a href="@Url.Action("WaitingForYourApproval", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">@LanguageHelper.GetResource("yellow.Return")</a>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1"></div>
+
+
+                    <button name="ApprovalButton" type="submit" class="col-md-2 btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" value="Delete">@LanguageHelper.GetResource("Admin.DeleteConfirm")</button>
+                    @*<input type="submit" value="@LanguageHelper.GetResource("yellow.Reject")" name="ApprovalButton" class="btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" />*@
+
+                    <div class="col-md-1"></div>
+                </div>
+            }
+            else
+            {
+                <div class="form-group row" style="padding-bottom:20px">
+                    <div class="col-md-5"></div>
+                    <a href="@Url.Action("WaitingForYourApproval", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">@LanguageHelper.GetResource("yellow.Return")</a>
+                    <div class="col-md-5"></div>
+                </div>
+            }           
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> @LanguageHelper.GetResource("No")</th>
+                        <th> @LanguageHelper.GetResource("yellow.signtype")</th>
+                        <th> @LanguageHelper.GetResource("yellow.Name")</th>
+                        <th> @LanguageHelper.GetResource("yellow.status")</th>
+                        <th> @LanguageHelper.GetResource("yellow.note")</th>
+                        <th> @LanguageHelper.GetResource("yellow.Time")</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int i = 0; i < Model.approvalApps.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model.approvalApps[i].step</td>
+                            <td>@Model.approvalApps[i].statusName</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].SignName, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].status, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].approvalsuggest, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].approvaltime, new { @class = "form-control", @readonly = "readonly" })</td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class=" container card" style="background:#ffffff;">
+            <h3 class="pageTitle" style="text-align: center; padding:2px;color:#0065B6;"> @LanguageHelper.GetResource("yellow.Title")</h3>
+            <hr />
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <span class="label label-in"> <i class="metismenu-icon pe-7s-ticket icon_ct"></i>  @LanguageHelper.GetResource("yellow.OrderNo"): </span>
+                    @Html.TextBoxFor(model => model.AppNo, "", new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+            </div>
+            <label class="label label-in label-info col-md-2">@LanguageHelper.GetResource("yellow.inforUser")</label>
+            <div class="groupInfo">
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <span class="label label-in"><i class="metismenu-icon pe-7s-cart icon_ct"></i>  @LanguageHelper.GetResource("Register.EmployeeNO"):</span> <span style="color:red">*</span>
+                        @*<span class="label-k"> Emp ID / Mã thẻ :</span> <span style="color:red">*</span>*@
+                        @Html.TextBoxFor(model => model.EmpNo, "", new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 col-md-offset-2">
+                        <span class="label label-in"><i class="metismenu-icon pe-7s-user icon_ct"></i> @LanguageHelper.GetResource("yellow.Name"):</span> <span style="color:red">*</span>
+                        @Html.TextBoxFor(model => model.Name, "", new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <span class="label label-in"><i class="metismenu-icon pe-7s-mail icon_ct"></i> @LanguageHelper.GetResource("Register.E-Mail"):</span> <span style="color:red">*</span>
+                        @Html.TextBoxFor(model => model.Mail, "", new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 col-md-offset-2">
+                        <span class="label label-in"><i class="metismenu-icon pe-7s-call icon_ct"></i>@LanguageHelper.GetResource("Register.Telephone"):</span> <span style="color:red">*</span>
+                        @Html.TextBoxFor(model => model.NumPhone, "", new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.NumPhone, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <span class="label label-in"><i class="metismenu-icon pe-7s-note2 icon_ct"></i> @LanguageHelper.GetResource("Register.Department"):</span> <span style="color:red">*</span>
+                        @Html.TextBoxFor(model => model.Depart, "", new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Depart, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3 col-md-offset-1">
+                        <span class="label label-in"><i class="metismenu-icon pe-7s-ticket icon_ct"></i> @LanguageHelper.GetResource("Register.CostNO"):</span> <span style="color:red">*</span>
+                        @Html.TextBoxFor(model => model.CodeCost, "", new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="form-group row">
+                    @*<div class="col-md-2">
+                            <span class="label label-in"><i class="metismenu-icon pe-7s-graph1 icon_ct"></i> Site :</span> <span style="color:red">*</span>
+                            @Html.TextBoxFor(model => model.Site, "", new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.Site, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            <span class="label label-in"><i class="metismenu-icon pe-7s-comment icon_ct"></i> BU :</span> <span style="color:red">*</span>
+                            @Html.TextBoxFor(model => model.BU, "", new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.BU, "", new { @class = "text-danger" })
+                        </div>*@
+                    <div class="col-md-2">
+                        <span class="label label-in"><i class="metismenu-icon pe-7s-home icon_ct"></i> @LanguageHelper.GetResource("yellow.Factory"):</span> <span style="color:red">*</span>
+                        @Html.TextBoxFor(model => model.OfficeFac, "", new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.OfficeFac, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4"></div>
+
+                    <div class="col-md-2">
+                        <span class="label label-in"><i class="metismenu-icon pe-7s-map icon_ct"></i> @LanguageHelper.GetResource("yellow.location"):</span> <span style="color:red">*</span>
+                        @Html.TextBoxFor(model => model.Location, "", new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <label class="label label-in label-info col-md-2"> @LanguageHelper.GetResource("yellow.Detail")</label>
+            <div class="groupInfo">
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <span class="label label-in"><i class="metismenu-icon pe-7s-settings icon_ct"></i> @LanguageHelper.GetResource("yellow.Mac"):</span> <span style="color:red">*</span>
+                        @Html.TextBoxFor(model => model.MacAd, "", new { @class = "form-control", @readonly = "readonly" })
+                        @*@Html.ValidationMessageFor(model => model.MacAd, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <span class="label label-in"><i class="metismenu-icon pe-7s-timer icon_ct"></i> @LanguageHelper.GetResource("yellow.timeS"):</span> <span style="color:red">*</span>
+                        @*<span class="label-k"> Emp ID / Mã thẻ :</span> <span style="color:red">*</span>*@
+                        @Html.TextBoxFor(model => model.TimeStart, "", new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.TimeStart, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 col-md-offset-2">
+                        <span class="label label-in"><i class="metismenu-icon pe-7s-stopwatch icon_ct"></i> @LanguageHelper.GetResource("yellow.timeE"):</span> <span style="color:red">*</span>
+                        @Html.TextBoxFor(model => model.TimeEnd, "", new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.TimeEnd, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <br />
+            <label class="label label-in label-info col-md-2">@LanguageHelper.GetResource("yellow.appType")</label>
+            <div class="groupInfo">
+
+                @switch (Model.ApplicationType)
+                {
+                    case "yellowCard":
+                        {
+
+                            <div class="form-group row">
+                                <label class="col-md-2">
+                                    <span class="label label-in"><i class="metismenu-icon pe-7s-edit icon_ct"></i> @LanguageHelper.GetResource("yellow.appType"):</span> <span style="color:red">*</span>
+                                </label>
+                                <div class="col-md-10 row ">
+                                    @*<div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "USB")<label>USB</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label>Admin acount</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label>445 port </label></div>
+                            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>Open Access Permission</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label>Tem vang</label></div>*@
+                                    <label class="label " style="color:black"> @LanguageHelper.GetResource("yellow.card") </label>
+
+                                </div>
+                            </div>
+                            <div id="plYellowCard" name="plYellowCard" class="form-group border-bottom" style="background:#FFFFFF;padding-left:10px">
+                                <legend> @LanguageHelper.GetResource("yellow.cardForm")</legend>
+                                <div class="form-group row">
+                                    <div class="col-md-5">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-albums icon_ct"></i> @LanguageHelper.GetResource("yellow.Brand"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.ComputerBrand, "", new { @class = "form-control", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.ComputerBrand, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-4">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-ribbon icon_ct"></i> @LanguageHelper.GetResource("yellow.Spec"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.ComputerSpeci, "", new { @class = "form-control", @readonly = "readonly" })
+                                        @*@Html.ValidationMessageFor(model => model.ComputerSpeci, "", new { @class = "text-danger" })*@
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-keypad icon_ct"></i> @LanguageHelper.GetResource("yellow.Seri"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.SeriNum, "", new { @class = "form-control", @readonly = "readonly" })
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                    <div class="col-md-4 col-md-offset-2">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-help2 icon_ct"></i> @LanguageHelper.GetResource("yellow.color"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.ColorPC, "", new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-culture icon_ct"></i> @LanguageHelper.GetResource("yellow.FacApp"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.factoryApply, "", new { @class = "form-control ", @readonly = "readonly" })
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                    <div class="col-md-4 col-md-offset-2">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-map-2 icon_ct"></i> @LanguageHelper.GetResource("yellow.LocApp"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.LocationApply, "", new { @class = "form-control ", @readonly = "readonly" })
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-display1 icon_ct"></i> @LanguageHelper.GetResource("yellow.PCtype"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.KindofPC, "", new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                    <div class="col-md-4 col-md-offset-2">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-album icon_ct"></i> @LanguageHelper.GetResource("yellow.Asset"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.AssetCode, "", new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                            </div>
+                            break;
+                        }
+
+                    case "USB":
+                        {
+                            <div class="form-group row">
+                                <label class="col-md-2">
+                                    <span class="label label-in"><i class="metismenu-icon pe-7s-edit icon_ct"></i> @LanguageHelper.GetResource("yellow.appType"):</span> <span style="color:red">*</span>
+                                </label>
+                                <div class="col-md-10 row ">
+                                    @*<div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "USB")<label>USB</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label>Admin acount</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label>445 port </label></div>
+                            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>Open Access Permission</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label>Tem vang</label></div>*@
+                                    <label class="label" style="color:black"> @LanguageHelper.GetResource("yellow.USB")</label>
+                                </div>
+                            </div>
+                            <div class="form-group border-bottom" id="plUSB" name="plUSB" style="background:#FFFFFF;padding-left:10px">
+                                <label>Kind of USB @LanguageHelper.GetResource("yellow.USBT")</label>
+
+                                <div class="form-group col-md-8 row">
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(model => model.USB_read, "", new { @class = "form-control ", @readonly = "readonly" })
+                                        @*<label>USB port reading function</label>*@
+                                    </div>
+                                    @*<div class="col-md-6">
+                                @Html.RadioButtonFor(model => model.USB_read, "USB port write function")
+                                <label>USB port write function</label>
+                            </div>*@
+                                </div>
+
+
+                                @*@Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control col-md-8" })
+                        @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control col-md-8" })*@
+                            </div>
+                            <div id="plAdmin" name="plAdmin" class="form-group border-bottom" style="background:#FFFFFF;padding-left:10px">
+                                <p> @LanguageHelper.GetResource("yellow.GeneralSec")</p>
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-album icon_ct"></i>  @LanguageHelper.GetResource("yellow.PCName"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control ", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-4 col-md-offset-2">
+                                        <span class="label label-in"> <i class="metismenu-icon pe-7s-battery icon_ct"></i>@LanguageHelper.GetResource("yellow.IP"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+
+                            </div>
+
+                            break;
+                        }
+                    case "AdminAcount":
+                        {
+                            <div class="form-group row">
+                                <label class="col-md-2">
+                                    <span class="label label-in"><i class="metismenu-icon pe-7s-news-paper icon_ct"></i>  @LanguageHelper.GetResource("yellow.appType"):</span> <span style="color:red">*</span>
+                                </label>
+                                <div class="col-md-10 row ">
+                                    @*<div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "USB")<label>USB</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label>Admin acount</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label>445 port </label></div>
+                            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>Open Access Permission</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label>Tem vang</label></div>*@
+                                    <label class="label" style="color:black"> @LanguageHelper.GetResource("yellow.AdminAc") </label>
+                                </div>
+                            </div>
+                            <div id="plAdmin" name="plAdmin" class="form-group border-bottom" style="background:#FFFFFF;padding-left:10px">
+                                <p> @LanguageHelper.GetResource("yellow.GeneralSec")</p>
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-display2 icon_ct"></i>  @LanguageHelper.GetResource("yellow.PCName"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control ", @readonly = "readonly" })
+
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-4 col-md-offset-2">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-battery icon_ct"></i> @LanguageHelper.GetResource("yellow.IP"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+
+                            </div>
+
+                            break;
+                        }
+                    case "Port445":
+                        {
+
+                            <div class="form-group row">
+                                <label class="col-md-2">
+                                    <span class="label label-in"><i class="metismenu-icon pe-7s-notebook icon_ct"></i>  @LanguageHelper.GetResource("yellow.appType"):</span> <span style="color:red">*</span>
+                                </label>
+                                <div class="col-md-10 row ">
+                                    @*<div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "USB")<label>USB</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label>Admin acount</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label>445 port </label></div>
+                            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>Open Access Permission</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label>Tem vang</label></div>*@
+                                    <label class="label" style="color:black"> @LanguageHelper.GetResource("yellow.port") </label>
+
+                                </div>
+                            </div>
+                            <div id="plAdmin" name="plAdmin" class="form-group border-bottom" style="background:#FFFFFF;padding-left:10px">
+                                <p> @LanguageHelper.GetResource("yellow.PCName")</p>
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-display1 icon_ct"></i> @LanguageHelper.GetResource("yellow.PCName"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control ", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-4 col-md-offset-2">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-battery icon_ct"></i> @LanguageHelper.GetResource("yellow.IP"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+
+                            </div>
+
+                            break;
+                        }
+                    case "OpenAccess":
+                        {
+                            <div class="form-group row">
+                                <label class="col-md-2">
+                                    <span class="label label-in"> <i class="metismenu-icon pe-7s-diskette icon_ct"></i> @LanguageHelper.GetResource("yellow.appType"):</span> <span style="color:red">*</span>
+                                </label>
+                                <div class="col-md-10 row ">
+                                    @*<div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "USB")<label>USB</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label>Admin acount</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label>445 port </label></div>
+                            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>Open Access Permission</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label>Tem vang</label></div>*@
+                                    <label class="label" style="color:black">@LanguageHelper.GetResource("yellow.openAcc")</label>
+                                </div>
+                            </div>
+                            <div id="plAdmin" name="plAdmin" class="form-group border-bottom" style="background:#FFFFFF;padding-left:10px">
+                                <p> @LanguageHelper.GetResource("yellow.appType")</p>
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-disk icon_ct"></i> @LanguageHelper.GetResource("yellow.PCName"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control ", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-4 col-md-offset-2">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-battery icon_ct"></i>@LanguageHelper.GetResource("yellow.IP"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+
+                            </div>
+
+                            break;
+                        }
+                    case "addDHCP":
+                        {
+                            <div class="form-group row">
+                                <label class="col-md-2">
+                                    <span class="label label-in"> <i class="metismenu-icon pe-7s-diskette icon_ct"></i> @LanguageHelper.GetResource("yellow.appType"):</span> <span style="color:red"></span>
+                                </label>
+                                <div class="col-md-10 row ">
+                                    @*<div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "USB")<label>USB</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "AdminAcount")<label>Admin acount</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label>445 port </label></div>
+                            <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>Open Access Permission</label></div>
+                            <div class="col-md-2">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label>Tem vang</label></div>*@
+                                    <label class="label" style="color:black">Add Mac DHCP</label>
+                                </div>
+                            </div>
+                            <div id="plAdmin" name="plAdmin" class="form-group border-bottom" style="background:#FFFFFF;padding-left:10px">
+
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-disk icon_ct"></i> @LanguageHelper.GetResource("yellow.PCName"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.ComputerName, "", new { @class = "form-control ", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-4 col-md-offset-2">
+                                        <span class="label label-in"><i class="metismenu-icon pe-7s-battery icon_ct"></i>@LanguageHelper.GetResource("yellow.IP"):</span> <span style="color:red">*</span>
+                                        @Html.TextBoxFor(model => model.IPAdd, "", new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+
+                            </div>
+
+                            break;
+                        }
+
+                }
+                @*<div class="form-group row">
+            <label class="col-md-2"><span class="label" style="background:#00AA00;color:#FFFFFF"> Upload file :</span> <span style="color:red"></span></label>
+            @Html.TextBox("file", "", new { type = "file", @class = "form-control col-md-6" })
+        </div>*@
+            </div>
+            @if (linkQ.Length > 1)
+            {
+                <label class="label label-in col-md-2" style="background-color:#b3486b"><i class="metismenu-icon pe-7s-bottom-arrow icon_ct"></i>  @LanguageHelper.GetResource("yellow.dowload"):<span style="color:red"></span></label>
+                <div class="groupInfo">
+                    <div style="padding-left:2em;">
+                        <a href='@link' download target="_blank">Download</a>
+                    </div>
+                </div>
+            }
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <span class="label label-in" style="background-color:#5cb85c"><i class="metismenu-icon pe-7s-compass icon_ct"></i> @LanguageHelper.GetResource("yellow.reason"):</span> <span style="color:red">*</span>
+                    @Html.TextAreaFor(m => m.Reason, 5, 10, new { @class = "form-control col-md-12", @readonly = "readonly" })
+                </div>
+                @*<div class="text-danger text-center"><label>Please fill in the reason of apply clearly, otherwise it will be rejected easily!</label></div>*@
+
+            </div>
+        </div>
+
+        <div class="container card" style="margin-top: 20px;">
+            @if (emp == empCheck && empState != "申請人 / Người xin đơn")
+            {
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <label style="color:red;margin-top:10px" class="label"><h5> @LanguageHelper.GetResource("yellow.note"):</h5> </label>
+                        @Html.TextAreaFor(m => m.USB_Write, 10, 20, new { @class = "form-control col-md-12" })
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-1"></div>
+
+                    <button name="ApprovalButton" type="submit" class="col-md-2 btn btn-outline-success col-sm-2 col-md-2 col-lg-2" value="Approval">@LanguageHelper.GetResource("yellow.Approval")</button>
+                    @*<input type="submit" value="@LanguageHelper.GetResource("yellow.Approval")" name="ApprovalButton" class="col-md-2 btn btn-outline-success" />*@
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1"></div>
+
+                    <a href="@Url.Action("WaitingForYourApproval", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">@LanguageHelper.GetResource("yellow.Return")</a>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1"></div>
+
+                    <button name="ApprovalButton" type="submit" class="col-md-2 btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" value="Reject">@LanguageHelper.GetResource("yellow.Reject")</button>
+                    @*<input type="submit" value="@LanguageHelper.GetResource("yellow.Reject")" name="ApprovalButton" class="btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" />*@
+
+                    <div class="col-md-1"></div>
+                </div>
+            }
+            else
+            {
+                <div class="form-group row" style="padding-bottom:20px">
+                    <div class="col-md-5"></div>
+                    <a href="@Url.Action("WaitingForYourApproval", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">@LanguageHelper.GetResource("yellow.Return")</a>
+                    <div class="col-md-5"></div>
+                </div>
+            }
+            
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> @LanguageHelper.GetResource("No")</th>
+                        <th> @LanguageHelper.GetResource("yellow.signtype")</th>
+                        <th> @LanguageHelper.GetResource("yellow.Name")</th>
+                        <th> @LanguageHelper.GetResource("yellow.status")</th>
+                        <th> @LanguageHelper.GetResource("yellow.note")</th>
+                        <th> @LanguageHelper.GetResource("yellow.Time")</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int i = 0; i < Model.approvalApps.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model.approvalApps[i].step</td>
+                            <td>@Model.approvalApps[i].statusName</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].SignName, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].status, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].approvalsuggest, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].approvaltime, new { @class = "form-control", @readonly = "readonly" })</td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+}

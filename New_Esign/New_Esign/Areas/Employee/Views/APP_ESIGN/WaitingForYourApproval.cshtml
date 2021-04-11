@@ -1,0 +1,159 @@
+﻿@model PagedList.IPagedList<NewModel.EF.DATA_APP_ESIGN>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Waiting For Your Approval";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+<style>
+    .active{
+        margin:auto;
+    }
+</style>
+<h2 class="text-center">@LanguageHelper.GetResource("Employee.WaitingFor")</h2>
+@using (Html.BeginForm("WaitingForYourApproval", "APP_ESIGN", new { area = "Employee" }, FormMethod.Get))
+{
+    <br />
+    @*<div class="row form-group">
+        <div class="col-md-3"></div>
+        <div class="md-form active-purple active-purple-2 col-md-4">
+            <input class="form-control" type="text" name="searching" placeholder="Search" aria-label="Search">
+
+        </div>
+        <input type="submit" value="@LanguageHelper.GetResource("Button.Search")" class="btn btn-outline-success col-md-2" />*@
+    @*<input type="text"  class="form-control col-md-4" />*@
+
+    @*<div class="col-md-3"></div>
+        </div>*@
+    <div class="row form-group">
+        <div class="col-md-4"> </div>
+        <div class="input-group col-md-4">
+            <input class="form-control py-2" type="text" name="searching" placeholder="@LanguageHelper.GetResource("Button.Search")" id="example-search-input">
+            <span class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+        <div class="col-md-4"> </div>
+    </div>
+
+}
+<br />
+<br />
+<table class="table">
+    <tr style="background:#EEE5DE;font-weight:bold">
+        <th>
+            @*@Html.DisplayNameFor(model => model.APPNO)*@
+            @LanguageHelper.GetResource("Employee.OrderNo")
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.APPSTATUS)*@
+            @LanguageHelper.GetResource("Employee.Status")
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.CHECKWAITNAME)*@
+            @LanguageHelper.GetResource("Employee.Signername")
+        </th>
+        
+        <th>
+            @*@Html.DisplayNameFor(model=> model.ApplicantName)*@
+            @LanguageHelper.GetResource("Employee.Applicantname")
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Daycreate)*@
+            @LanguageHelper.GetResource("Employee.Createtime")
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Title)*@
+            @LanguageHelper.GetResource("Employee.Title")
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        @if (item.FormID == 29)
+        {
+            <td>
+                @*@{
+                    var appname = item.APPNO;
+                }
+                @Html.ActionLink("" + appname + "", "EditApp", new { appNo = item.APPNO })*@
+
+
+                @Html.ActionLink("" + @Html.DisplayFor(modelItem => item.APPNO) + "", "formSign", "ApplicationIT", new { appNo = item.APPNO }, new { @class = "btn btn-outline-primary text-primary" })
+
+            </td>
+        }
+        else
+            if (item.FormID == 32)
+        {
+            <td>
+                @Html.ActionLink("" + @Html.DisplayFor(modelItem => item.APPNO) + "", "signingForm", "ApplicationHR", new { appNo = item.APPNO }, new { @class = "btn btn-outline-primary text-primary" })
+            </td>
+        }
+        else
+            if (item.FormID == 34)
+        {
+            <td>
+                @Html.ActionLink("" + @Html.DisplayFor(modelItem => item.APPNO) + "", "signEnding", "ApplicationHR", new { appNo = item.APPNO }, new { @class = "btn btn-outline-primary text-primary" })
+            </td>
+        }
+        else
+            if (item.FormID == 2)
+        {
+            <td>
+                @Html.ActionLink("" + @Html.DisplayFor(modelItem => item.APPNO) + "", "RegisterSigning", "RegisterAccount", new { appNo = item.APPNO }, new { @class = "btn btn-outline-primary text-primary" })
+            </td>
+        }
+        else
+        {
+            <td>
+                @*@{
+                    var appname = item.APPNO;
+                }
+                @Html.ActionLink("" + appname + "", "EditApp", new { appNo = item.APPNO })*@
+
+
+                @Html.ActionLink("" + @Html.DisplayFor(modelItem => item.APPNO) + "", "Form_signing", "ApplicationType", new { appNo = item.APPNO }, new { @class = "btn btn-outline-primary text-primary" })
+
+            </td>
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.APPSTATUS)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.CHECKWAITNAME)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.FileName)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicantName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Daycreate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+
+        @*<td>
+            @Html.ActionLink("test", "EditApp", new { appNo = item.APPNO }) |
+            @Html.ActionLink("Details", "Details", new { id=item.APPID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.APPID })
+        </td>*@
+    </tr>
+    }
+
+</table>
+<div class="text-center ">
+    @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    <div class="form-control pagination" style="display:contents; vertical-align:middle;">
+        @Html.PagedListPager(Model, page => Url.Action("WaitingForYourApproval",
+        new { page }))
+    </div>
+</div>

@@ -1,0 +1,548 @@
+﻿@model New_Esign.Areas.Employee.Models.FORM_IT_01Model
+
+@{
+    ViewBag.Title = "sftDeclare";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+
+@using (Html.BeginForm("sftDeclare", "ApplicationIT", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="mainContent">
+        <h3 class="pageTitle text-center text-primary text-uppercase"> @LanguageHelper.GetResource("sft.title")</h3>
+        <hr />
+        <div class="text-center text-danger for font-weight-bold" id="ErrorType"><h3>@ViewBag.ErrorType</h3></div>
+        <div class="text-center text-danger for font-weight-bold"><h3>@ViewBag.ErrorLoApply</h3></div>
+        @*Thong tin nguoi dung*@
+        <label class="label label-in label-info label-group-info"> @LanguageHelper.GetResource("yellow.inforUser")</label>
+        <div class="groupInfo">
+
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <span class="label label-in"> <i class="metismenu-icon pe-7s-user icon_ct"></i> @LanguageHelper.GetResource("Register.EmployeeNO") :</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.empID, "", new { @class = "form-control" })
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-4 col-md-offset-2">
+                    <span class="label label-in"> <i class="metismenu-icon pe-7s-users icon_ct"></i>@LanguageHelper.GetResource("yellow.Name"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.empName, "", new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <span class="label label-in"><i class="metismenu-icon pe-7s-mail icon_ct"></i> @LanguageHelper.GetResource("Register.E-Mail"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.Title1Content, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Title1Content, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-4 col-md-offset-2">
+                    <span class="label label-in"><i class="metismenu-icon pe-7s-phone icon_ct"></i>@LanguageHelper.GetResource("Register.Telephone"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.Title2Content, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Title2Content, "", new { @class = "text-danger" })
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-5">
+                    <span class="label label-in"><i class="metismenu-icon pe-7s-ticket icon_ct"></i>@LanguageHelper.GetResource("Register.Department"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.Title3Content, "", new { @class = "form-control", @readonly = "readonly" })
+
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3 col-md-offset-1">
+                    <span class="label label-in"><i class="metismenu-icon pe-7s-loop icon_ct"></i>@LanguageHelper.GetResource("Register.CostNO"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.Title4Content, "", new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="form-group row">
+                @*<div class="col-md-2">
+                        <span class="label label-in"> <i class="metismenu-icon pe-7s-edit icon_ct"></i> Site :</span> <span style="color:red">*</span>
+                        @Html.DropDownListFor(model => model.Site, null, new { @class = "dropdown form-control btn btn-light" })
+                        @Html.ValidationMessageFor(model => model.Site, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3">
+                        <span class="label label-in"> <i class="metismenu-icon pe-7s-box1 icon_ct"></i> BU :</span> <span style="color:red">*</span>
+                        @Html.DropDownListFor(model => model.BU, new SelectList(""), new { @class = "dropdown form-control btn btn-light" })
+                        @Html.ValidationMessageFor(model => model.BU, "", new { @class = "text-danger" })
+                    </div>*@
+                <div class="col-md-3">
+                    <span class="label label-in"> <i class="metismenu-icon pe-7s-home icon_ct"></i>@LanguageHelper.GetResource("yellow.Factory"):</span> <span style="color:red">*</span>
+                    @Html.DropDownListFor(model => model.Title14Content, null, new { @class = "dropdown form-control btn btn-light" })
+                    @*@Html.ValidationMessageFor(model => model.Title14Content, "", new { @class = "text-danger" })*@
+                    @*<div class="text-danger"> <label> Choose your factory office</label></div>*@
+                </div>
+                <div class="col-md-3"></div>
+
+                <div class="col-md-2">
+                    @*<div class="col-md-5 col-md-offset-2">
+                            <span class="label label-et"><i class="metismenu-icon pe-7s-map-marker icon_ct"></i>  @LanguageHelper.GetResource("yellow.LocApp"):</span> <span style="color:red">*</span>
+                            @Html.HiddenFor(model => model.Title5Content)
+                            <div>
+                                <select id="sl2" class="my_select_box form-control" multiple data-placeholder="@LanguageHelper.GetResource("yellow.LocApp")"></select>
+                            </div>
+                        </div>*@
+                    @*<div class="clear"></div>*@
+                    <span class="label label-in"><i class="metismenu-icon pe-7s-map-marker icon_ct"></i>@LanguageHelper.GetResource("yellow.location"):</span> <span style="color:red">*</span>
+                    @Html.DropDownListFor(model => model.Title5Content, new SelectList(""), new { @class = "dropdown form-control btn btn-light" })
+                    @Html.ValidationMessageFor(model => model.Title5Content, "", new { @class = "text-danger" })
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        @*Thong tin tai san*@
+        <label class="label label-in label-info label-group-info">@LanguageHelper.GetResource("yellow.Detail")</label>
+        <div class="groupInfo">
+
+            <div class="form-group row">
+                <div class="col-md-5">
+                    <span class="label label-in"><i class="metismenu-icon pe-7s-door-lock icon_ct"></i> @LanguageHelper.GetResource("sft.swName"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.Title6Content, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Title6Content, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-4 col-md-offset-2">
+                    <span class="label label-in"><i class="metismenu-icon pe-7s-stopwatch icon_ct"></i>@LanguageHelper.GetResource("sft.ver"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.Title19Content, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Title19Content, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <span class="label label-in"><i class="metismenu-icon pe-7s-timer icon_ct"></i> @LanguageHelper.GetResource("yellow.timeS"):</span> <span style="color:red">*</span>
+                    @*<span class="label-k" > Emp ID / Mã thẻ :</span> <span style="color:red">*</span>*@
+                    @*@Html.TextBoxFor(model => model.TimeStart, "", new { @class = "form-control", @type = "date" })*@
+                    @Html.TextBoxFor(x => x.Title7Content, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                    @Html.ValidationMessageFor(model => model.Title7Content, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-4 col-md-offset-2">
+                    <span class="label label-in"><i class="metismenu-icon pe-7s-stopwatch icon_ct"></i>@LanguageHelper.GetResource("yellow.timeE"):</span> <span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.Title8Content, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                    @Html.ValidationMessageFor(model => model.Title8Content, "", new { @class = "text-danger" })
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-10 text-center text-danger font-weight-bold"><label>@ViewBag.ErrorTime</label></div>
+            @*<div class="col-md-10 text-center text-danger"> <label> @LanguageHelper.GetResource("yellow.NoteTime")</label></div>*@
+        </div>
+        @*Loai don*@
+        <label class="=label label-in label-info label-group-info"><i class="metismenu-icon pe-7s-exapnd2 icon_ct"></i> @LanguageHelper.GetResource("yellow.PCtype"):<span style="color:red">*</span></label>
+        <div class="groupInfo">
+            <div class="col-md-12 row form-group">
+                <div class="col-md-4">@Html.RadioButtonFor(model => model.Title9Content, "Server") <label> &nbsp; @LanguageHelper.GetResource("sft.serv") </label></div>
+                <div class="col-md-4">@Html.RadioButtonFor(model => model.Title9Content, "Computer")<label> &nbsp;  @LanguageHelper.GetResource("sft.Computer") </label></div>
+                @*<div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "Port445")<label> &nbsp;  @LanguageHelper.GetResource("yellow.port")</label></div>
+                    <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "OpenAccess")<label>&nbsp;   @LanguageHelper.GetResource("yellow.openAcc")</label></div>
+                    <div class="col-md-4">@Html.RadioButtonFor(model => model.ApplicationType, "yellowCard")<label> &nbsp;  @LanguageHelper.GetResource("yellow.card")</label></div>*@
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div id="plYellowCard" name="plYellowCard">
+            @*<label class="label label-et label-info label-group-info"> @LanguageHelper.GetResource("yellow.Detail")</label>*@
+            <div class="groupInfo">
+                <div class="form-group row">
+                    <label class="col-md-2">
+                        <span class="label label-et"><i class="metismenu-icon pe-7s-box1 icon_ct"></i> @*@LanguageHelper.GetResource("sft.system")*@ Legal:</span> <span style="color:red">*</span>
+                    </label>
+
+                    <div class="form-group col-md-6 row">
+                        <div class="col-md-4">
+                            @Html.RadioButtonFor(model => model.Title14Content, "Funing")
+                            <label>&nbsp; Funing</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.RadioButtonFor(model => model.Title14Content, "Fuhong")
+                            <label>&nbsp; Fuhong</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.RadioButtonFor(model => model.Title14Content, "Fuyu")
+                            <label>&nbsp; Fuyu</label>
+                        </div>
+                    </div>
+                    <div class="clear">
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2">
+                        <span class="label label-et"><i class="metismenu-icon pe-7s-box1 icon_ct"></i> @LanguageHelper.GetResource("sft.system"):</span> <span style="color:red">*</span>
+                    </label>
+
+                    <div class="form-group col-md-4 row">
+                        <div class="col-md-5">
+                            @Html.RadioButtonFor(model => model.Title10Content, "64-bit")
+                            <label>&nbsp; 64-bit</label>
+                        </div>
+                        <div class="col-md-5">
+                            @Html.RadioButtonFor(model => model.Title10Content, "32-bit")
+                            <label>&nbsp; 32-bit</label>
+                        </div>
+                    </div>
+                    <div class="clear">
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <span class="label label-et"> <i class="metismenu-icon pe-7s-note2 icon_ct"></i> BU:</span> <span style="color:red">*</span>
+                        @Html.TextBoxFor(model => model.Title5, "", new { @class = "form-control" })
+
+                    </div>
+                    <div class="col-md-4">
+                        <span class="label label-et"> <i class="metismenu-icon pe-7s-note2 icon_ct"></i>  @LanguageHelper.GetResource("sft.operating"):</span> <span style="color:red">*</span>
+                        @Html.TextBoxFor(model => model.Title6, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Title11Content, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <span class="label label-et"> <i class="metismenu-icon pe-7s-note2 icon_ct"></i> Max Qty:</span> <span style="color:red">*</span>
+                        @Html.TextBoxFor(model => model.Title7, "", new { @class = "form-control" })
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="form-group row">
+                    <span class="label label-et"> <i class="metismenu-icon pe-7s-note2 icon_ct"></i> Install list:</span> <span style="color:red">*</span>
+                    <table class="table table-hover " id="myTable">
+                        <thead class="table-primary">
+                            <tr>
+                                @*<th>序號 / STT</th>*@
+                                <th>@LanguageHelper.GetResource("Register.EmployeeNO")</th>
+                                <th>@LanguageHelper.GetResource("yellow.Name")</th>
+                                <th>@LanguageHelper.GetResource("Register.Department")</th>
+                                <th>IP</th>
+                                <th>@LanguageHelper.GetResource("yellow.PCName")</th>
+                                <th>@LanguageHelper.GetResource("yellow.location")</th>
+                                <th>@LanguageHelper.GetResource("yellow.note")</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="form-control" name='pno[]' /></td>
+                                <td><input type="text" class="form-control" name='pname[]' /></td>
+                                <td><input type="text" class="form-control" name='pdept[]' /></td>
+                                <td><input type="text" class="form-control" name='pIp[]' /></td>
+                                <td><input type="text" class="form-control" name='pComname[]' /></td>
+                                <td><input type="text" class="form-control" name='pLoca[]' /></td>
+                                <td><input type="text" class="form-control" name='pRemark[]' /></td>
+                                <td><input type="button" value="+Add User" onclick="myCreate(this)" class=" btn btn-primary" /></td>'
+                                <td></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <input type="hidden" class="form-control" name="kqNo" id="kqNo" />
+                <input type="hidden" class="form-control" name="kqName" id="kqName" />
+                <input type="hidden" class="form-control" name="kqDept" id="kqDept" />
+                <input type="hidden" class="form-control" name="kqIP" id="kqIP" />
+                <input type="hidden" class="form-control" name="kqComname" id="kqComname" />
+                <input type="hidden" class="form-control" name="kqLoca" id="kqLoca" />
+                <input type="hidden" class="form-control" name="kqRem" id="kqRem" />
+                @*<div class="col-md-5">
+            <span class="label label-et"> <i class="metismenu-icon pe-7s-home icon_ct"></i>  @LanguageHelper.GetResource("yellow.FacApp"):</span> <span style="color:red">*</span>
+            <div>
+                @Html.DropDownListFor(model => model.factoryApply, null, new { @class = "form-control dropdown  btn btn-light" })
+            </div>
+        </div>*@
+                @*<div class="col-md-5 col-md-offset-2">
+        <span class="label label-et"><i class="metismenu-icon pe-7s-map-marker icon_ct"></i>  @LanguageHelper.GetResource("yellow.LocApp"):</span> <span style="color:red">*</span>*@
+                @*@Html.HiddenFor(model => model.LocationApply)*@
+                @*<div>
+            <select class="my_select_box" multiple data-placeholder="@LanguageHelper.GetResource("yellow.LocApp")">
+                <option value="B03">B03</option>
+                <option value="B04">B04</option>
+                <option value="B05">B05</option>
+                <option value="B06">B06</option>
+                <option value="C02">C02</option>
+                <option value="C03">C03</option>
+                <option value="BN3">BN3</option>
+            </select>
+        </div>*@
+
+                @*@Html.DropDownListFor(model => model.locationMulti, null, new { id = "LocationApply2", multiple = "multiple" })
+            @Html.HiddenFor(model => model.LocationApply)
+        </div>*@
+                <div class="clear"></div>
+
+            </div>
+            @*<div class="form-group row">
+
+                    <div class="form-group row col-md-6">
+                        <div class="col-md-10">
+                            <span class="label label-et"><i class="metismenu-icon pe-7s-calculator icon_ct"></i> @LanguageHelper.GetResource("yellow.Asset"):</span> <span style="color:red">*</span>
+                            @Html.TextBoxFor(model => model.AssetCode, "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.AssetCode, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>*@
+        </div>
+
+    </div>
+
+    <div>
+
+
+        @*@Html.DropDownList("LocationApply", new SelectList(""), " ", new { @class= "multi-select form-control", multiple="multiple" })*@
+    </div>
+    <div class="col-md-10 text-center text-danger"><label> @LanguageHelper.GetResource("yellow.upload")</label></div>
+    <label class="label label-in label-group-info" style="background-color:#b3486b"><i class="metismenu-icon pe-7s-bottom-arrow icon_ct"></i>  @LanguageHelper.GetResource("yellow.upload"):<span style="color:red"></span></label>
+    <div class="groupInfo">
+        <div class="col-md-10 text-center text-danger font-weight-bold" id="ErrorType"><label>@ViewBag.FileLimit</label></div>
+        <div style="padding-left:2em;">
+            @Html.TextBox("file", "", new { type = "file", @class = "col-md-12" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <span class="label label-in col-md-2" style="background-color:#5cb85c"><i class="metismenu-icon pe-7s-compass icon_ct"></i>  @LanguageHelper.GetResource("yellow.reason"):</span> <span style="color:red">*</span>
+            @Html.TextAreaFor(m => m.Title13Content, 5, 10, new { @class = "form-control col-md-12" })
+            @*<div class="text-danger text-center"><label> @LanguageHelper.GetResource("yellow.reaNote")</label></div>*@
+        </div>
+
+    </div>
+    <div class="form-group row" style="padding-bottom:20px">
+        <div class="col-md-5"></div>
+        @*<input type="submit" value="@LanguageHelper.GetResource("yellow.submit")" id="submit" name="submit" class="col-md-2 btn btn-success" />*@
+        <button onclick="sbApplication()" type="button" class="btn btn-outline-success col-sm-2 col-md-2 col-lg-2">@LanguageHelper.GetResource("yellow.submit")</button>
+        <div id="divCheckbox" style="display: none;">
+            <input type="submit" value="submit" class="btn btn-outline-success col-sm-2 col-md-2 col-lg-2" id="submit" name="submit" />
+        </div>
+        <div class="col-md-5"> </div>
+    </div>
+
+    <div>        
+    </div>
+    @*<div class="khangtest">
+        <td><input type="button" value="check" onclick="check()" /></td>
+        <input type="hidden" class="form-control" name="testKQ" id="testKQ" />
+        <input type="hidden" class="form-control" name="testKQ1" id="testKQ1" />
+        <input type="hidden" class="form-control" name="testKQ2" id="testKQ2" />
+        <table id="myTable" class="table ">
+            <thead class="thead-light">
+                <tr>
+                    <th>sign name </th>
+                    <th>emp name </th>
+                    <th>emp no </th>
+                    <th colspan="2">Modify</th>
+                    <th>sign name </th>
+                </tr>
+            </thead>
+            <tr>
+                <td><select name="position[]" class="gender my_select_sign"><option value="anhkhang">TEst1</option><option value="anhkhang">TEst1</option><option value="anhkhang2">TEst2</option><option value="anhkhang3">TEst3</option></select></td>
+                <td> <input class="btn-block" type="text" name="pname[]" value="" /></td>
+                <td> <input class="btn-block" type="text" name="pno[]" value="" /></td>*@
+    @*<td> <input class="btn-block" type="text" name="pname1[]" value="" /></td>*@
+    @*<td>
+            <select name="position[]" class="gender">
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+        </td>*@
+    @*<td><input type="button" value="Create row" onclick="myCreate(this)" /></td>
+                    <td><input type="button" value="Delete" onclick="deleteRow(this)" /></td>
+                </tr>
+
+            </table>
+
+        </div>*@
+
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            //tat nut enter
+            $(window).keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+
+            $("#Title14Content").on('autocompletechange change', function () {
+                var getdata = $("#Title14Content").val();
+
+                $.get("/ApplicationIT/getLocation", { facID: $("#Title14Content").val() }, function (data) {
+                    $("#Title5Content").empty();
+                    $.each(data, function (index, row) {
+
+                        $("#Title5Content").append("<option value='" + row.Location + "'>" + row.Location + "</option>")
+                    });
+                });
+
+            }).change();
+
+            $("#empID").change(function () {
+                var reg = $("#empID").val();
+                var json = { empID: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+
+                        $("#empName").val(data.USER_NAME);
+                        $("#Title3Content").val(data.DEPARTMENT_NAME);                        
+                        $("#Title1Content").val(data.NOTES_ID);                      
+                        $("#Title4Content").val(data.CURRENT_OU_CODE);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    }
+                });
+            });
+
+            // lay thong tin ma the
+            $(function () {
+                startRefresh();
+
+            });
+
+            function startRefresh() {
+                setTimeout(startRefresh, 1000);
+
+                var listInput = $("#myTable input[name='pno[]']");
+                var listInputName = $("#myTable input[name='pname[]']");
+                //var arrayTye = listNameInput;
+
+                $.each(listInput, function (index, item) {
+                    item.onchange = function () {
+                        var empNo = item.value;
+                        var a = listInput.index(item);
+                        var idName = "#nameSig" + a;
+                        $.ajax({
+                            type: "Get",
+                            url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                            contentType: "application/json; charset=utf-8",
+                            data: { id: empNo },
+                            success: function (data) {
+                                var name = data.USER_NAME;
+                                var dept = data.DEPARTMENT_NAME;
+                                //$(idName).val(data.USER_NAME);
+                                $(item).closest('td').next().find(":input[name='pname[]']").val(name);
+                                $(item).closest('td').next().find(":input[name='pname[]']").closest('td').next().find(":input[name='pdept[]']").val(dept);
+
+                            },
+                            error: function (error) {
+
+                                alert(error);
+                            },
+                        });
+                    }
+                });
+
+            }
+        });
+        // xu ly phan them hang 
+        function myCreate(row) {
+            var i = row.parentNode.parentNode.rowIndex;
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(i + 1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            //var cell3 = row.insertCell(2);
+            //var cell3 = row.insertCell(3);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4); 
+
+            var cell6 = row.insertCell(5); 
+            var cell7 = row.insertCell(6); 
+            var cell8 = row.insertCell(7); 
+            var cell9 = row.insertCell(8); 
+
+            cell1.innerHTML = '<td><input type="text" class="form-control" name="pno[]" /></td>';
+            cell2.innerHTML = '<td><input type="text" class="form-control" name="pname[]"/></td>';
+            cell3.innerHTML = '<td><input type="text" class="form-control" name="pdept[]"/></td>';
+            cell4.innerHTML = '<td><input type="text" class="form-control" name="pIp[]"/></td>';
+            cell5.innerHTML = '<td><input type="text" class="form-control" name="pComname[]"/></td>';
+
+            cell6.innerHTML = '<td><input class="form-control" type="text"  name="pLoca[]"/></td>';
+            cell7.innerHTML = '<td><input class="form-control" type="text"  name="pRemark[]" /></td>';
+            cell8.innerHTML = '<td><input type="button" value="+Add User" onclick="myCreate(this)" class=" btn btn-primary"/></td>';
+            cell9.innerHTML = '<td><input type="button" value="-Delete User" onclick="deleteRow(this)" class=" btn btn-danger"/></td>';
+            // myFunction();  
+            
+        }
+    
+        function deleteRow(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            //myFunction();
+            n--;
+        }
+        
+        function myFunction() {
+            for (var i = 1; i < n + 3; i++) {
+                document.getElementById("myTable").rows[i].cells[0].innerHTML = '<td>' + (i) + '</td>';
+            }
+        }
+        
+
+        function sbApplication() {
+
+            var checkFlag = true;
+            if ($("#empID").val() == null || $("#empID").val() == "") checkFlag = false;
+            if ($("#Title14Content").val() == null || $("#Title14Content").val() == "") checkFlag = false;
+            if ($("#Title10Content").val() == null || $("#Title10Content").val() == "") checkFlag = false;
+            if ($("#Title6Content").val() == null || $("#Title6Content").val() == "") checkFlag = false;
+            if ($("#Title19Content").val() == null || $("#Title19Content").val() == "") checkFlag = false;
+            if ($("#Title1Content").val() == null || $("#Title1Content").val() == "") checkFlag = false;
+            if ($("#Title2Content").val() == null || $("#Title2Content").val() == "") checkFlag = false;
+            if ($("#Title5").val() == null || $("#Title5").val() == "") checkFlag = false;
+            if ($("#Title6").val() == null || $("#Title6").val() == "") checkFlag = false;
+            if ($("#Title7").val() == null || $("#Title7").val() == "") checkFlag = false;
+            if (checkFlag == false) {
+                alert("無明確的錯誤 / Phát hiện lỗi không xác định");
+            }
+            else {
+
+                $("#submit").click();
+            }
+        }
+        $("#submit").click(function (e) {
+            
+            var valuesNo = $("input[name='pno[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#kqNo").val(valuesNo);
+
+            var valuesName = $("input[name='pname[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#kqName").val(valuesName);
+
+            var valuesDep = $("select[name='pdept[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#kqDept").val(valuesDep);
+            var valuesIp = $("input[name='pIp[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#kqIP").val(valuesIp);
+            var valuesComn = $("input[name='pComname[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#kqComname").val(valuesComn);
+            var valuesLoc = $("input[name='pLoca[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#kqLoca").val(valuesLoc);
+            var valuesRem = $("input[name='pRemark[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#kqRem").val(valuesRem);
+            //alert(values);
+        });
+
+    </script>
+}
+

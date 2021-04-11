@@ -1,0 +1,90 @@
+﻿@using New_Esign.Areas.Administrators.Models
+@model ApproverDetailModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Administrators/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Edit</h2>
+<hr />
+<span class="label label-info">@LanguageHelper.GetResource("Admin.Approver.FormTitle")</span>
+@using (Html.BeginForm("Edit", "Approver", new { area = "Administrators" }, FormMethod.Post, new { @id = "formEdit", @class = "group3k" }))
+{
+    <div class="form-group">
+        <div class="col-lg-6 margin-bottom-control">
+            <span class="label label-default">@LanguageHelper.GetResource("Site")</span>
+            @Html.DropDownList(Model.SelectedSite, (IEnumerable<SelectListItem>)Model.SiteSelector, new { @id = "SiteSelector", @name = "SiteSelector", @class = "form-control formSelector", data_field = "SelectedSite", onchange = "GetListBU(this)" })
+            @Html.HiddenFor(m => m.SelectedSite)
+        </div>
+
+        <div class="clear"></div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-6 margin-bottom-control">
+            <span class="label label-default">@LanguageHelper.GetResource("BU")</span>
+            @Html.DropDownList(Model.SelectedBU, (IEnumerable<SelectListItem>)Model.BUSelector, new { @id = "BUSelector", @class = "form-control formSelector", data_field = "SelectedBU" })
+            @Html.HiddenFor(m => m.SelectedBU)
+        </div>
+        <div class="col-lg-6 margin-bottom-control">
+            <span class="label label-default">@LanguageHelper.GetResource("ApproverType")</span>
+            @Html.DropDownList(Model.SelectedType, (IEnumerable<SelectListItem>)Model.TypeSelector, new { @id = "TypeSelector", @class = "form-control formSelector", data_field = "SelectedType" })
+            @Html.HiddenFor(m => m.SelectedType)
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="form-group">
+        @Html.HiddenFor(m => m.ApproverModel.ApproverID)
+        <div class="col-lg-6 margin-bottom-control">
+            <span class="label label-default">@LanguageHelper.GetResource("ApproverEmpNo")</span>
+            @Html.TextBoxFor(m => m.ApproverModel.ApproverEmpNo, new { @class = "form-control", onblur = "GetEmpName(this)", data_showField = "ApproverModel_ApproverEmpName" })
+        </div>
+        <div class="col-lg-6 margin-bottom-control">
+            <span class="label label-default">@LanguageHelper.GetResource("ApproverEmpName")</span>
+            @Html.TextBoxFor(m => m.ApproverModel.ApproverEmpName, new { @class = "form-control" })
+        </div>
+        <div class="clear"></div>
+    </div>
+    <hr />
+    <div class="form-group center-group">
+        <div class="col-lg-2 right-div">
+            <input type="submit" class="form-control btn-default btn-primary" value="@LanguageHelper.GetResource("SaveChanges")" />
+        </div>
+
+        <div class="clear"></div>
+    </div>
+}
+
+<script type="text/javascript">
+    function GetListBU(ele) {
+        var buSelector = $("#BUSelector");
+        buSelector.empty();
+        var site = $(ele).val();
+        $.ajax({
+            url: "@Url.Action("GetListBU","Getter", new {area=""})",
+            data: { 'site': site },
+            type: "get",
+            cache: false
+        }).success(function (data) {
+            $.each(data, function (i, row) {
+                buSelector.append('<option value="' + row["Item1"] + '">' + row["Item2"] + '</option>');
+            });
+        }).error(function (data) {
+
+        });
+    }
+    function GetEmpName(ele) {
+        var empNo = $(ele).val();
+        var showField = $(ele).attr('data-showField');
+        $.ajax({
+            url: "@Url.Action("GetEmployeeName","Getter",new { area="" })",
+            data: { 'empNO': empNo },
+            type: "get",
+            cache: false
+        }).success(function (data) {
+            $('#' + showField).val(data);
+        }).error(function (data) {
+
+        });
+    }
+</script>

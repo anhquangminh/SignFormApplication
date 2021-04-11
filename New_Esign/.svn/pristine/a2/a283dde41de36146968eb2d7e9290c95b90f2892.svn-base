@@ -1,0 +1,30 @@
+﻿<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editResource">
+    Launch demo modal
+</button>
+<div id="editResource" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">This is Modal</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="col-lg-12 dialog-row">
+                        <span class="label label-primary label-size-90">Resource Name:</span>
+                        <input id="txt_Edit_Resource_Name" type="text" class="form-control text-box single-line" value="ahihi" />
+                    </div>
+                    <div class="col-lg-12  dialog-row">
+                        <span class="label label-primary label-size-90">Resource Value:</span>
+                        <input id="txt_Edit_Resource_Value" type="text" class="form-control text-box single-line" value="Bhihi" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

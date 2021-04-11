@@ -1,0 +1,403 @@
+﻿
+@model New_Esign.Areas.Employee.Models.FORM_IT_01Model
+@using New_Esign.Common;
+@using New_Esign.AppCode;
+@using System.Data;
+@using System.Data.SqlClient;
+
+@{
+    ViewBag.Title = "signEnding";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+<div class="card-header" style="background-color: white; padding: 15px;">
+    <strong class="card-title font-weight-bold" style="width: 100%; text-align: center; font-size: 16px; color: black; font-family: arial; font-weight: 500; margin: 0px;">
+        出差越南中幹期滿返鄉申請單 <br />
+        ĐƠN XIN KẾT THÚC CÔNG TÁC VỀ NƯỚC CÁN BỘ TRUNG QUỐC
+    </strong>
+</div>
+<div class="card">
+    <div class="border" style="padding:0px">
+
+        @{
+            SQLServerDBHelper db = new SQLServerDBHelper("EsignDB");
+            string strQueryHome = @"select * from returnHome where AppNo = '" + Model.AppNo + "' and state='1' order by homeID asc; ";
+            DataTable tbHome = new DataTable();
+            tbHome = db.DoSQLSelect(strQueryHome);
+
+            string strQueryBack = @"select * from returnHome where AppNo = '" + Model.AppNo + "' and state='2' order by homeID asc; ";
+
+            DataTable tbBack = new DataTable();
+            tbBack = db.DoSQLSelect(strQueryHome);
+
+            string sqlQuery = @"select * from DATA_APP_ESIGN where APPNO = '" + Model.AppNo + "' ";
+            DataTable tb = new DataTable();
+            tb = db.DoSQLSelect(sqlQuery);
+            string empCheck = "";
+            string empCreate = "";
+            string empState = " ";
+            if (tb.Rows.Count > 0)
+            {
+                empCheck = tb.Rows[0]["Checkwait"].ToString().Trim();
+                empCreate = tb.Rows[0]["USEREMP"].ToString().Trim();
+                empState = tb.Rows[0]["APPSTATUS"].ToString().Trim();
+            }
+
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            var emp = session.UserID.Trim();
+
+
+        }
+        @using (Html.BeginForm("signEnding", "ApplicationHR", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <span class="label label-in"> <i class="metismenu-icon pe-7s-ticket icon_ct"></i>  @LanguageHelper.GetResource("yellow.OrderNo"): @Model.AppNo</span>
+                    @*@Html.TextBoxFor(model => model.AppNo, "", new { @class = "form-control", @readonly = "readonly" })*@
+                    @Html.TextBoxFor(m => m.AppNo, "", new { style = "display: none;" })
+                </div>
+
+            </div>
+            <div class="card-body">
+
+                <label class="label label-in" style="background-color: #c3e0b1">個人信息 Thông tin cá nhân</label>
+                <div class="border form-group">
+                    <div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>
+                                    <label>中文姓名 Họ tên <span>:&nbsp;</span>@Model.empName </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        護照拼音姓名 Tên phiên âm<span>:&nbsp;</span>@Model.Title0
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        工號 Mã  nhân viên<span>:&nbsp;</span>@Model.empID
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        職稱 Chức vụ
+                                        <span>:&nbsp;</span>@Model.Title1
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>
+                                        資位 Cấp bậc
+                                        <span>:&nbsp;</span>@Model.Title2
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>事業群Chi nhánh  <span>:&nbsp;</span>@Model.Title4 </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        處(室) BU <span>:&nbsp;</span>@Model.Title5
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        單位 Bộ phận <span>:&nbsp;</span>@Model.Title3
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        部 Đơn vị <span>:&nbsp;</span>@Model.Title6
+                                    </label>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+
+                <label class="label-in" style="background-color: #c3e0b1">
+                    行程排 配
+                    Hành trình
+                </label>
+                <div class="border">
+                    <div style="margin:30px">
+                        <div class="row form-group">
+                            <label class="col-3 label label-in">本次出差期間 Thời gian công tác lần này：</label>
+                            <div class="col-9 form-group row">
+                                <label class="col-9">@Model.Title7  <span>~&nbsp;</span> @Model.Title8</label>
+                                <label class="col-3">共計Tổng : &nbsp; <span>@Model.Title9</span>  天Ngày</label>
+                            </div>
+                        </div>
+                        <div class="col-12 text-lg-center font-weight-bold bg-primary text-white"><label>返國 /Về nước</label></div>
+                        <table class="table table-bordered table-hover">
+                            <thead class="text-center" style="background:#E0E6F8">
+                                <tr>
+                                    <th>回Về --> 去程Đi</th>
+                                    <th>月Tháng/日Ngày</th>
+                                    <th>航班Chuyến/交通Phương tiện</th>
+                                    <th>起訖時間Thời gian</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                @for (int i = 0; i < tbHome.Rows.Count; i++)
+                                {
+                                    <tr>
+                                        <td><label> @tbHome.Rows[i]["locationReturn"].ToString() <br />-->&nbsp; @tbHome.Rows[i]["locationGo"].ToString() </label> </td>
+                                        <td><label> @tbHome.Rows[i]["timeReturn"].ToString() </label> </td>
+                                        <td><label> @tbHome.Rows[i]["Vehicle"].ToString() </label> </td>
+                                        <td><label> @tbHome.Rows[i]["totalTime"].ToString() </label> </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <label></label>
+                    <div style="margin:0px 30px 20px 30px;">
+                        <div class="col-12 text-lg-center font-weight-bold bg-primary text-white"><label>返出差地 / Quay lại nơi công tác</label></div>
+                        <table class="table table-bordered table-hover">
+                            <thead class="text-center" style="background:#E0E6F8">
+                                <tr>
+                                    <th>回Về --> 去程Đi</th>
+                                    <th>月Tháng/日Ngày</th>
+                                    <th>航班Chuyến/交通Phương tiện</th>
+                                    <th>起訖時間Thời gian</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                @for (int i = 0; i < tbBack.Rows.Count; i++)
+                                {
+                                    <tr>
+                                        <td><label> @tbBack.Rows[i]["locationReturn"].ToString()<br /> -->&nbsp; @tbBack.Rows[i]["locationGo"].ToString() </label> </td>
+                                        <td><label> @tbBack.Rows[i]["timeReturn"].ToString() </label> </td>
+                                        <td><label> @tbBack.Rows[i]["Vehicle"].ToString() </label> </td>
+                                        <td><label> @tbBack.Rows[i]["totalTime"].ToString() </label> </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="row form-group">
+                            <label class="col-3 label label-in">下次出差時間Thời gian công tác lần sau：</label>
+                            <div class="col-9 form-group row">
+                                <label class="col-9"> @Model.Title15Content  <span>~&nbsp; @Model.Title16Content</span> </label>
+                                <label class="col-3">共計Tổng : &nbsp; <span>@Model.Title17Content</span>  天Ngày</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <label class="label-in" style="background-color: #c3e0b1">
+                    返國前工作交接事項說明Bàn giao công việc trước khi về nước
+                </label>
+
+                <div class="border">
+                    <div class="label-default">
+                        <label class="label" style="padding-left:15px;padding-top:10px;">
+                            @Model.Title18Content
+                        </label>
+
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-8"></div>
+                        <div class="col-4"><label class="label label-in">工作職務代理人Người thay thế： </label><div class="col-12"> @Model.Title19Content</div></div>
+                    </div>
+                </div>
+            </div>
+            <label class="label label-in" style="background-color:#b8f1e8">
+                述職休假安排
+                Sắp xếp về nước nghỉ/ làm việc
+            </label>
+            <div class="boder card-body border">
+                <div class="card-header" style="background-color:cornsilk;">
+                    <strong style="text-align: center; width: 100%; color: black;">
+                        休假聯絡電話/ 地址/ 述職對象、項目<br />
+                        Điện thoại/Địa chỉ liên hệ khi nghỉ/Đối tượng, hạng mục khi về nước làm việc
+
+                    </strong>
+                </div>
+                <div class="row row-line col-12 form-group">
+                    <div class="form-control col-12" style="margin-left:20px;margin-top:10px;"> @Model.Title0Example </div>
+                </div>
+            </div>
+            <hr />
+            <div class="container card" style="margin-top: 20px;">
+                @if (emp == empCheck)
+                {
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label style="color:red;margin-top:10px" class="label"><h5> @LanguageHelper.GetResource("yellow.note"):</h5> </label>
+                            @Html.TextAreaFor(m => m.AppContent, 10, 20, new { @class = "form-control col-md-12" })
+                        </div>
+
+                    </div>
+                    <div class="form-group row formEnter">
+                        <div class="col-md-1"></div>
+
+                        <button name="ApprovalButton" type="submit" class="col-md-2 btn btn-outline-success col-sm-2 col-md-2 col-lg-2" id="subEnter" value="Approval">@LanguageHelper.GetResource("yellow.Approval")</button>
+                        @*<input type="submit" value="@LanguageHelper.GetResource("yellow.Approval")" name="ApprovalButton" class="col-md-2 btn btn-outline-success" />*@
+                        <div class="col-md-1"></div>`
+                        <div class="col-md-1"></div>
+
+
+                        <button onclick="sbApplication()" type="button" class="btn btn-outline-info col-sm-2 col-md-2 col-lg-2">@LanguageHelper.GetResource("contact.forwardSigner")</button>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+
+
+                        <button name="ApprovalButton" type="submit" class="col-md-2 btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" value="Reject">@LanguageHelper.GetResource("yellow.Reject")</button>
+                        @*<input type="submit" value="@LanguageHelper.GetResource("yellow.Reject")" name="ApprovalButton" class="btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" />*@
+
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div id="formForWard" class="form-group border" style="padding-top:15px;">
+                        <div class="form-group col-md-12 row">
+                            <label class="col-md-4">@LanguageHelper.GetResource("yellow.signtype") <span style="color:red">*</span>:</label>
+                            <select name="position[]" class="my_select_sign mySelect dropdown-menu-lg-left form-control col-md-7"><option value="課級主管審核 / Chủ quản cấp phòng">課級主管審核 / Chủ quản cấp phòng</option><option value="部級主管審核 / Chủ quản cấp bộ phận"> 部級主管審核 / Chủ quản cấp bộ phận</option><option value="處級主管審核 / Chủ quản cấp văn phòng sự nghiệp">處級主管審核 / Chủ quản cấp văn phòng sự nghiệp</option><option value="部級主管審核 / Chủ quản cấp bộ phận">部級主管審核 / Chủ quản cấp bộ phận</option><option value="會簽單位 / Người kết án">會簽單位 / Người kết án</option></select>
+
+                        </div>
+                        <div class="form-group col-md-12 row">
+                            <label class="col-md-4">@LanguageHelper.GetResource("Register.EmployeeNO") <span style="color:red">*</span>:</label>
+                            @Html.TextBoxFor(model => model.Title8Example, "", new { @class = "form-control col-md-7" })
+                        </div>
+                        <div class="form-group col-md-12 row">
+                            <label class="col-md-4">@LanguageHelper.GetResource("yellow.Name"):</label>
+                            @Html.TextBoxFor(model => model.Title9Example, "", new { @class = "form-control col-md-7" })
+                        </div>
+                        <div class="form-group col-md-12 row">
+                            <div class="col-md-3"></div>
+                            <button onclick="sbAppli()" id="btnOK" type="button" class="col-md-2 btn btn-outline-success col-sm-2 col-md-2 col-lg-2" value="ForWard">@LanguageHelper.GetResource("contact.ok")</button>
+                            <div class="col-md-2"></div>
+                            <button id="cancelFor" type="button" class="col-md-2 btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" value="ForWard">@LanguageHelper.GetResource("contact.cancel")</button>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div class="form-group row" style="padding-bottom:20px">
+                            <div class="col-md-5"></div>
+                            <a href="@Url.Action("WaitingForYourApproval", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">@LanguageHelper.GetResource("yellow.Return")</a>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Title7Example, "", new { @class = "form-control col-md-7", style = "display: none;" })
+                                <button name="ApprovalButton" id="submit" type="submit" class="col-md-2 btn btn-outline-success col-sm-2 col-md-2 col-lg-2" value="ForWard" style="display: none;">@LanguageHelper.GetResource("contact.ok")</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group row" style="padding-bottom:20px">
+                        <div class="col-md-5"></div>
+                        <a href="@Url.Action("WaitingForYourApproval", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">@LanguageHelper.GetResource("yellow.Return")</a>
+                        <div class="col-md-5"></div>
+                    </div>
+                }
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th> @LanguageHelper.GetResource("No")</th>
+                            <th> @LanguageHelper.GetResource("yellow.signtype")</th>
+                            <th> @LanguageHelper.GetResource("yellow.Name")</th>
+                            <th> @LanguageHelper.GetResource("yellow.status")</th>
+                            <th> @LanguageHelper.GetResource("yellow.note")</th>
+                            <th> @LanguageHelper.GetResource("yellow.Time")</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @for (int i = 0; i < Model.approvalApps.Count; i++)
+                        {
+                            <tr>
+                                <td><label>@Model.approvalApps[i].step</label> </td>
+                                <td><label>@Model.approvalApps[i].statusName</label></td>
+                                <td><label>@Model.approvalApps[i].SignName</label></td>
+                                <td><label>@Model.approvalApps[i].status</label></td>
+                                <td><label>@Model.approvalApps[i].approvalsuggest</label></td>
+                                <td><label>@Model.approvalApps[i].approvaltime</label></td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            //tat nut enter           
+
+            $("#formForWard").slideUp();
+
+            $("#Title8Example").change(function () {
+                var reg = $("#Title8Example").val();
+                //var reg = $("#UserID").val();
+                //var json = { empNo: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+                        $("#Title9Example").val(data.USER_NAME);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    },
+                });
+            });
+        });
+
+        function sbApplication() {
+
+            var checkFlag = true;
+            if (checkFlag == false) {
+                alert("無明確的錯誤 / Không có lỗi dõ dàng");
+            }
+            else {
+
+                $("#formForWard").slideDown();
+            }
+        };
+        function sbAppli() {
+
+            var value1 = $("#Title8Example").val();
+            var value2 = $("#Title9Example").val();
+            if (value1.trim() != "" && value2.trim() != "") {
+
+                $("#submit").click();
+            }
+            else {
+                alert("無明確的錯誤 / Không có lỗi dõ dàng");
+            }
+        };
+        $("#submit").click(function () {
+            var values = $("select[name='position[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#Title7Example").val(values);
+        });
+
+        $("#cancelFor").click(function () {
+
+            $("#formForWard").slideUp();
+        });
+
+        function keypressHandler(e) {
+            if (e.which == 13) {
+                e.preventDefault(); //stops default action: submitting form
+                $(this).blur();
+                $('#subEnter').focus().click();//give your submit an ID
+            }
+        }
+
+        $('.formEnter').keypress(keypressHandler);
+    </script>
+}

@@ -1,0 +1,942 @@
+F:\Web\New_Esign\New_Esign\New_Esign\bin\ApplicationInsights.config
+F:\Web\New_Esign\New_Esign\New_Esign\bin\roslyn\csc.exe
+F:\Web\New_Esign\New_Esign\New_Esign\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Web\New_Esign\New_Esign\New_Esign\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Web\New_Esign\New_Esign\New_Esign\bin\roslyn\System.Collections.Immutable.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\roslyn\System.Reflection.Metadata.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\roslyn\vbc.exe
+F:\Web\New_Esign\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe
+F:\Web\New_Esign\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe.config
+F:\Web\New_Esign\New_Esign\New_Esign\bin\New_Esign.dll.config
+F:\Web\New_Esign\New_Esign\New_Esign\bin\New_Esign.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\New_Esign.pdb
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Antlr3.Runtime.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\EntityFramework.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\EntityFramework.SqlServer.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AI.Agent.Intercept.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AI.Web.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Web.Infrastructure.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Newtonsoft.Json.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Owin.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.Helpers.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.Mvc.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.Optimization.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.Razor.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.WebPages.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\WebGrease.dll
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AI.Web.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.Helpers.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.Mvc.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.Optimization.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.Razor.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.WebPages.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Antlr3.Runtime.pdb
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Newtonsoft.Json.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\EntityFramework.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\EntityFramework.SqlServer.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.xml
+F:\Web\New_Esign\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\Web\New_Esign\New_Esign\New_Esign\obj\Debug\New_Esign.csprojResolveAssemblyReference.cache
+F:\Web\New_Esign\New_Esign\New_Esign\obj\Debug\New_Esign.dll
+F:\Web\New_Esign\New_Esign\New_Esign\obj\Debug\New_Esign.pdb
+F:\Web\New_Esign\New_Esign\bin\ApplicationInsights.config
+F:\Web\New_Esign\New_Esign\bin\roslyn\csc.exe
+F:\Web\New_Esign\New_Esign\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Web\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Web\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Web\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Web\New_Esign\New_Esign\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Web\New_Esign\New_Esign\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Web\New_Esign\New_Esign\bin\roslyn\System.Collections.Immutable.dll
+F:\Web\New_Esign\New_Esign\bin\roslyn\System.Reflection.Metadata.dll
+F:\Web\New_Esign\New_Esign\bin\roslyn\vbc.exe
+F:\Web\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe
+F:\Web\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe.config
+F:\Web\New_Esign\New_Esign\bin\New_Esign.dll.config
+F:\Web\New_Esign\New_Esign\bin\New_Esign.dll
+F:\Web\New_Esign\New_Esign\bin\New_Esign.pdb
+F:\Web\New_Esign\New_Esign\bin\Antlr3.Runtime.dll
+F:\Web\New_Esign\New_Esign\bin\EntityFramework.dll
+F:\Web\New_Esign\New_Esign\bin\EntityFramework.SqlServer.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AI.Agent.Intercept.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AI.Web.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Web.Infrastructure.dll
+F:\Web\New_Esign\New_Esign\bin\Newtonsoft.Json.dll
+F:\Web\New_Esign\New_Esign\bin\Owin.dll
+F:\Web\New_Esign\New_Esign\bin\System.Web.Helpers.dll
+F:\Web\New_Esign\New_Esign\bin\System.Web.Mvc.dll
+F:\Web\New_Esign\New_Esign\bin\System.Web.Optimization.dll
+F:\Web\New_Esign\New_Esign\bin\System.Web.Razor.dll
+F:\Web\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.dll
+F:\Web\New_Esign\New_Esign\bin\System.Web.WebPages.dll
+F:\Web\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.dll
+F:\Web\New_Esign\New_Esign\bin\WebGrease.dll
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AI.Web.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Web\New_Esign\New_Esign\bin\System.Web.Helpers.xml
+F:\Web\New_Esign\New_Esign\bin\System.Web.Mvc.xml
+F:\Web\New_Esign\New_Esign\bin\System.Web.Optimization.xml
+F:\Web\New_Esign\New_Esign\bin\System.Web.Razor.xml
+F:\Web\New_Esign\New_Esign\bin\System.Web.WebPages.xml
+F:\Web\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.xml
+F:\Web\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.xml
+F:\Web\New_Esign\New_Esign\bin\Antlr3.Runtime.pdb
+F:\Web\New_Esign\New_Esign\bin\Newtonsoft.Json.xml
+F:\Web\New_Esign\New_Esign\bin\EntityFramework.xml
+F:\Web\New_Esign\New_Esign\bin\EntityFramework.SqlServer.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.xml
+F:\Web\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\Web\New_Esign\New_Esign\obj\Debug\New_Esign.csprojResolveAssemblyReference.cache
+F:\Web\New_Esign\New_Esign\obj\Debug\New_Esign.dll
+F:\Web\New_Esign\New_Esign\obj\Debug\New_Esign.pdb
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\ApplicationInsights.config
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\roslyn\csc.exe
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\roslyn\vbc.exe
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\New_Esign.dll.config
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\New_Esign.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\New_Esign.pdb
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Antlr3.Runtime.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\EntityFramework.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\EntityFramework.SqlServer.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AI.Web.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Owin.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.Helpers.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.Mvc.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.Optimization.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.Razor.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.WebPages.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\WebGrease.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AI.Web.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.Helpers.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.Mvc.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.Optimization.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.Razor.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.WebPages.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Antlr3.Runtime.pdb
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Newtonsoft.Json.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\EntityFramework.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\EntityFramework.SqlServer.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\obj\Debug\New_Esign.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\obj\Debug\New_Esign.csproj.CopyComplete
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\obj\Debug\New_Esign.dll
+C:\Users\Administrator\Desktop\New_Esign\New_Esign\obj\Debug\New_Esign.pdb
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\ApplicationInsights.config
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\roslyn\csc.exe
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\roslyn\vbc.exe
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\New_Esign.dll.config
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\New_Esign.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\New_Esign.pdb
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Antlr3.Runtime.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\EntityFramework.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\EntityFramework.SqlServer.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AI.Web.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\NewModel.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Newtonsoft.Json.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\OAuth.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Owin.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\PagedList.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\PagedList.Mvc.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\RestSharp.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Syncfusion.EJ2.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.Helpers.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.Mvc.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.Optimization.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.Razor.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.WebPages.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\WebGrease.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\NewModel.pdb
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\NewModel.dll.config
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AI.Web.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Newtonsoft.Json.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\OAuth.pdb
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\OAuth.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\PagedList.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\PagedList.Mvc.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\RestSharp.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Syncfusion.EJ2.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.pdb
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.Helpers.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.Mvc.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.Optimization.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.Razor.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.WebPages.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Antlr3.Runtime.pdb
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\EntityFramework.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\EntityFramework.SqlServer.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\obj\Debug\New_Esign.csprojAssemblyReference.cache
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\obj\Debug\New_Esign.csproj.CoreCompileInputs.cache
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\obj\Debug\New_Esign.csproj.CopyComplete
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\obj\Debug\New_Esign.dll
+C:\Users\Quang Minh\Desktop\New folder\New_Esign\New_Esign\obj\Debug\New_Esign.pdb
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\ApplicationInsights.config
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\roslyn\csc.exe
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\roslyn\vbc.exe
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\New_Esign.dll.config
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\New_Esign.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\New_Esign.pdb
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Antlr3.Runtime.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\EntityFramework.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\EntityFramework.SqlServer.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AI.Web.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\NewModel.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Newtonsoft.Json.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\OAuth.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Owin.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\PagedList.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\PagedList.Mvc.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\RestSharp.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Syncfusion.EJ2.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.Helpers.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.Mvc.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.Optimization.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.Razor.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.WebPages.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\WebGrease.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\NewModel.pdb
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\NewModel.dll.config
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AI.Web.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Newtonsoft.Json.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\OAuth.pdb
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\OAuth.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\PagedList.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\PagedList.Mvc.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\RestSharp.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Syncfusion.EJ2.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.pdb
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.Helpers.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.Mvc.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.Optimization.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.Razor.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.WebPages.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Antlr3.Runtime.pdb
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\EntityFramework.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\EntityFramework.SqlServer.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\obj\Debug\New_Esign.csprojAssemblyReference.cache
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\obj\Debug\New_Esign.csproj.CoreCompileInputs.cache
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\obj\Debug\New_Esign.csproj.CopyComplete
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\obj\Debug\New_Esign.dll
+C:\Users\Quang Minh\Desktop\No delete\New_Esign\New_Esign\obj\Debug\New_Esign.pdb
+F:\New_Esign\New_Esign\bin\ApplicationInsights.config
+F:\New_Esign\New_Esign\bin\roslyn\csc.exe
+F:\New_Esign\New_Esign\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\New_Esign\New_Esign\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\New_Esign\New_Esign\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\New_Esign\New_Esign\bin\roslyn\System.Collections.Immutable.dll
+F:\New_Esign\New_Esign\bin\roslyn\System.Reflection.Metadata.dll
+F:\New_Esign\New_Esign\bin\roslyn\vbc.exe
+F:\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe
+F:\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe.config
+F:\New_Esign\New_Esign\bin\New_Esign.dll.config
+F:\New_Esign\New_Esign\bin\New_Esign.dll
+F:\New_Esign\New_Esign\bin\New_Esign.pdb
+F:\New_Esign\New_Esign\bin\Antlr3.Runtime.dll
+F:\New_Esign\New_Esign\bin\EntityFramework.dll
+F:\New_Esign\New_Esign\bin\EntityFramework.SqlServer.dll
+F:\New_Esign\New_Esign\bin\Microsoft.AI.Agent.Intercept.dll
+F:\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.dll
+F:\New_Esign\New_Esign\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\New_Esign\New_Esign\bin\Microsoft.AI.Web.dll
+F:\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.dll
+F:\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.dll
+F:\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.dll
+F:\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.dll
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.dll
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.dll
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.dll
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.dll
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.dll
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.dll
+F:\New_Esign\New_Esign\bin\Microsoft.Web.Infrastructure.dll
+F:\New_Esign\New_Esign\bin\NewModel.dll
+F:\New_Esign\New_Esign\bin\Newtonsoft.Json.dll
+F:\New_Esign\New_Esign\bin\OAuth.dll
+F:\New_Esign\New_Esign\bin\Owin.dll
+F:\New_Esign\New_Esign\bin\PagedList.dll
+F:\New_Esign\New_Esign\bin\PagedList.Mvc.dll
+F:\New_Esign\New_Esign\bin\RestSharp.dll
+F:\New_Esign\New_Esign\bin\Syncfusion.EJ2.dll
+F:\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.dll
+F:\New_Esign\New_Esign\bin\System.Web.Helpers.dll
+F:\New_Esign\New_Esign\bin\System.Web.Mvc.dll
+F:\New_Esign\New_Esign\bin\System.Web.Optimization.dll
+F:\New_Esign\New_Esign\bin\System.Web.Razor.dll
+F:\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.dll
+F:\New_Esign\New_Esign\bin\System.Web.WebPages.dll
+F:\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.dll
+F:\New_Esign\New_Esign\bin\WebGrease.dll
+F:\New_Esign\New_Esign\bin\NewModel.pdb
+F:\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.xml
+F:\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\New_Esign\New_Esign\bin\Microsoft.AI.Web.xml
+F:\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.xml
+F:\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.xml
+F:\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\New_Esign\New_Esign\bin\Newtonsoft.Json.xml
+F:\New_Esign\New_Esign\bin\OAuth.pdb
+F:\New_Esign\New_Esign\bin\OAuth.xml
+F:\New_Esign\New_Esign\bin\PagedList.xml
+F:\New_Esign\New_Esign\bin\PagedList.Mvc.xml
+F:\New_Esign\New_Esign\bin\RestSharp.xml
+F:\New_Esign\New_Esign\bin\Syncfusion.EJ2.xml
+F:\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.pdb
+F:\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.xml
+F:\New_Esign\New_Esign\bin\System.Web.Helpers.xml
+F:\New_Esign\New_Esign\bin\System.Web.Mvc.xml
+F:\New_Esign\New_Esign\bin\System.Web.Optimization.xml
+F:\New_Esign\New_Esign\bin\System.Web.Razor.xml
+F:\New_Esign\New_Esign\bin\System.Web.WebPages.xml
+F:\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.xml
+F:\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.xml
+F:\New_Esign\New_Esign\bin\Antlr3.Runtime.pdb
+F:\New_Esign\New_Esign\bin\EntityFramework.xml
+F:\New_Esign\New_Esign\bin\EntityFramework.SqlServer.xml
+F:\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.xml
+F:\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.xml
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.xml
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.xml
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.xml
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.xml
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.xml
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.xml
+F:\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\New_Esign\New_Esign\obj\Debug\New_Esign.csprojResolveAssemblyReference.cache
+F:\New_Esign\New_Esign\obj\Debug\New_Esign.dll
+F:\New_Esign\New_Esign\obj\Debug\New_Esign.pdb
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\ApplicationInsights.config
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\roslyn\csc.exe
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\roslyn\System.Collections.Immutable.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\roslyn\System.Reflection.Metadata.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\roslyn\vbc.exe
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\roslyn\VBCSCompiler.exe
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\roslyn\VBCSCompiler.exe.config
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\New_Esign.dll.config
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\New_Esign.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\New_Esign.pdb
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Antlr3.Runtime.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\EntityFramework.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\EntityFramework.SqlServer.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AI.Agent.Intercept.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AI.DependencyCollector.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AI.Web.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AI.WindowsServer.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.ApplicationInsights.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AspNet.Identity.Core.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.Cookies.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.Facebook.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.Google.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.OAuth.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.Twitter.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Web.Infrastructure.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\NewModel.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Newtonsoft.Json.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\OAuth.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Owin.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\PagedList.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\PagedList.Mvc.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\RestSharp.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Syncfusion.EJ2.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Linq.Dynamic.Core.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.Helpers.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.Mvc.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.Optimization.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.Razor.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.WebPages.Deployment.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.WebPages.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.WebPages.Razor.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\WebGrease.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\NewModel.pdb
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AI.DependencyCollector.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AI.Web.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AI.WindowsServer.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.ApplicationInsights.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Newtonsoft.Json.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\OAuth.pdb
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\OAuth.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\PagedList.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\PagedList.Mvc.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\RestSharp.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Syncfusion.EJ2.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Linq.Dynamic.Core.pdb
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Linq.Dynamic.Core.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.Helpers.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.Mvc.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.Optimization.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.Razor.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.WebPages.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.WebPages.Deployment.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\System.Web.WebPages.Razor.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Antlr3.Runtime.pdb
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\EntityFramework.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\EntityFramework.SqlServer.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AspNet.Identity.Core.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.Facebook.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.Cookies.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.OAuth.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.Google.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.Twitter.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\WEB-KHANG\Esign 2.0\New_Esign\obj\Debug\New_Esign.dll
+D:\WEB-KHANG\Esign 2.0\New_Esign\obj\Debug\New_Esign.pdb
+D:\WEB-KHANG\Esign 2.0\New_Esign\obj\Debug\New_Esign.csprojResolveAssemblyReference.cache
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\ApplicationInsights.config
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\roslyn\csc.exe
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\roslyn\System.Collections.Immutable.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\roslyn\System.Reflection.Metadata.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\roslyn\vbc.exe
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe.config
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\New_Esign.dll.config
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\New_Esign.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\New_Esign.pdb
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Antlr3.Runtime.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\EntityFramework.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\EntityFramework.SqlServer.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AI.Agent.Intercept.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AI.Web.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Web.Infrastructure.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\NewModel.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Newtonsoft.Json.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\OAuth.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Owin.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\PagedList.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\PagedList.Mvc.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\RestSharp.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Syncfusion.EJ2.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.Helpers.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.Mvc.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.Optimization.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.Razor.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.WebPages.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\WebGrease.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\NewModel.pdb
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AI.Web.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Newtonsoft.Json.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\OAuth.pdb
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\OAuth.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\PagedList.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\PagedList.Mvc.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\RestSharp.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Syncfusion.EJ2.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.pdb
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.Helpers.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.Mvc.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.Optimization.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.Razor.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.WebPages.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Antlr3.Runtime.pdb
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\EntityFramework.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\EntityFramework.SqlServer.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\obj\Debug\New_Esign.csprojResolveAssemblyReference.cache
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\obj\Debug\New_Esign.dll
+D:\WEB-KHANG\New_Esign_2020_10_08\New_Esign\New_Esign\obj\Debug\New_Esign.pdb
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\ApplicationInsights.config
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\roslyn\csc.exe
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\roslyn\System.Collections.Immutable.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\roslyn\System.Reflection.Metadata.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\roslyn\vbc.exe
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe.config
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\New_Esign.dll.config
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\New_Esign.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\New_Esign.pdb
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Antlr3.Runtime.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\EntityFramework.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\EntityFramework.SqlServer.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AI.Agent.Intercept.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AI.Web.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Web.Infrastructure.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\NewModel.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Newtonsoft.Json.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\OAuth.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Owin.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\PagedList.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\PagedList.Mvc.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\RestSharp.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Syncfusion.EJ2.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.Helpers.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.Mvc.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.Optimization.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.Razor.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.WebPages.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\WebGrease.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\NewModel.pdb
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AI.Web.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Newtonsoft.Json.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\OAuth.pdb
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\OAuth.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\PagedList.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\PagedList.Mvc.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\RestSharp.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Syncfusion.EJ2.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.pdb
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.Helpers.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.Mvc.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.Optimization.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.Razor.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.WebPages.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Antlr3.Runtime.pdb
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\EntityFramework.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\EntityFramework.SqlServer.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\obj\Debug\New_Esign.csprojResolveAssemblyReference.cache
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\obj\Debug\New_Esign.dll
+D:\WEB-KHANG\New_Esign-2020-10-12\New_Esign\New_Esign\obj\Debug\New_Esign.pdb
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\ApplicationInsights.config
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\roslyn\csc.exe
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\roslyn\System.Collections.Immutable.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\roslyn\System.Reflection.Metadata.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\roslyn\vbc.exe
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\roslyn\VBCSCompiler.exe.config
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\New_Esign.dll.config
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\New_Esign.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\New_Esign.pdb
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Antlr3.Runtime.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\EntityFramework.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\EntityFramework.SqlServer.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AI.Web.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Web.Infrastructure.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\NewModel.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Newtonsoft.Json.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\OAuth.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Owin.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\PagedList.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\PagedList.Mvc.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\RestSharp.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Syncfusion.EJ2.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.Helpers.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.Mvc.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.Optimization.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.Razor.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.WebPages.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\WebGrease.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\NewModel.pdb
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\NewModel.dll.config
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AI.DependencyCollector.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AI.Web.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AI.WindowsServer.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.ApplicationInsights.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Newtonsoft.Json.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\OAuth.pdb
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\OAuth.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\PagedList.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\PagedList.Mvc.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\RestSharp.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Syncfusion.EJ2.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.pdb
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Linq.Dynamic.Core.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.Helpers.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.Mvc.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.Optimization.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.Razor.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.WebPages.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.WebPages.Deployment.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\System.Web.WebPages.Razor.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Antlr3.Runtime.pdb
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\EntityFramework.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\EntityFramework.SqlServer.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Google.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Khang.savecode\MVC\New_Esign\New_Esign\obj\Debug\New_Esign.csprojAssemblyReference.cache
+E:\Khang.savecode\MVC\New_Esign\New_Esign\obj\Debug\New_Esign.csproj.CoreCompileInputs.cache
+E:\Khang.savecode\MVC\New_Esign\New_Esign\obj\Debug\New_Esign.csproj.CopyComplete
+E:\Khang.savecode\MVC\New_Esign\New_Esign\obj\Debug\New_Esign.dll
+E:\Khang.savecode\MVC\New_Esign\New_Esign\obj\Debug\New_Esign.pdb

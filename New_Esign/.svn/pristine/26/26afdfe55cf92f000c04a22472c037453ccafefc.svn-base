@@ -1,0 +1,512 @@
+﻿@model New_Esign.Areas.Employee.Models.FORM_IT_01Model
+@using New_Esign.Common;
+@using New_Esign.AppCode;
+@using System.Data;
+@using System.Data.SqlClient;
+
+@{
+    ViewBag.Title = "ContactForm";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+@{
+    var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+    var newCode = new NewCode();
+
+    var signList = newCode.getListManager("V0957033");
+    string[] signemp = signList.Split(';');
+    string signemp1 = signemp[0];
+    string signemp2 = signemp[1];
+    var signname11 = newCode.getNameEmp(signemp1);
+    var signname22 = newCode.getNameEmp(signemp2);
+
+    SQLServerDBHelper db = new SQLServerDBHelper("EsignDB");
+    string sqlQuery = @"select * from SubmitSign where FormID = '7' ";
+    DataTable tb = new DataTable();
+    tb = db.DoSQLSelect(sqlQuery);
+
+    string nameSign = "";
+    if (tb.Rows.Count > 0)
+    {
+        for (int i = 0; i < tb.Rows.Count; i++)
+        {
+            nameSign += tb.Rows[i]["SignName"].ToString() + ";";
+        }
+    }
+
+    string[] signName = nameSign.Split(';');
+    string pNoSig = "";
+    string pNameSig = "";
+
+    //string sign1 = signName[0];
+
+}
+@using (Html.BeginForm("ContactForm", "ApplicationHR", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="mainContent" id="submitForm">
+    <h3 class="pageTitle text-center text-primary text-uppercase">
+        <i class="fas fa-fw fa-file-alt"></i>  @LanguageHelper.GetResource("contact.FG") <br /> <br />@LanguageHelper.GetResource("contact.list")
+    </h3>
+    <hr />
+    @Html.HiddenFor(m => m.FormID, new { @class = "hidden" })
+    <div class="">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <label class="font-weight-bold">
+            @LanguageHelper.GetResource("yellow.inforUser")
+        </label>
+        <div class="text-center text-danger for font-weight-bold" id="ErrorType"><h3>@ViewBag.ErrorType</h3></div>
+        <div class="form-group row">
+            <div class="form-group col-md-4 row border">
+                <div class="col-md-12 form-group row" style="padding-top:10px;">
+                    <label class="col-md-4">@LanguageHelper.GetResource("Register.EmployeeNO")<span style="color:red">*</span>:</label>
+                    @*<input value="@Model.Title9" type="text" class="form-control col-md-6" readonly="readonly" />*@
+                    @Html.TextBoxFor(model => model.Title2Content, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                    @*@Html.TextBoxFor(model => model.UserID, "", new { @class = "form-control col-md-6",@value=session.UserID })*@
+                    @Html.ValidationMessageFor(model => model.Title2Content, "", new { @class = "text-danger" })
+                    @*<input class="form-control col-md-6" type="text" id="USER_EMP" name="USER_EMP" />*@
+                </div>
+                <div class="col-md-12 form-group row">
+                    <label class="col-md-4">@LanguageHelper.GetResource("yellow.Name")<span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title3Content, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.Title3Content, "", new { @class = "text-danger" })
+                    @*<input class="form-control col-md-6" type="text" id="USER_NAME" readonly="readonly" />*@
+                </div>
+                <div class="col-md-12 form-group row">
+                    <label class="col-md-4">@LanguageHelper.GetResource("Register.CostNO")<span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title4Content, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                    @*@Html.TextBoxFor(model => model.CodeCost, "", new { @class = "form-control col-md-6" })*@
+                    @*@Html.ValidationMessageFor(model => model.CodeCost, "", new { @class = "text-danger" })*@
+                    @*<input class="form-control col-md-6" type="text" id="CODE_COST" readonly="readonly" />*@
+                </div>
+            </div>
+            <div class="form-group col-md-8 border">
+                <div class="col-md-12 form-group row" style="padding-top:10px;">
+                    <label class="col-md-4">@LanguageHelper.GetResource("Register.E-Mail")<span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title5Content, "", new { @class = "form-control col-md-6" })
+                    @*@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })*@
+
+                    @*<input class="form-control col-md-6" type="text" id="USERMAIL" readonly="readonly" />*@
+                </div>
+                <div class="col-md-12 form-group row">
+                    <label class="col-md-4">@LanguageHelper.GetResource("Register.Telephone")<span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title6Content, "", new { @class = "form-control col-md-6" })
+                    @Html.ValidationMessageFor(model => model.Title6, "", new { @class = "text-danger" })
+                    <div data-alerts="alerts" data-titles="{'Warning': '<em>Warning!</em>'}" data-ids="Title6Lab"></div>
+
+                    @*<input class="form-control col-md-6" type="text" />*@
+                </div>
+                <div class="col-md-12 form-group row">
+                    <label class="col-md-4">@LanguageHelper.GetResource("Register.Department")<span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title7Content, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                    @*@Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })*@
+
+                    @*<input class="form-control col-md-6" type="text" id="DEPARTMENT" readonly="readonly" />*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <label class="font-weight-bold">
+            @LanguageHelper.GetResource("yellow.Detail")
+        </label>
+        <div class="row form-group">
+            <div class="col-md-6 row border" style="padding-top:10px;">
+                <div class="form-group col-md-12 row">
+                    <label class="col-md-4">@LanguageHelper.GetResource("contact.unit") <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title9Content, "", new { @class = "form-control col-md-7" })
+                    <div data-alerts="alerts" data-titles="{'Warning': '<em>Warning!</em>'}" data-ids="Title9Lab"></div>
+                </div>
+                <div class="form-group col-md-12 row">
+                    <label class="col-md-4">@LanguageHelper.GetResource("contact.Organizer") <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title10Content, "", new { @class = "form-control col-md-7" })
+                    <div data-alerts="alerts" data-titles="{'Warning': '<em>Warning!</em>'}" data-ids="Title10Lab"></div>
+                </div>
+                <div class="form-group col-md-12 row">
+                    <label class="col-md-4">@LanguageHelper.GetResource("contact.submission"):</label>
+                    @Html.TextBoxFor(model => model.Title11Content, "", new { @class = "form-control col-md-7" })
+                </div>
+            </div>
+            <div class="col-md-6 border">
+                <div class="form-group col-md-12 row" style="padding-top:10px;">
+                    <label class="col-md-4">@LanguageHelper.GetResource("contact.Page") :</label>
+                    @Html.TextBoxFor(model => model.Title12Content, "", new { @class = "form-control col-md-7" })
+                </div>
+                <div class="form-group col-md-12 row">
+                    <label class="col-md-4">@LanguageHelper.GetResource("contact.Issuer") <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title13Content, "", new { @class = "form-control col-md-7" })
+                    <div data-alerts="alerts" data-titles="{'Warning': '<em>Warning!</em>'}" data-ids="Title13Lab"></div>
+                    @*<input class="form-control col-md-7" type="text" />*@
+                </div>
+                <div class="form-group col-md-12 row">
+                    <label class="col-md-4">@LanguageHelper.GetResource("contact.number")</label>
+                    @Html.TextBoxFor(model => model.Title14Content, "", new { @class = "form-control col-md-7" })
+                </div>
+                <div class="form-group col-md-12 row">
+                    <label class="col-md-4">@LanguageHelper.GetResource("contact.date")</label>
+                    @Html.TextBoxFor(model => model.Title15Content, "", new { @class = "form-control col-md-7" })
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-1"></div>
+            <label class="col-md-2">@LanguageHelper.GetResource("contact.Purpose") <span style="color:red">*</span>:</label>
+            @Html.TextBoxFor(model => model.Title16Content, "", new { @class = "form-control col-md-8" })
+            <div data-alerts="alerts" data-titles="{'Warning': '<em>Warning!</em>'}" data-ids="Title16Lab"></div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-1"></div>
+            <label class="col-md-2">@LanguageHelper.GetResource("contact.Explanation") <span style="color:red">*</span>:</label>
+            @Html.TextAreaFor(model => model.Title17Content, 10, 10, new { @class = "form-control col-md-8" })
+            <div data-alerts="alerts" data-titles="{'Warning': '<em>Warning!</em>'}" data-ids="Title17Lab"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-1"></div>
+            <label class="col-md-2">@LanguageHelper.GetResource("yellow.upload") <span style="color:red">*</span>:</label>
+            <div class="col-md-8">
+                @*@Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple", @class = "form-control col-md-12" })
+        @Html.ValidationMessageFor(model => model.files, "", new { @class = "text-danger" })*@
+                @Html.TextBox("file", "", new { type = "file", @class = "form-control col-md-8" })
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="AlertBox" class="alert @TempData["AlertType"] hide col-md-10">
+                        @TempData["AlertMessage"]
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="card-body" style="margin-top:10px;">
+        <table class="table" id="myTable">
+            <thead>
+                <tr>
+                    @*<th>序號 / STT</th>*@
+                    <th>簽核類型 / Loại hình ký</th>
+                    <th>簽核工號 / Mã thẻ người ký</th>
+                    <th>簽核人 / Người phê duyệt</th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (int i = 0; i < Model.approvalApps.Count; i++)
+                {
+
+                    <tr>
+                        @*<td>@Model.approvalApps[i].step</td>*@
+                        <td>
+                            <select name="position[]" class="gender my_select_sign btn-block"><option value="@Model.approvalApps[i].statusName">@Model.approvalApps[i].statusName</option></select>
+                            @*<input class="btn-block" type="text" name="position[]" value="@Model.approvalApps[i].statusName" />*@
+                        </td>
+                        @{
+                            if (i == 0)
+                            {
+                                <td><input class="btn-block nextNo" type="text" name="pno[]" value="@Model.approvalApps[i].signEmpNo" readonly/></td>
+                                <td><input class="btn-block" type="text" name="pname[]" value="@Model.approvalApps[i].SignName" readonly/></td>
+                            }
+                            else
+                            {
+                                <td><input class="btn-block nextNo" type="text" name="pno[]" id="@pNoSig" value="@Model.approvalApps[i].signEmpNo" /></td>
+                                <td><input class="btn-block" type="text" name="pname[]" id="@pNameSig" value="@Model.approvalApps[i].SignName" readonly/></td>
+                            }
+                        }
+                        <td><input type="button" value="@LanguageHelper.GetResource("Admin.Approver.Title.Add")" onclick="myCreate(this)" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <input type="hidden" class="form-control" name="testKQ1" id="testKQ1" />
+    <input type="hidden" class="form-control" name="testKQ" id="testKQ" />
+    <input type="hidden" class="form-control" name="testKQ2" id="testKQ2" />
+    <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px">
+        <button onclick="sbApplication()" type="button" class="btn btn-outline-success col-sm-2 col-md-2 col-lg-2">@LanguageHelper.GetResource("yellow.submit")</button>
+        <div id="divCheckbox" style="display: none;">
+            <input type="submit" value="submit_ok" class="btn btn-outline-success col-sm-2 col-md-2 col-lg-2" id="submit" name="submit" />
+        </div>
+            
+    </div>
+</div>
+}
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+
+            $(window).keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+
+            $(function () {
+                $('#AlertBox').removeClass('hide');
+                $('#AlertBox').delay(10000).slideUp(500);
+            });
+            //LAY THONG TIN MA THE
+            $("#Title2Content").change(function () {
+                var reg = $("#Title2Content").val();
+                //var reg = $("#UserID").val();
+                //var json = { empNo: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+                        $("#Title3Content").val(data.USER_NAME);
+                        $("#Title7Content").val(data.DEPARTMENT_NAME);
+                        $("#Title5Content").val(data.NOTES_ID);
+                        $("#Title4Content").val(data.CURRENT_OU_CODE);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    },
+                });
+            });
+
+
+            
+                var listInput = $("#myTable input[name='pno[]']");
+                //var arrayTye = listNameInput;
+
+                $.each(listInput, function (index, item) {
+                    item.onchange = function () {
+                        var empNo = item.value;
+                        var a = listInput.index(item);
+                        var idName = "#nameSig" + a;
+                        $.ajax({
+                            type: "Get",
+                            url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                            contentType: "application/json; charset=utf-8",
+                            data: { id: empNo },
+                            success: function (data) {
+                                var name = data.USER_NAME;
+                                $(idName).val(data.USER_NAME);
+                            },
+                            error: function (error) {
+
+                                alert(error);
+                            },
+                        });
+                    }
+                });
+            
+            $(function () {
+                startRefresh();
+
+            });
+
+            function startRefresh() {
+                setTimeout(startRefresh, 1000);
+
+                var listInput = $("#myTable input[name='pno[]']");
+                var listInputName = $("#myTable input[name='pname[]']");
+                //var arrayTye = listNameInput;
+
+                $.each(listInput, function (index, item) {
+                    item.onchange = function () {
+                        var empNo = item.value;
+                        var a = listInput.index(item);
+                        var idName = "#nameSig" + a;
+                        $.ajax({
+                            type: "Get",
+                            url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                            contentType: "application/json; charset=utf-8",
+                            data: { id: empNo },
+                            success: function (data) {
+                                var name = data.USER_NAME;
+                                //$(idName).val(data.USER_NAME);
+                                $(item).closest('td').next().find(":input[name='pname[]']").val(name);
+                                
+                            },
+                            error: function (error) {
+
+                                alert(error);
+                            },
+                        });
+                    }
+                });               
+            }
+
+            $('input[type="file"]').on('change', function () {
+                Object.values(this.files).forEach(function (file) {
+                    console.log('Type: ${file.type}');
+                    var typeF = file.type;
+                    if (file.type == 'application/pdf') {
+                        
+                    }
+                    else {
+                        alert("Please using file PDF!")
+                    }
+                    var sizeF = file.size;
+
+                    if (sizeF > 2450000) {
+                        alert("Attachment size is less than 2 MB!")
+                    }
+                })
+            })
+
+            //$(".nextNo").change(function () {
+            //    var reg = $(".nextNo").val();
+            //    //var reg = $("#UserID").val();
+            //    //var json = { empNo: reg };
+            //    $.ajax({
+            //        type: "Get",
+            //        url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+            //        contentType: "application/json; charset=utf-8",
+            //        data: { id: reg },
+            //        success: function (data) {
+            //            var uho = "hele";
+            //            //$("td.nextNo").next("input").val(data.USER_NAME);
+            //            var diste = $(this).closest('td').next().find('input').val();
+            //            $(this).closest('td').next().find('input').val(uho);
+                        
+            //        },
+            //        error: function (error) {
+
+            //            alert(error);
+            //        },
+            //    });
+            //});
+
+            //$('.nextNo').on('change','input', function () {
+            //    var disc = $(this).closest('td').next().find('input').val();
+            //});
+
+            //$('.mySelect').on('change', function () {
+            //    var value = $(this).val();
+            //    alert(value);
+            //});
+        });
+
+        
+        //them hang va cot
+        function myCreate(row) {
+            var i = row.parentNode.parentNode.rowIndex;
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(i + 1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            //var cell3 = row.insertCell(2);
+            //var cell3 = row.insertCell(3);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);           
+
+            cell1.innerHTML = '<td><select name="position[]" class="gender my_select_sign mySelect"><option value="課級主管審核 / Chủ quản cấp phòng">課級主管審核 / Chủ quản cấp phòng</option><option value="部級主管審核 / Chủ quản cấp bộ phận"> 部級主管審核 / Chủ quản cấp bộ phận</option><option value="處級主管審核 / Chủ quản cấp văn phòng sự nghiệp">處級主管審核 / Chủ quản cấp văn phòng sự nghiệp</option><option value="部級主管審核 / Chủ quản cấp bộ phận">部級主管審核 / Chủ quản cấp bộ phận</option><option value="會簽單位 / Người kết án">會簽單位 / Người kết án</option></select></td>';
+
+            cell2.innerHTML = '<td><input class="btn-block nextNo" type="text" name="pno[]" /></td>';
+            cell3.innerHTML = '<td><input class="btn-block" type="text" name="pname[]"  id="nameSig"/></td>';
+            cell4.innerHTML = '<td><input type="button" value="@LanguageHelper.GetResource("Admin.Approver.Title.Add")" onclick="myCreate(this)" /></td>';
+            cell5.innerHTML = '<td><input type="button" value="@LanguageHelper.GetResource("Admin.DeleteConfirm")" onclick="deleteRow(this)"/></td>';
+            // myFunction();  
+            
+        }
+    
+        function deleteRow(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            //myFunction();
+            n--;
+        }
+        
+        function myFunction() {
+            for (var i = 1; i < n + 3; i++) {
+                document.getElementById("myTable").rows[i].cells[0].innerHTML = '<td>' + (i) + '</td>';
+            }
+        }
+        //get du lieu
+        // $("#submit").click(function (e) {
+        ////var values = $("input[name='pname[]']")
+        ////    .map(function () { return $(this).val(); }).get();
+        ////$("#testKQ").val(values);
+
+
+        ////var values2 = $("input[name='pname1[]']")
+        ////    .map(function () { return $(this).val(); }).get();
+        ////$("#testKQ2").val(values2);
+        ////$("#testKQ").val(values);
+        ////var values1 = $("select[name='position[]']")
+        ////    .map(function () { return $(this).val(); }).get();
+        ////$("#testKQ1").val(values1);
+        //var values1 = $("input[name='pname[]']")
+        //    .map(function () { return $(this).val(); }).get();
+        //$("#testKQ1").val(values1);             
+        //var values2 = $("input[name='pno[]']")
+        //    .map(function () { return $(this).val(); }).get();
+        //$("#testKQ2").val(values2);             
+        //var values = $("select[name='position[]']")
+        //    .map(function () { return $(this).val(); }).get();
+        //     $("#testKQ").val(values);                          
+        // });
+
+        function sbApplication() {           
+            var checkFlag = true;
+            var values1 = $("input[name='pname[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#testKQ1").val(values1);
+            var arrayValues1 = values1.toString().split(',');
+            var filtered1 = arrayValues1.filter(Boolean);
+            var values2 = $("input[name='pno[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#testKQ2").val(values2);
+            var arrayValues2 = values2.toString().split(',');
+            var filtered2 = arrayValues2.filter(Boolean);
+            var values = $("select[name='position[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#testKQ").val(values);
+            var arrayValues = values.toString().split(',');
+            var filtered = arrayValues.filter(Boolean);
+
+            if ($('#Title9Content').val() == "") {
+                checkFlag = false;
+            }
+            if ($('#Title5Content').val() == "") {
+                checkFlag = false;
+            }
+            if ($('#Title6Content').val() == "") {
+                checkFlag = false;
+            }
+            if ($('#Title9Content').val() == "") {
+                checkFlag = false;
+            }
+            if ($('#Title10Content').val() == "") {
+                checkFlag = false;
+            }
+            if ($('#Title13Content').val() == "") {
+                checkFlag = false;
+            }
+            if ($('#Title16Content').val() == "") {
+                checkFlag = false;
+            }
+            if ($('#Title17Content').val() == "") {
+                checkFlag = false;
+            }
+            if ($('input[type="file"]').get(0).files.length === 0 || $('input[type="file"]').get(0).files.length > 2450000) {
+                checkFlag = false;
+            }
+            
+            if (checkFlag == true) {
+                if (filtered.length == filtered2.length && filtered.length == filtered1.length) {
+                    $("#submit").click();
+                }
+                else {
+                    confirm("請確認簽核流程！/ Vui lòng xác nhận lại lưu trình ký!");
+                }
+            }
+            else { alert("無明確的錯誤 / Không có lỗi dõ dàng");}
+
+
+           // $("#submit").click();
+        }
+    </script>
+}

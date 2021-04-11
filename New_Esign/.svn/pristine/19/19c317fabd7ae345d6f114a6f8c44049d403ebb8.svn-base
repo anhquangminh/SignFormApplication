@@ -1,0 +1,5 @@
+﻿<select name="LanguageSelector" class="selectLanguage">
+    <option value="@LanguageHelper.languageEN" class="langEN">English</option>
+    <option value="@LanguageHelper.languageVI" class="langVI">Tiếng Việt</option>
+    <option value="@LanguageHelper.languageCH" class="langCH">中文</option>
+</select>

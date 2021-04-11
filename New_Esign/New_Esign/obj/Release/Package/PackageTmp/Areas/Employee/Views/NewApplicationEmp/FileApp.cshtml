@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "FileApp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>FileApp</h2>
+
+@model IEnumerable<NewModel.EF.Application>
+
+<table class="table table-bordered">
+    <tr>
+        <th class="col-md-4">
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+
+        <th class="col-md-2"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+
+            <td>
+                @Html.ActionLink("Download", "DownloadFilesApp", new { id = item.ApplicationNo })
+
+            </td>
+        </tr>
+    }
+
+

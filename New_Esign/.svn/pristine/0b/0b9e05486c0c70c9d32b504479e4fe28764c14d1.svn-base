@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Assets2/css/test1.css" rel="stylesheet" />
+    <title>Error Page</title>
+</head>
+<body class="ErrorPa centerText">
+    @using (Html.BeginForm("Index", "ErrorPage", new { area = "" }, FormMethod.Get, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            @{
+                string errorName = "";
+                if (Session["errorLog"] != null)
+                {
+                    errorName = Session["errorLog"].ToString();
+                }
+                else
+                {
+                    errorName = " Cam on da quan tam den he thong!";
+                }
+            <h2 class="text-center text-light">@errorName</h2>
+            }
+            <h1> Error please check with IT - Contact 27847</h1>
+
+        </div>
+     }
+    </body>
+</html>

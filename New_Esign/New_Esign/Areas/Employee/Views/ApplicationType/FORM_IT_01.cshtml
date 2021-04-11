@@ -1,0 +1,303 @@
+﻿@model New_Esign.Areas.Employee.Models.FORM_IT_01Model
+@using New_Esign.Common;
+@using New_Esign.AppCode;
+
+@{
+    ViewBag.Title = "FORM_IT_01";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+@using (Html.BeginForm("FORM_IT_01", "ApplicationType", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+    var emp = session.UserID.Trim();
+    var name = session.UserName;
+    <h2></h2>
+
+    <fieldset class="card-header">
+        <h2 class="text-xl-center">
+            <i class="fas fa-fw fa-file-alt"></i>  @Model.Title20
+        </h2>
+    </fieldset>
+
+    <fieldset class="form-group card-body border">
+        <legend class="border-bottom-0" id="title2">@Model.Title2</legend>
+        <div class="form-group row">
+            <div class="row1 col-md-6 ">
+                <label>@Model.Title4 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title4Content, "", new { @class = "form-control col-md-8", @readonly = "readonly" })
+
+                <label>@Model.Title0 <span style="color:red">*</span>:</label>
+                <div>
+                    @Html.DropDownListFor(model => model.Title0Content, null, new { @class = "dropdown form-control col-md-8 btn btn-light" })
+                </div>
+               
+
+                <label>@Model.Title1 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title1Content, "", new { @class = "form-control col-md-8", @readonly = "readonly" })
+
+            </div>
+            <div class="row1 col-md-6">
+                <label>@Model.Title3 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title3Content, "", new { @class = "form-control col-md-8", @readonly = "readonly" })
+
+                <label>@Model.Title5 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title5Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title5Example + "" })
+
+                <label>@Model.Title17 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title17Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title17Example + "" })
+
+            </div>
+
+        </div>
+        <legend class="border-top">@Model.Title6</legend>
+        <br />
+        <div class="form-group row">
+            <div class="row1 col-md-4">
+                <label>@Model.Title26 <span style="color:red">*</span>:</label>
+                <br />
+                @Html.TextBoxFor(model => model.Title26Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title26Example + "" })
+
+            </div>
+            <div class="row1 col-md-4">
+                <label>@Model.Title7 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title7Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title7Example + "" ,@readonly="readonly"})
+
+            </div>
+            <div class="row1 col-md-4 ">
+                <label>@Model.Title8 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title8Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title8Example + "" })
+
+            </div>
+
+        </div>
+        <legend class="border-top">@Model.Title9</legend>
+        <br />
+        <div class="form-group row">
+            <div class="row1 col-md-6">
+                <label>@Model.Title10 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title10Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title10Example + "" })
+
+                <label>@Model.Title11 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title11Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title11Example + "" })
+
+
+            </div>
+            <div class="row1 col-md-6 ">
+                <label>@Model.Title12 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title12Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title12Example + "" })
+
+                <label>@Model.Title13 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title13Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title13Example + "" })
+
+            </div>
+
+        </div>
+    </fieldset>
+    <fieldset class="card-header form-group border">
+        <legend>
+            @Model.Title25
+        </legend>
+        <div class="form-group row">
+            <div class="row1 col-md-6">
+                @Html.TextBoxFor(model => model.Title14, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title14 + "" })
+                @Html.TextBoxFor(model => model.Title14Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title14Example + "" })
+
+                <br />
+                @Html.TextBoxFor(model => model.Title16, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title16 + "" })
+
+                @Html.TextBoxFor(model => model.Title16Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title16Example + "" })
+
+            </div>
+            <div class="row1 col-md-6 ">
+                @*<label>@Model.Title15 :</label>*@
+                @Html.TextBoxFor(model => model.Title15, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title15 + "" })
+
+                @Html.TextBoxFor(model => model.Title15Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title15Example + "" })
+                <br />
+                <label> @Model.Title22 :</label>
+                <br />
+                @*@Html.TextBox("file", "", new { type = "file" })*@
+                @Html.TextBox("file", "", new { type = "file", @class = "form-control col-md-8" })
+
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <label style="color:red;"><h5>注：Chú ý:</h5> </label>
+            @Html.TextAreaFor(m => m.Title19, 15, 40, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+
+    </fieldset>
+    <fieldset>
+        <table class="table" id="myTable">
+            <thead>
+                <tr>
+                    <th>序號 / STT</th>
+                    <th>簽核類型 / Loại hình ký</th>
+                    <th>簽核工號 / Mã thẻ người ký</th>
+                    <th>簽核人 / Người phê duyệt</th>
+                    <th>them hang</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.approvalApps.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.approvalApps[i].step</td>
+                        <td>@Model.approvalApps[i].statusName</td>
+                        @{
+                            if (i == 0)
+                            {
+                                <td>@Html.TextBoxFor(m => m.approvalApps[i].signEmpNo, new { @Value = "" + emp + "", @class = "form-control", @readonly = "readonly" })</td>
+                                <td>@Html.TextBoxFor(m => m.approvalApps[i].SignName, new { @Value = "" + name + "", @class = "form-control", @readonly = "readonly" })</td>
+                            }
+                            else
+                            {
+
+                                <td><input class="btn-block" type="text" name="pno[]" value="@Model.approvalApps[i].signEmpNo" /></td>
+                                <td><input class="btn-block" type="text" name="pname[]" value="@Model.approvalApps[i].SignName" /></td>
+                            }
+                        }
+                        <td><input type="button" value="Create row" onclick="myCreate(this)" /></td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+        <input type="hidden" class="form-control" name="testKQ" id="testKQ" />
+        <input type="hidden" class="form-control" name="testKQ1" id="testKQ1" />
+        <input type="hidden" class="form-control" name="testKQ2" id="testKQ2" />
+    </fieldset>
+        <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px; margin-bottom:30px">
+            <input type="submit" value="Next / 下一个" name="submit" class="btn btn-outline-success col-sm-1 col-md-1 col-lg-1 font-weight-bold" />
+        </div>
+
+        @*<input type="submit" value="submit" />*@
+
+                                    @section scripts{
+                                        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+                                        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+                                        <script>
+
+                                            $(document).ready(function () {
+                                                for (let i = 0; i < 50; i++) {
+                                                    $("#signEmpNo" + i + "").change(function () {
+                                                        var reg = $("#signEmpNo" + i + "").val();
+                                                        //var reg = $("#UserID").val();
+                                                        //var json = { empNo: reg };
+                                                        $.ajax({
+                                                            type: "Get",
+                                                            url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                                                            contentType: "application/json; charset=utf-8",
+                                                            data: { id: reg },
+                                                            success: function (data) {
+
+                                                                $("#signEmpName" + i + "").val(data.USER_NAME);
+                                                                //$("#Department").val(data.DEPARTMENT_NAME);
+                                                                //$("#Email").val(data.NOTES_ID);
+                                                                //$("#CodeCost").val(data.CURRENT_OU_CODE);
+                                                            },
+                                                            error: function (error) {
+
+                                                                alert(error);
+                                                            },
+                                                        });
+                                                    });
+                                                }
+                                                $("#Title26Content").change(function () {
+                                                    var reg = $("#Title26Content").val();
+                                                    //var reg = $("#UserID").val();
+                                                    //var json = { empNo: reg };
+                                                    $.ajax({
+                                                        type: "Get",
+                                                        url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                                                        contentType: "application/json; charset=utf-8",
+                                                        data: { id: reg },
+                                                        success: function (data) {
+
+                                                            $("#Title7Content").val(data.USER_NAME);
+                                                            //$("#Department").val(data.DEPARTMENT_NAME);
+                                                            //$("#Email").val(data.NOTES_ID);
+                                                            //$("#CodeCost").val(data.CURRENT_OU_CODE);
+                                                        },
+                                                        error: function (error) {
+
+                                                            alert(error);
+                                                        },
+                                                    });
+                                                });
+                                            });
+
+                                            // luu trinh ky
+                                            function myCreate(row) {
+                                                var i = row.parentNode.parentNode.rowIndex;
+                                                var table = document.getElementById("myTable");
+                                                var row = table.insertRow(i + 1);
+                                                var cell1 = row.insertCell(0);
+                                                var cell2 = row.insertCell(1);
+                                                //var cell3 = row.insertCell(2);
+                                                //var cell3 = row.insertCell(3);
+                                                var cell3 = row.insertCell(2);
+                                                var cell4 = row.insertCell(3);
+                                                var cell5 = row.insertCell(4);
+
+                                                cell1.innerHTML = '<td><select name="position[]" class="gender my_select_sign"><option value="set1">@LanguageHelper.GetResource("yellow.reason")</option><option value="部級 / Cấp bộ phận"> @LanguageHelper.GetResource("yellow.upload")</option><option value="Ket an">Ket An</option><option value="anhkhang3">TEst3</option></select></td>';
+                                                //cell1.innerHTML = '';
+                                                cell2.innerHTML = '<td> <input class="btn-block" type="text" name="pno[]" value="" /></td>';
+                                                //cell3.innerHTML = '<td> <input class="btn-block" type="text" name="pname1[]" value="' + n + '"  /></td>';
+                                                //cell4.innerHTML = "<td><select name="position[]" class="gender"><option value='" + row.FormName + "'>" + row.FormDisplayName + "</option></select></td>";
+                                                cell3.innerHTML =  '<td><input class="btn-block" type="text" name="pname[]"   /></td>';
+                                                cell4.innerHTML = '<td><input type="button" value="Create row" onclick="myCreate(this)" /></td>';
+                                                cell5.innerHTML = '<td><input type="button" value="Delete" onclick="deleteRow(this)"/></td>';
+
+                                                // myFunction();
+                                                n++;
+                                            }
+                                            function deleteRow(btn) {
+                                                var row = btn.parentNode.parentNode;
+                                                row.parentNode.removeChild(row);
+                                                //myFunction();
+                                                n--;
+                                            }
+                                            function myFunction() {
+                                                for (var i = 1; i < n + 3; i++) {
+                                                    document.getElementById("myTable").rows[i].cells[0].innerHTML = '<td>' + (i) + '</td>';
+                                                }
+
+                                            }
+                                            $("#submit").click(function (e) {
+                                                //var values = $("input[name='pname[]']")
+                                                //    .map(function () { return $(this).val(); }).get();
+                                                //$("#testKQ").val(values);
+
+
+                                                //var values2 = $("input[name='pname1[]']")
+                                                //    .map(function () { return $(this).val(); }).get();
+                                                //$("#testKQ2").val(values2);
+                                                //$("#testKQ").val(values);
+                                                //var values1 = $("select[name='position[]']")
+                                                //    .map(function () { return $(this).val(); }).get();
+                                                //$("#testKQ1").val(values1);
+                                                var values1 = $("input[name='pname[]']")
+                                                    .map(function () { return $(this).val(); }).get();
+                                                $("#testKQ1").val(values1);
+
+                                                var values2 = $("input[name='pno[]']")
+                                                    .map(function () { return $(this).val(); }).get();
+                                                $("#testKQ2").val(values2);
+
+                                                var values = $("select[name='position[]']")
+                                                    .map(function () { return $(this).val(); }).get();
+                                                $("#testKQ").val(values);
+
+                                                //alert(values);
+                                            });
+
+                                        </script>
+ }
+}

@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - @LanguageHelper.GetResource("ApplicationName")</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink(LanguageHelper.GetResource("ApplicationName"), "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink(LanguageHelper.GetResource("AdministratorPage"), "Index", "Administrator", new { area = "" }, null)</li>
+                    @*<li>@Html.ActionLink(LanguageHelper.GetResource("Admin.Menu.LanguagesManager"), "Index", "Languages", new { area = "Administrators" }, null)</li>*@
+                    <li>@Html.ActionLink(LanguageHelper.GetResource("Admin.Menu.ResourcesManager"), "Index", "Resources", new { area = "Administrators" }, null)</li>
+                    <li>@Html.ActionLink(LanguageHelper.GetResource("Admin.Menu.ApproverManager"), "Index", "Approver", new { area = "Administrators" }, null)</li>
+                    <li>@Html.ActionLink(LanguageHelper.GetResource("Admin.Menu.FormListManager"), "Index", "Forms", new { area = "Administrators" }, null)</li>
+                </ul>
+                @*@Html.Partial("~/Views/Shared/_LoginPartial.cshtml")*@
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="top-user-info">
+            @Html.Partial("~/Areas/Administrators/Views/Shared/_UserInfo.cshtml")
+        </div>
+        @RenderBody()
+        @{
+            string pathStr = "";
+            try
+            {
+                object[] path = HttpContext.Current.Request.RequestContext.RouteData.Values.Values.ToArray();
+                for (int i = 0; i < path.Length; i++)
+                {
+                    pathStr = pathStr + "/" + path[i].ToString();
+                }
+            }
+            catch (Exception exc) { }
+
+        }
+        <hr />
+        <footer id="path" data-area="@HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"]" data-path="@pathStr">
+            <p>&copy; @Html.ActionLink(DateTime.Now.Year.ToString(), "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink" })  - @LanguageHelper.GetResource("FooterContent")</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/esign")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @if (!UserHelper.isLogged())
+    {
+        <script type="text/javascript">
+            document.getElementById('loginLink').click();
+        </script>
+    }
+</body>
+</html>

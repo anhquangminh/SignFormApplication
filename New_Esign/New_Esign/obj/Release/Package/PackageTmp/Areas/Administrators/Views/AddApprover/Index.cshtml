@@ -1,0 +1,76 @@
+﻿@model IEnumerable<NewModel.EF.Approver>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrators/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BU.BUName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Site.SiteName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApproverType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApproverEmpNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApproverEmpName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SetupEmp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SetupTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LevelApprover)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BU.BUName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Site.SiteName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApproverType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApproverEmpNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApproverEmpName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SetupEmp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SetupTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LevelApprover)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ApproverID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ApproverID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ApproverID })
+        </td>
+    </tr>
+}
+
+</table>

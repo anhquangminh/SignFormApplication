@@ -1,0 +1,505 @@
+﻿@model New_Esign.Areas.Employee.Models.FORM_IT_01Model
+
+@using New_Esign.Common;
+@using New_Esign.AppCode;
+@using System.Data;
+@using System.Data.SqlClient;
+
+@{
+    ViewBag.Title = "DatalistPC";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+<style type="text/css">
+    .boder-top {
+        border: 1px solid #eaeeef;
+        margin-left: 0px;
+        padding: 10px;
+        border-radius: 5px;
+        border-top-left-radius: 0px;
+    }
+
+    .row-line {
+        margin-left: 0px;
+        padding: 10px;
+    }
+
+    .label-in {
+        margin-bottom: 0px;
+        color: black;
+        font-weight: 500;
+        margin-top: 20px;
+    }
+
+    i {
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: bold;
+    }
+</style>
+
+<h2>DatalistPC</h2>
+
+
+
+<div class="card container">
+
+    @using (Html.BeginForm("DataListPC", "ApplicationIT", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="card-header" style="background-color: white; padding: 15px;">
+            <strong class="card-title font-weight-bold" style="width: 100%; text-align: center; font-size: 24px; color: black; font-family: arial; font-weight: 500; margin: 0px;">
+                攜出資料清單 <br />
+                
+            </strong>
+        </div>
+        <div class="card-body">
+            <label class="label label-in" style="background-color: #5cb85c;">
+                <i class="metismenu-icon pe-7s-users"></i>
+                @LanguageHelper.GetResource("yellow.inforUser")
+            </label>
+            <div class="row boder-top formEnter">
+                <div class="row row-line col-12">
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label class="control-label mb-1">
+                            工號 Mã nhân viên
+                        </label>
+                        <input name="empID" id="empID" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label class="control-label mb-1">中文姓名 Họ tên</label>
+                        <input name="empName" id="empName" class="form-control" type="text" readonly>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label class="control-label mb-1">Mail:</label>
+                        <input name="Title0" id="Title0" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="row row-line col-12">
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label class="control-label mb-1">
+                            職稱 Chức vụ
+                        </label>
+                        <input class="form-control" type="text" name="Title1" id="Title1" readonly>
+                    </div>
+
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label class="control-label mb-1">
+                            單位 Bộ phận
+                        </label>
+                        <input class="form-control" type="text" name="Title3" id="Title3" readonly>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label class="control-label mb-1">
+                            Dien thoai
+                        </label>
+                        <input class="form-control" type="text" name="Title2" id="Title2">
+                    </div>
+                </div>
+                <div class="row row-line col-12">
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label class="control-label mb-1">Factory</label>
+                        @Html.DropDownListFor(model => model.Title4, null, new { @class = "dropdown form-control btn btn-light" })
+                    </div>
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label class="control-label mb-1">
+                            Location
+                        </label>
+                        @Html.DropDownListFor(model => model.Title5, new SelectList(""), new { @class = "dropdown form-control btn btn-light" })
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <label class="label label-in label-danger" style="background-color:#b8f1e8"><span class="text-danger font-weight-bold">備註 Lưu ý：</span> <br /></label>
+            <div class="row boder-top">
+                <div class="row row-line col-12">
+                    <label>
+                        資料應整理至統一的目錄下，並以此格式製作文件清單，<br />
+                        清單應包含文件數量、名稱（應細至單個檔案名稱）、<br />
+                        使用者、文件路徑、文件大小、文件機密等級及文檔簡要說明，並經其部級（含）以上主管、資安常委及授權主管簽核，<br />
+                        <span class="text-danger">禁止攜出Notes本區和ghost文件 </span>
+                    </label>
+                </div>
+            </div>
+            <label class="label label-in label-danger" style="background-color:#b8f1e8"><span class="text-danger font-weight-bold">原因 Nguyên nhân：</span> <br /></label>
+            <div class="row boder-top">
+               
+                    <textarea rows="4" cols="50" name="Title26Example" class="row row-line col-12"></textarea>
+                
+            </div>
+            <label class="label label-in" style="background-color: #5cb85c;">
+                <i class="metismenu-icon pe-7s-users"></i>
+                作業流程 Lưu trình ký
+            </label>
+            <div class="row boder-top formEnter">
+                <div class="row row-line col-12">
+                    <table class="table" id="signTable">
+                        <thead>
+                            <tr>
+                                <th>簽核類型 / Loại hình ký</th>
+                                <th>簽核工號 / Mã thẻ người ký</th>
+                                <th>簽核人 / Người phê duyệt</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <select name="position[]" class="gender my_select_sign btn-block"><option value="申請人 / Người xin đơn">申請人 / Người xin đơn</option></select>
+                                    @*<input class="btn-block" type="text" name="position[]" value="@Model.approvalApps[i].statusName" />*@
+                                </td>
+
+                                <td><input class="btn-block nextNo" type="text" name="pno[]" id="empSubmit" readonly /></td>
+                                <td><input class="btn-block" type="text" name="pname[]" readonly id="nameSubmit" /></td>
+                                <td><input type="button" value="@LanguageHelper.GetResource("Admin.Approver.Title.Add")" onclick="myCreate2(this)" /></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select name="position[]" class="gender my_select_sign btn-block"><option value="部級主管審核 / Chủ quản cấp bộ phận"> 部級主管審核 / Chủ quản cấp bộ phận</option></select>
+                                    @*<input class="btn-block" type="text" name="position[]" value="@Model.approvalApps[i].statusName" />*@
+                                </td>
+
+                                <td><input class="btn-block nextNo" type="text" name="pno[]" id="empBU" readonly /></td>
+                                <td><input class="btn-block" type="text" name="pname[]" id="nameBU" readonly /></td>
+                                <td><input type="button" value="@LanguageHelper.GetResource("Admin.Approver.Title.Add")" onclick="myCreate2(this)" /></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select name="position[]" class="gender my_select_sign btn-block"><option value="會簽IT主管 / Chủ quản IT"> 會簽IT主管 / Chủ quản IT</option></select>
+                                    @*<input class="btn-block" type="text" name="position[]" value="@Model.approvalApps[i].statusName" />*@
+                                </td>
+
+                                <td><input class="btn-block nextNo" type="text" name="pno[]" id="empIT" readonly /></td>
+                                <td><input class="btn-block" type="text" name="pname[]" readonly id="nameIT" /></td>
+                                <td><input type="button" value="@LanguageHelper.GetResource("Admin.Approver.Title.Add")" onclick="myCreate2(this)" /></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select name="position[]" class="gender my_select_sign btn-block"><option value="授權主管 / Chủ quản được ủy quyền">授權主管 / Chủ quản được ủy quyền</option></select>
+                                    @*<input class="btn-block" type="text" name="position[]" value="@Model.approvalApps[i].statusName" />*@
+                                </td>
+
+                                <td><input class="btn-block nextNo" type="text" name="pno[]" id="empFac" readonly value="800014" /></td>
+                                <td><input class="btn-block" type="text" name="pname[]" readonly id="nameFac" value="莊資億" /></td>
+                                <td><input type="button" value="@LanguageHelper.GetResource("Admin.Approver.Title.Add")" onclick="myCreate2(this)" /></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="row formEnter" style="margin:10px;">
+                <button type="button" style="margin:auto;" class="btn col-2 btn-secondary"><i class="fa fa-backward"></i>&nbsp; 呈單 Xóa bỏ</button>
+                <button type="button" style="margin:auto;" id="subEnter" class="btn col-2 btn-success" onclick="sbApplication()"><i class="fa fa-magic"></i>&nbsp; @LanguageHelper.GetResource("yellow.submit")</button>
+
+                <input type="submit" value="submit_ok" class="btn btn-outline-success col-sm-2 col-md-2 col-lg-2" id="submit" name="submit" style="display: none;" />
+
+            </div>
+            <hr />
+            <label class="label label-in" style="background-color: #5cb85c;">
+                <i class="metismenu-icon pe-7s-users"></i>
+                個人信息 Thông tin danh sach file
+            </label>
+            <div class="row boder-top formEnter">
+                <table class="table" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>文件名稱</th>
+                            <th>文件路徑</th>
+                            <th>大小（kb）</th>
+                            <th>機密等級</th>
+                            <th>內容說明</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="form-control" name='fname[]' /></td>
+                            <td><input type="text" class="form-control" name='fpath[]' /></td>
+                            <td><input type="text" class="form-control" name='flengt[]' /></td>
+                            <td><input type="text" class="form-control" name='fsecurity[]' /></td>
+                            <td><input type="text" class="form-control" name='fdescript[]' /></td>
+                            <td><input type="button" value="+Add File" onclick="myCreate(this)" class=" btn btn-primary" /></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        // lay thong tinnguoi ky
+        //lay thong tin nguoi ky
+        <input type="hidden" class="form-control" name="Title1Example" id="Title1Example" />
+        <input type="hidden" class="form-control" name="Title2Example" id="Title2Example" />
+        <input type="hidden" class="form-control" name="Title3Example" id="Title3Example" />
+        <input type="hidden" class="form-control" name="Title4Example" id="Title4Example" />
+        <input type="hidden" class="form-control" name="Title5Example" id="Title5Example" />
+
+        <input type="hidden" class="form-control" name="Title6Example" id="Title6Example" />
+        <input type="hidden" class="form-control" name="Title7Example" id="Title7Example" />
+        <input type="hidden" class="form-control" name="Title8Example" id="Title8Example" />
+        <input type="hidden" class="form-control" name="Title9Example" id="Title9Example" />
+        <input type="hidden" class="form-control" name="Title10Example" id="Title10Example" />
+
+        <input type="hidden" class="form-control" name="Title11Example" id="Title11Example" />
+        <input type="hidden" class="form-control" name="Title12Example" id="Title12Example" />
+    }
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            //tat nut enter
+            //$(window).keydown(function (event) {
+            //    if (event.keyCode == 13) {
+            //        event.preventDefault();
+            //        return false;
+            //    }
+            //});
+
+            $("#Title14Content").on('autocompletechange change', function () {
+                var getdata = $("#Title14Content").val();
+
+                $.get("/ApplicationIT/getLocation", { facID: $("#Title14Content").val() }, function (data) {
+                    $("#Title5Content").empty();
+                    $.each(data, function (index, row) {
+
+                        $("#Title5Content").append("<option value='" + row.Location + "'>" + row.Location + "</option>")
+                    });
+                });
+
+            }).change();
+
+            $("#empID").change(function () {
+                var reg = $("#empID").val();
+                var json = { empID: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+                        $("#empName").val(data.USER_NAME);
+                        $("#Title3").val(data.DEPARTMENT_NAME);
+                        $("#Title1").val(data.JOB_TITLE);
+                        $("#Title0").val(data.NOTES_ID);
+                        $("#empSubmit").val(data.USER_ID);
+                        $("#nameSubmit").val(data.USER_NAME);
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    }
+                });
+
+                $.get("/ApplicationIT/getEmpMBU", { empNo: reg }, function (data) {                    
+                    $("#empBU").empty();
+                    $("#nameBU").empty();
+                    $("#empBU").val(data[0]);
+                    $("#nameBU").val(data[1]);                   
+                });
+
+            });
+
+            // lay thong tin ma the
+            $(function () {
+                startRefresh();
+
+            });
+
+            function startRefresh() {
+                setTimeout(startRefresh, 1000);
+
+                var listInput = $("#signTable input[name='pno[]']");
+                var listInputName = $("#signTable input[name='pname[]']");
+                //var arrayTye = listNameInput;
+
+                $.each(listInput, function (index, item) {
+                    item.onchange = function () {
+                        var empNo = item.value;
+                        var a = listInput.index(item);
+                        var idName = "#nameSig" + a;
+                        $.ajax({
+                            type: "Get",
+                            url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                            contentType: "application/json; charset=utf-8",
+                            data: { id: empNo },
+                            success: function (data) {
+                                var name = data.USER_NAME;
+                                var dept = data.DEPARTMENT_NAME;
+                                //$(idName).val(data.USER_NAME);
+                                $(item).closest('td').next().find(":input[name='pname[]']").val(name);
+                                $(item).closest('td').next().find(":input[name='pname[]']").closest('td').next().find(":input[name='pdept[]']").val(dept);
+                            },
+                            error: function (error) {
+                                alert(error);
+                            },
+                        });
+                    }
+                });
+
+            }
+
+            //lay thong tin xuong
+            $("#Title4").on('autocompletechange change', function () {
+                //var getdata = $("#OfficeFac").val();
+
+                $.get("/ApplicationIT/getLocation", { facID: $("#Title4").val() }, function (data) {
+                    $("#Title5").empty();
+                   
+                    $.each(data, function (index, row) {
+
+                        //<label>   <input value='" + row.Location + "' type='checkbox' name='List' /> "+row.Location+" </label>
+
+                        //$("#Location").append("<label>   <input value='" + row.Location + "' type='checkbox' name='List' /> " + row.Location +" </label>")
+                        //$("#Location").append("<option value='" + row.Location + "'>" + row.Location + "  </option>")
+                        $("#Title5").append("<option value='" + row.Location + "'>" + row.Location + "  </option>")    
+                    });
+                });
+
+                $.get("/ApplicationIT/getEmpManIT", { fac: $("#Title4").val() }, function (data) {
+                    $("#empIT").empty();
+                    $("#empIT").val(data[0]);    
+                    $("#nameIT").val(data[1]); 
+                });
+
+            }).change();
+        });
+        // xu ly phan them hang
+        function myCreate(row) {
+            var i = row.parentNode.parentNode.rowIndex;
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(i + 1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            //var cell3 = row.insertCell(2);
+            //var cell3 = row.insertCell(3);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+
+
+            cell1.innerHTML = '<td><input type="text" class="form-control" name="fname[]" /></td>';
+            cell2.innerHTML = '<td><input type="text" class="form-control" name="fpath[]"/></td>';
+            cell3.innerHTML = '<td><input type="text" class="form-control" name="flengt[]"/></td>';
+            cell4.innerHTML = '<td><input type="text" class="form-control" name="fsecurity[]"/></td>';
+            cell5.innerHTML = '<td><input type="text" class="form-control" name="fdescript[]"/></td>';
+
+            cell6.innerHTML = '<td><input type="button" value="+Add File" onclick="myCreate(this)" class=" btn btn-primary"/></td>';
+            cell7.innerHTML = '<td><input type="button" value="-Delete File" onclick="deleteRow(this)" class=" btn btn-danger"/></td>';
+            // myFunction();
+
+        }
+
+        function deleteRow(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            //myFunction();
+            n--;
+        }
+
+        function myCreate2(row) {
+            var i = row.parentNode.parentNode.rowIndex;
+            var table = document.getElementById("signTable");
+            var row = table.insertRow(i + 1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            //var cell3 = row.insertCell(2);
+            //var cell3 = row.insertCell(3);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);           
+
+            cell1.innerHTML = '<td><select name="position[]" class="gender my_select_sign mySelect"><option value="課級主管審核 / Chủ quản cấp phòng">課級主管審核 / Chủ quản cấp phòng</option><option value="部級主管審核 / Chủ quản cấp bộ phận"> 部級主管審核 / Chủ quản cấp bộ phận</option><option value="處級主管審核 / Chủ quản cấp văn phòng sự nghiệp">處級主管審核 / Chủ quản cấp văn phòng sự nghiệp</option><option value="部級主管審核 / Chủ quản cấp bộ phận">部級主管審核 / Chủ quản cấp bộ phận</option><option value="會簽單位 / Người kết án">會簽單位 / Người kết án</option></select></td>';
+
+            cell2.innerHTML = '<td><input class="btn-block nextNo" type="text" name="pno[]" /></td>';
+            cell3.innerHTML = '<td><input class="btn-block" type="text" name="pname[]"  id="nameSig"/></td>';
+            cell4.innerHTML = '<td><input type="button" value="@LanguageHelper.GetResource("Admin.Approver.Title.Add")" onclick="myCreate2(this)" /></td>';
+            cell5.innerHTML = '<td><input type="button" value="@LanguageHelper.GetResource("Admin.DeleteConfirm")" onclick="deleteRow2(this)"/></td>';
+            // myFunction();
+        }
+
+
+        function deleteRow2(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            //myFunction();
+            n--;
+        }
+
+
+        function sbApplication() {
+            var checkFlag = true;
+            var values1 = $("input[name='pname[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#Title1Example").val(values1);
+
+            var arrayValues1 = values1.toString().split(',');
+            var filtered1 = arrayValues1.filter(Boolean);
+
+            var values2 = $("input[name='pno[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#Title2Example").val(values2);
+
+            var arrayValues2 = values2.toString().split(',');
+            var filtered2 = arrayValues2.filter(Boolean);
+            var values = $("select[name='position[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#Title3Example").val(values);
+
+
+            var values4 = $("input[name='fname[]']")
+                .map(function () { return $(this).val() ; }).get();
+            $("#Title4Example").val(values4);
+
+
+            var values5 = $("input[name='fpath[]']")
+                .map(function () { return $(this).val() ; }).get();
+            $("#Title5Example").val(values5);
+
+            var values6 = $("input[name='flengt[]']")
+                .map(function () { return $(this).val() ; }).get();
+            $("#Title6Example").val(values6);
+
+            var values7 = $("input[name='fsecurity[]']")
+                .map(function () { return $(this).val() ; }).get();
+            $("#Titl75Example").val(values7);
+
+            var values8 = $("input[name='fdescript[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#Title8Example").val(values8);
+
+
+            if (checkFlag == true) {
+
+                    //confirm("請確認簽核流程！/ Vui lòng xác nhận lại lưu trình ký!");
+                    $("#submit").click();             
+                       
+            }
+            else { alert("無明確的錯誤 / Không có lỗi dõ dàng"); }
+            // $("#submit").click();
+        }
+
+
+
+        //ngat nut enter
+        function keypressHandler(e) {
+            if (e.which == 13) {
+                e.preventDefault(); //stops default action: submitting form
+                $(this).blur();
+                //$('#subEnter').focus().click();//give your submit an ID
+            }
+        }
+
+        $('.formEnter').keypress(keypressHandler);
+    </script>
+}

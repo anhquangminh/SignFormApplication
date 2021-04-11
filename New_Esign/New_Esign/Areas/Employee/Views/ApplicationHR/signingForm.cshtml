@@ -1,0 +1,385 @@
+﻿@model New_Esign.Areas.Employee.Models.FORM_IT_01Model
+
+@using New_Esign.Common;
+@using New_Esign.AppCode;
+@using System.Data;
+@using System.Data.SqlClient;
+@{
+    /**/
+
+    ViewBag.Title = "formSign";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+@{
+    // lay thong tin
+    var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+    var emp = session.UserID.Trim();
+
+    SQLServerDBHelper db = new SQLServerDBHelper("EsignDB");
+    string sqlQuery = @"select * from DATA_APP_ESIGN where APPNO = '" + Model.AppNo + "' ";
+    DataTable tb = new DataTable();
+    tb = db.DoSQLSelect(sqlQuery);
+    string empCheck = "";
+    string empCreate = "";
+    string empState = " ";
+    if (tb.Rows.Count > 0)
+    {
+        empCheck = tb.Rows[0]["Checkwait"].ToString().Trim();
+        empCreate = tb.Rows[0]["USEREMP"].ToString().Trim();
+        empState = tb.Rows[0]["APPSTATUS"].ToString().Trim();
+    }
+    <style>
+        .form-control[readonly] {
+            background-color: #eaeeef;
+        }
+
+        .icon_ct {
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+
+    //menu chinh
+    @*@Html.TextBoxFor(m => m.ApplicationType, "", new { style = "display: none;" })
+        @Html.TextBoxFor(m => m.filePath, "", new { style = "display: none;" })
+        @Html.TextBoxFor(m => m.fileName, "", new { style = "display: none;" })*@
+
+
+    //string nameSign = "";
+    //if (tb.Rows.Count > 0)
+    //{
+    //    for (int i = 0; i < tb.Rows.Count; i++)
+    //    {
+    //        nameSign += tb.Rows[i]["SignName"].ToString() + ";";
+    //    }
+    //}
+
+    //string[] signName = nameSign.Split(';');
+
+    string link = Model.Title19Content;
+    string[] linkQ = link.Split('.');
+    //string sign1 = signName[0];
+
+}
+@using (Html.BeginForm("signingForm", "ApplicationHR", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="mainContent">
+        <h3 class="pageTitle text-center text-primary text-uppercase">
+            <i class="fas fa-fw fa-file-alt"></i>   @LanguageHelper.GetResource("contact.FG") <br /> <br />@LanguageHelper.GetResource("contact.list")
+        </h3>
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-md-4">
+                <span class="label label-in"> <i class="metismenu-icon pe-7s-ticket icon_ct"></i>  @LanguageHelper.GetResource("yellow.OrderNo"): @Model.AppNo</span>
+                @*@Html.TextBoxFor(model => model.AppNo, "", new { @class = "form-control", @readonly = "readonly" })*@
+                @Html.TextBoxFor(m => m.AppNo, "", new { style = "display: none;" })
+            </div>
+
+        </div>
+        <div class="">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <label class="font-weight-bold">
+                @LanguageHelper.GetResource("yellow.inforUser")
+            </label>
+            <div class="form-group row">
+                <div class="form-group col-md-4 row border">
+                    <div class="col-md-12 form-group row" style="padding-top:10px;">
+                        <label class="col-md-4">@LanguageHelper.GetResource("Register.EmployeeNO")<span style="color:red">*</span>:</label>
+                        @*<input value="@Model.Title9" type="text" class="form-control col-md-6" readonly="readonly" />*@
+                        @Html.TextBoxFor(model => model.Title2Content, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                        @*@Html.TextBoxFor(model => model.UserID, "", new { @class = "form-control col-md-6",@value=session.UserID })*@
+                        @Html.ValidationMessageFor(model => model.Title2Content, "", new { @class = "text-danger" })
+                        @*<input class="form-control col-md-6" type="text" id="USER_EMP" name="USER_EMP" />*@
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">@LanguageHelper.GetResource("yellow.Name")<span style="color:red">*</span>:</label>
+                        @Html.TextBoxFor(model => model.Title3Content, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Title3Content, "", new { @class = "text-danger" })
+                        @*<input class="form-control col-md-6" type="text" id="USER_NAME" readonly="readonly" />*@
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">@LanguageHelper.GetResource("Register.CostNO")<span style="color:red">*</span>:</label>
+                        @Html.TextBoxFor(model => model.Title4Content, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                        @*@Html.TextBoxFor(model => model.CodeCost, "", new { @class = "form-control col-md-6" })*@
+                        @*@Html.ValidationMessageFor(model => model.CodeCost, "", new { @class = "text-danger" })*@
+                        @*<input class="form-control col-md-6" type="text" id="CODE_COST" readonly="readonly" />*@
+                    </div>
+                </div>
+                <div class="form-group col-md-8 border">
+                    <div class="col-md-12 form-group row" style="padding-top:10px;">
+                        <label class="col-md-4">@LanguageHelper.GetResource("Register.E-Mail")<span style="color:red">*</span>:</label>
+                        @Html.TextBoxFor(model => model.Title5Content, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                        @*@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })*@
+
+                        @*<input class="form-control col-md-6" type="text" id="USERMAIL" readonly="readonly" />*@
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">@LanguageHelper.GetResource("Register.Telephone")<span style="color:red">*</span>:</label>
+                        @Html.TextBoxFor(model => model.Title6Content, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Title6, "", new { @class = "text-danger" })
+
+                        @*<input class="form-control col-md-6" type="text" />*@
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-4">@LanguageHelper.GetResource("Register.Department")<span style="color:red">*</span>:</label>
+                        @Html.TextBoxFor(model => model.Title7Content, "", new { @class = "form-control col-md-6", @readonly = "readonly" })
+                        @*@Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })*@
+
+                        @*<input class="form-control col-md-6" type="text" id="DEPARTMENT" readonly="readonly" />*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <label class="font-weight-bold">
+                @Model.Title8
+            </label>
+            <div class="row form-group">
+                <div class="col-md-6 row border" style="padding-top:10px;">
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">@LanguageHelper.GetResource("contact.unit") <span style="color:red">*</span>:</label>
+                        @Html.TextBoxFor(model => model.Title9Content, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">@LanguageHelper.GetResource("contact.Organizer") <span style="color:red">*</span>:</label>
+                        @Html.TextBoxFor(model => model.Title10Content, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">@LanguageHelper.GetResource("contact.submission"):</label>
+                        @Html.TextBoxFor(model => model.Title11Content, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-md-6 border">
+                    <div class="form-group col-md-12 row" style="padding-top:10px;">
+                        <label class="col-md-4">@LanguageHelper.GetResource("contact.Page") :</label>
+                        @Html.TextBoxFor(model => model.Title12Content, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">@LanguageHelper.GetResource("contact.Issuer") <span style="color:red">*</span>:</label>
+                        @Html.TextBoxFor(model => model.Title13Content, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                        @*<input class="form-control col-md-7" type="text" />*@
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">@LanguageHelper.GetResource("contact.number")</label>
+                        @Html.TextBoxFor(model => model.Title14Content, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">@LanguageHelper.GetResource("contact.date")</label>
+                        @Html.TextBoxFor(model => model.Title15Content, "", new { @class = "form-control col-md-7", @readonly = "readonly" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group ">
+                @*<div class="col-md-1"></div>*@
+                <label class="col-md-2">@LanguageHelper.GetResource("contact.Purpose") <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title16Content, "", new { @class = "form-control col-md-9", @readonly = "readonly" })
+                @*<div class="col-md-1"></div>*@
+            </div>
+            <div class="form-group row">
+                @*<div class="col-md-1"></div>*@
+                <label class="col-md-2">@LanguageHelper.GetResource("contact.Explanation") <span style="color:red">*</span>:</label>
+                @Html.TextAreaFor(model => model.Title17Content, 3, 3, new { @class = "form-control col-md-9", @readonly = "readonly" })
+            </div>
+            <div class="">
+                @if (linkQ.Length > 1)
+                {
+                    <label class="label label-in col-md-2" style="background-color:#b3486b;color:white"><i class="metismenu-icon pe-7s-bottom-arrow icon_ct"></i>&nbsp; @LanguageHelper.GetResource("yellow.dowload"):<span style="color:red"></span></label>
+                    <div class="">                        
+                        <div style="padding-left:2em;">
+                            <a href='@link' download target="_blank">Download</a>
+                        </div>
+                    </div>
+
+                    @*<iframe src="@link"
+                class="col-md-8" style="min-height:500px">test case</iframe>*@
+
+                }
+
+            </div>
+            <div class="" style="height:500px;">
+                <div id="pdf">
+                    <object data="@link" style="width:100%; min-height: 500px;">
+                        <p>It appears you don't have Adobe Reader or PDF support in this web browser. <a href="@link">Click here to download the PDF</a>. Or <a href="http://10.224.69.100/sfc/Files/acrobat-reader-dc_2001320064.exe" target="_blank">click here to install Adobe Reader</a>.</p>
+                        <embed src="@link" type="application/pdf" style="width:100%;height:100px;" />
+                    </object>
+                </div>
+            </div>
+            
+            @*<div id="pdf">
+                <object data="@link" style="width:100%; height:100%; min-height: 75vh;">
+                    <p>It appears you don't have Adobe Reader or PDF support in this web browser. <a href="@link">Click here to download the PDF</a>. Or <a href="http://10.224.69.100/sfc/Files/acrobat-reader-dc_2001320064.exe" target="_blank">click here to install Adobe Reader</a>.</p>
+                    <embed src="@link" type="application/pdf" style="width:100%;height:100px;" />
+                </object>
+            </div>*@
+        </div>
+        <br />
+        <div class="" style="margin-top: 20px;">
+            @if (emp == empCheck)
+            {
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <label style="color:red;margin-top:10px" class="label"><h5> @LanguageHelper.GetResource("yellow.note"):</h5> </label>
+                        @Html.TextAreaFor(m => m.AppContent, 3, 3, new { @class = "form-control col-md-12" })
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-1"></div>
+
+                    <button name="ApprovalButton" type="submit" class="col-md-2 btn btn-outline-success col-sm-2 col-md-2 col-lg-2" value="Approval">@LanguageHelper.GetResource("yellow.Approval")</button>
+                    @*<input type="submit" value="@LanguageHelper.GetResource("yellow.Approval")" name="ApprovalButton" class="col-md-2 btn btn-outline-success" />*@
+                    <div class="col-md-1"></div>
+                    
+
+                    
+                    <button onclick="sbApplication()" type="button" class="btn btn-outline-info col-sm-2 col-md-2 col-lg-2">@LanguageHelper.GetResource("contact.forwardSigner")</button>
+
+                    <div class="col-md-1"></div>
+                   
+                    <button name="ApprovalButton" type="submit" class="col-md-2 btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" value="Reject">@LanguageHelper.GetResource("yellow.Reject")</button>
+                    @*<input type="submit" value="@LanguageHelper.GetResource("yellow.Reject")" name="ApprovalButton" class="btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" />*@
+
+                    <div class="col-md-1"></div>
+                </div>
+                <div id="formForWard" class="form-group border" style="padding-top:15px;">
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">@LanguageHelper.GetResource("yellow.signtype") <span style="color:red">*</span>:</label>
+                        <select name="position[]" class="my_select_sign mySelect dropdown-menu-lg-left form-control col-md-7"><option value="課級主管審核 / Chủ quản cấp phòng">課級主管審核 / Chủ quản cấp phòng</option><option value="部級主管審核 / Chủ quản cấp bộ phận"> 部級主管審核 / Chủ quản cấp bộ phận</option><option value="處級主管審核 / Chủ quản cấp văn phòng sự nghiệp">處級主管審核 / Chủ quản cấp văn phòng sự nghiệp</option><option value="部級主管審核 / Chủ quản cấp bộ phận">部級主管審核 / Chủ quản cấp bộ phận</option><option value="會簽單位 / Người kết án">會簽單位 / Người kết án</option></select>
+                        
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">@LanguageHelper.GetResource("Register.EmployeeNO") <span style="color:red">*</span>:</label>
+                        @Html.TextBoxFor(model => model.Title8Example, "", new { @class = "form-control col-md-7" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label class="col-md-4">@LanguageHelper.GetResource("yellow.Name"):</label>
+                        @Html.TextBoxFor(model => model.Title9Example, "", new { @class = "form-control col-md-7" })
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <div class="col-md-3"></div>
+                        <button onclick="sbAppli()" id="btnOK" type="button" class="col-md-2 btn btn-outline-success col-sm-2 col-md-2 col-lg-2" value="ForWard">@LanguageHelper.GetResource("contact.ok")</button>
+                        <div class="col-md-2"></div>
+                        <button id="cancelFor" type="button" class="col-md-2 btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" value="ForWard">@LanguageHelper.GetResource("contact.cancel")</button>
+                    </div>                    
+                </div>
+                <div>
+                    <div class="form-group row" style="padding-bottom:20px">
+                        <div class="col-md-5"></div>
+                        <a href="@Url.Action("WaitingForYourApproval", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">@LanguageHelper.GetResource("yellow.Return")</a>
+                        <div class="col-md-5" >
+                            @Html.TextBoxFor(model => model.Title7Example, "", new { @class = "form-control col-md-7" , style = "display: none;" })
+                            <button name="ApprovalButton" id="submit" type="submit" class="col-md-2 btn btn-outline-success col-sm-2 col-md-2 col-lg-2" value="ForWard" style = "display: none;">@LanguageHelper.GetResource("contact.ok")</button>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="form-group row" style="padding-bottom:20px">
+                    <div class="col-md-5"></div>
+                    <a href="@Url.Action("WaitingForYourApproval", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">@LanguageHelper.GetResource("yellow.Return")</a>
+                    <div class="col-md-5"></div>
+                </div>
+            }
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> @LanguageHelper.GetResource("No")</th>
+                        <th> @LanguageHelper.GetResource("yellow.signtype")</th>
+                        <th> @LanguageHelper.GetResource("yellow.Name")</th>
+                        <th> @LanguageHelper.GetResource("yellow.status")</th>
+                        <th> @LanguageHelper.GetResource("yellow.note")</th>
+                        <th> @LanguageHelper.GetResource("yellow.Time")</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int i = 0; i < Model.approvalApps.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model.approvalApps[i].step</td>
+                            <td>@Model.approvalApps[i].statusName</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].SignName, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].status, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].approvalsuggest, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].approvaltime, new { @class = "form-control", @readonly = "readonly" })</td>
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+}
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            //tat nut enter
+            $(window).keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+
+            $("#formForWard").slideUp();
+
+            $("#Title8Example").change(function () {
+                var reg = $("#Title8Example").val();
+                //var reg = $("#UserID").val();
+                //var json = { empNo: reg };
+                $.ajax({
+                    type: "Get",
+                    url: 'https://appvn6.foxconn.com.vn:1236/api/hr/getEmpObj',
+                    contentType: "application/json; charset=utf-8",
+                    data: { id: reg },
+                    success: function (data) {
+                        $("#Title9Example").val(data.USER_NAME);                        
+                    },
+                    error: function (error) {
+
+                        alert(error);
+                    },
+                });
+            });
+        });
+
+        function sbApplication() {
+            
+            var checkFlag = true;            
+            if (checkFlag == false) {
+                alert("無明確的錯誤 / Không có lỗi dõ dàng");
+            }
+            else {
+
+                $("#formForWard").slideDown();
+            }
+        };
+        function sbAppli() {
+
+            var value1 = $("#Title8Example").val();
+            var value2 = $("#Title9Example").val();
+            if (value1.trim() != "" && value2.trim() != "") {
+
+                $("#submit").click();
+            }
+            else {
+                alert("無明確的錯誤 / Không có lỗi dõ dàng");
+            }
+        };
+        $("#submit").click(function () {
+            var values = $("select[name='position[]']")
+                .map(function () { return $(this).val(); }).get();
+            $("#Title7Example").val(values);
+        });
+
+        $("#cancelFor").click(function () {
+           
+            $("#formForWard").slideUp();
+        });
+    </script>
+    }

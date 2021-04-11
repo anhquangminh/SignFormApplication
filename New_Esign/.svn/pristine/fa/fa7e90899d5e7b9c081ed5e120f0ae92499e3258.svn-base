@@ -1,0 +1,14 @@
+﻿<div class="user-info">
+    <div class="user-name">
+        @Html.ActionLink(LanguageHelper.GetResource("Hello") + UserHelper.getUserId(), "Index", "Administrator", new { area = "" }, htmlAttributes: new { title = LanguageHelper.GetResource("AdministratorPage") })
+    </div>
+    <div class="logout">
+        @Html.ActionLink(LanguageHelper.GetResource("LogOff"), "LogOff", "Account", new { area = "" }, null)
+    </div>
+    <div class="language">
+        @Html.Partial("_LanguagePartial")
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+

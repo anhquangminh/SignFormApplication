@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+
+
+<div class="container">
+    @*<h3>@LanguageHelper.GetResource("MenuLoGo")</h3>*@
+    <div class="row">
+        <div class="col-md-4 col-md-4 col-lg-4 font-weight-bold">
+            <div class="item_icon">
+                <a href="@Url.Action("Index","APP_ESIGN",new { area="Employee"})"><img src="~/Images/search_app.JPG" style="width:200px;height:200px" /> </a>
+            </div>
+            <div class="item_title">@LanguageHelper.GetResource("Query")</div>
+        </div>        
+        <div class="col-md-4 col-md-4 col-lg-4 font-weight-bold">
+            <div class="item_icon">
+                <a href="@Url.Action("NewCreate","CreateNewApp",new { area="Employee"})">
+                    <img src="~/Images/folder_add.png" style="width:200px;height:200px"/></a>
+            </div>
+            <div class="item_title">@LanguageHelper.GetResource("NewApplication")</div>
+        </div>
+        <div class="col-md-4 col-md-4 col-lg-4 font-weight-bold">
+            <div class="item_icon">
+                <a href="@Url.Action("WaitingForYourApproval","APP_ESIGN",new { area="Employee"})">
+                    <img src="~/Images/approval_app.JPG" style="width:200px;height:200px"/>
+                </a>
+            </div>
+            <div class="item_title">@LanguageHelper.GetResource("WaitingForYourApproval")</div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+@*<div style="float:right"><marquee direction="up"><img src="~/Assets2/css/halo3.PNG" style=" width: 300px; height: 500px"/></marquee><marquee></marquee></div>*@
+
+
+

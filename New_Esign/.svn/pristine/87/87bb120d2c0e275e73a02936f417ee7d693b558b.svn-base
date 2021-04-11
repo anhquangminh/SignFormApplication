@@ -1,0 +1,416 @@
+﻿@model New_Esign.Areas.Employee.Models.FORM_IT_01Model
+@using New_Esign.Common;
+@using New_Esign.AppCode;
+@using System.Data;
+@using System.Data.SqlClient;
+
+@{
+    ViewBag.Title = "Form_signing";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+
+@using (Html.BeginForm("Form_signing", "ApplicationType", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+    var emp = session.UserID.Trim();
+    var name = session.UserName;
+
+    SQLServerDBHelper db = new SQLServerDBHelper("EsignDB");
+    string sqlQuery = @"select * from DATA_APP_ESIGN where APPNO = '" + Model.AppNo + "' ";
+    DataTable tb = new DataTable();
+    tb = db.DoSQLSelect(sqlQuery);
+    string empCheck = "";
+    string sta = "";
+    string empNo = "";
+    if (tb.Rows.Count > 0)
+    {
+        empCheck = tb.Rows[0]["Checkwait"].ToString().Trim();
+        sta = tb.Rows[0]["step"].ToString();
+        empNo = tb.Rows[0]["ApplicantNo"].ToString();
+    }
+    string link = Model.Title22Content;
+
+    <h2></h2>
+    if (sta == "0" && emp == empNo)
+    {
+        <fieldset class="card-header">
+            <h2 class="text-xl-center">
+                <i class="fas fa-fw fa-file-alt"></i>  @Model.Title20
+            </h2>
+        </fieldset>
+        <fieldset class="card-body">
+            <div class="row form-group">
+                <div class="col-md-4 row form-group">
+                    <label class="col-md-4"> 订单号 / Đầu đơn:</label>
+                    @Html.TextBoxFor(model => model.AppNo, "", new { @class = "form-control col-md-8", @readonly = "readonly" })
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="form-group card-body border">
+            <legend class="border-bottom-0" id="title2">@Model.Title2</legend>
+            <div class="form-group row">
+                <div class="row1 col-md-6">
+                    <label>@Model.Title4 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title4Content, "", new { @class = "form-control col-md-8", @readonly = "readonly" })
+
+                    <label>@Model.Title0 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title0Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title0Example + "" })
+
+                    <label>@Model.Title1 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title1Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title1Example + "" })
+
+                </div>
+                <div class="row1 col-md-6">
+                    <label>@Model.Title3 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title3Content, "", new { @class = "form-control col-md-8", @readonly = "readonly" })
+
+                    <label>@Model.Title5 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title5Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title5Example + "" })
+
+                    <label>@Model.Title17 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title17Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title17Example + "" })
+
+                </div>
+
+            </div>
+            <legend class="border-top">@Model.Title6</legend>
+            <br />
+            <div class="form-group row">
+                <div class="row1 col-md-6">
+
+
+                    <label>@Model.Title7 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title7Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title7Example + "" })
+
+
+                </div>
+                <div class="row1 col-md-6 ">
+                    <label>@Model.Title8 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title8Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title8Example + "" })
+
+                </div>
+
+            </div>
+            <legend class="border-top">@Model.Title9</legend>
+            <br />
+            <div class="form-group row">
+                <div class="row1 col-md-6">
+
+
+                    <label>@Model.Title10 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title10Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title10Example + "" })
+
+                    <label>@Model.Title11 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title11Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title11Example + "" })
+
+
+                </div>
+                <div class="row1 col-md-6 ">
+                    <label>@Model.Title12 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title12Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title12Example + "" })
+
+                    <label>@Model.Title13 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title13Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title13Example + "" })
+
+                </div>
+
+            </div>
+        </fieldset>
+        <fieldset class="card-header form-group border">
+            <legend>
+                @Model.Title25
+            </legend>
+            <div class="form-group row">
+                <div class="row1 col-md-6">
+
+
+                    @Html.TextBoxFor(model => model.Title14, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title14 + "" })
+                    @Html.TextBoxFor(model => model.Title14Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title14Example + "" })
+
+                    <br />
+                    @Html.TextBoxFor(model => model.Title16, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title16 + "" })
+
+                    @Html.TextBoxFor(model => model.Title16Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title16Example + "" })
+
+                </div>
+                <div class="row1 col-md-6 ">
+                    @*<label>@Model.Title15 :</label>*@
+                    @Html.TextBoxFor(model => model.Title15, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title15 + "" })
+
+                    @Html.TextBoxFor(model => model.Title15Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title15Example + "" })
+                    <br />
+                    <label> @Model.Title22 <span style="color:red">*</span>:</label>
+                    <br />
+                    @*@Html.TextBox("file", "", new { type = "file" })*@
+                    @*@Html.TextBox("file", "", new { type = "file", @class = "form-control col-md-8" })*@
+
+
+                </div>
+            </div>
+
+            <br />
+            <div class="form-group">
+                <label style="color:red;"><h5>注：Chú ý:</h5> </label>
+                @Html.TextAreaFor(m => m.Title19, 15, 40, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+
+
+
+            @*//ky don*@
+            @if (emp == empCheck)
+            {
+                <div class="form-group">
+                    <label style="color:red;"><h5>笔记: Ghi chú:</h5> </label>
+                    @Html.TextAreaFor(m => m.AppContent, 10, 20, new { @class = "form-control" })
+                </div>
+                <div class="form-group row">
+                    <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 30px">
+                        <input type="submit" value="Submit" name="ApprovalButton" class="btn btn-outline-success col-sm-2 col-md-2 col-lg-2" />
+                    </div>
+                    <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 30px">
+                        <a href="@Url.Action("Index", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">Return</a>
+                    </div>
+                    <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 30px">
+                        <input type="submit" value="Delete" name="ApprovalButton" class="btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" />
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px">
+                    @*@Html.ActionLink("Return", "Index")*@
+                    <a href="@Url.Action("Index", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">Return</a>
+                </div>
+            }
+        </fieldset>
+        <fieldset>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Status Name</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Note</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int i = 0; i < Model.approvalApps.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model.approvalApps[i].step</td>
+                            <td>@Model.approvalApps[i].statusName</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].SignName, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].status, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].approvalsuggest, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].approvaltime, new { @class = "form-control", @readonly = "readonly" })</td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </fieldset>
+    }
+    else
+    {
+        <fieldset class="card-header">
+            <h2 class="text-xl-center">
+                <i class="fas fa-fw fa-file-alt"></i> @Model.Title20
+            </h2>
+        </fieldset>
+        <fieldset class="card-body">
+            <div class="row form-group">
+                <div class="col-md-4 row form-group">
+                    <label class="col-md-4"> 订单号 / Đầu đơn:</label>
+                    @Html.TextBoxFor(model => model.AppNo, "", new { @class = "form-control col-md-8", @readonly = "readonly" })
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="form-group card-body border">
+            <legend class="border-bottom-0" id="title2">@Model.Title2</legend>
+            <div class="form-group row">
+                <div class="row1 col-md-6">
+                    <label>@Model.Title4 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title4Content, "", new { @class = "form-control col-md-8", @readonly = "readonly" })
+
+                    <label>@Model.Title0 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title0Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title0Example + "", @readonly = "readonly" })
+
+                    <label>@Model.Title1 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title1Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title1Example + "", @readonly = "readonly" })
+
+                </div>
+                <div class="row1 col-md-6">
+                    <label>@Model.Title3 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title3Content, "", new { @class = "form-control col-md-8", @readonly = "readonly" })
+
+                    <label>@Model.Title5 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title5Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title5Example + "", @readonly = "readonly" })
+
+                    <label>@Model.Title17 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title17Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title17Example + "", @readonly = "readonly" })
+
+                </div>
+
+            </div>
+            <legend class="border-top">@Model.Title6</legend>
+            <br />
+            <div class="form-group row">
+                <div class="row1 col-md-6">
+
+
+                    <label>@Model.Title7 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title7Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title7Example + "", @readonly = "readonly" })
+
+
+                </div>
+                <div class="row1 col-md-6 ">
+                    <label>@Model.Title8 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title8Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title8Example + "", @readonly = "readonly" })
+
+                </div>
+
+            </div>
+            <legend class="border-top">@Model.Title9</legend>
+            <br />
+            <div class="form-group row">
+                <div class="row1 col-md-6">
+
+
+                    <label>@Model.Title10 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title10Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title10Example + "", @readonly = "readonly" })
+
+                    <label>@Model.Title11 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title11Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title11Example + "", @readonly = "readonly" })
+
+
+                </div>
+                <div class="row1 col-md-6 ">
+                    <label>@Model.Title12 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title12Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title12Example + "", @readonly = "readonly" })
+
+                    <label>@Model.Title13 <span style="color:red">*</span>:</label>
+                    @Html.TextBoxFor(model => model.Title13Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title13Example + "", @readonly = "readonly" })
+
+                </div>
+
+            </div>
+        </fieldset>
+        <fieldset class="card-header form-group border">
+            <legend>
+                @Model.Title25
+            </legend>
+            <div class="form-group row">
+                <div class="row1 col-md-6">
+
+
+                    @Html.TextBoxFor(model => model.Title14, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title14 + "", @readonly = "readonly" })
+                    @Html.TextBoxFor(model => model.Title14Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title14Example + "", @readonly = "readonly" })
+
+                    <br />
+                    @Html.TextBoxFor(model => model.Title16, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title16 + "", @readonly = "readonly" })
+
+                    @Html.TextBoxFor(model => model.Title16Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title16Example + "", @readonly = "readonly" })
+
+                </div>
+                <div class="row1 col-md-6 ">
+                    @*<label>@Model.Title15 :</label>*@
+                    @Html.TextBoxFor(model => model.Title15, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title15 + "", @readonly = "readonly" })
+
+                    @Html.TextBoxFor(model => model.Title15Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title15Example + "", @readonly = "readonly" })
+                    <br />
+                    <label> @Model.Title22 <span style="color:red">*</span>:</label>
+                    <br />
+                    @*@Html.TextBox("file", "", new { type = "file" })*@
+                    @*@Html.TextBox("file", "", new { type = "file", @class = "form-control col-md-8", @readonly = "readonly" })*@
+                    @if (link.Equals(""))
+                    {
+
+                    }
+                    else
+                    {
+                        <a href='@link' download target="_blank">Download</a>
+                    }
+
+                </div>
+            </div>
+
+            <br />
+            <div class="form-group">
+                <label style="color:red;"><h5>注：Chú ý:</h5> </label>
+                @Html.TextAreaFor(m => m.Title19, 15, 40, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+
+
+
+            @*//ky don*@
+            @if (emp == empCheck)
+            {
+                <div class="form-group">
+                    <label style="color:red;"><h5>笔记 / Ghi chú :</h5> </label>
+                    @Html.TextAreaFor(m => m.AppContent, 10, 20, new { @class = "form-control" })
+                </div>
+                <div class="form-group row">
+                    <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 30px">
+                        <input type="submit" value="Approval" name="ApprovalButton" class="btn btn-outline-success col-sm-2 col-md-2 col-lg-2" />
+                    </div>
+                    <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 30px">
+                        <a href="@Url.Action("WaitingForYourApproval", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">Return</a>
+                    </div>
+                    <div class="text-center center-block col-sm-4 col-md-4 col-lg-4" style="margin-top: 30px">
+                        <input type="submit" value="Reject" name="ApprovalButton" class="btn btn-outline-danger col-sm-2 col-md-2 col-lg-2" />
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px">
+                    @*@Html.ActionLink("Return", "Index")*@
+                    <a href="@Url.Action("WaitingForYourApproval", "APP_ESIGN", new { area = "Employee" })" class="btn btn-outline-primary col-sm-2 col-md-2 col-lg-2">Return</a>
+                </div>
+            }
+        </fieldset>
+        <fieldset>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Status Name</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Note</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int i = 0; i < Model.approvalApps.Count; i++)
+                    {
+                        <tr>
+
+                            <td>@i</td>
+                            <td>@Model.approvalApps[i].statusName</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].SignName, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].status, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].approvalsuggest, new { @class = "form-control", @readonly = "readonly" })</td>
+                            <td>@Html.TextBoxFor(m => m.approvalApps[i].approvaltime, new { @class = "form-control", @readonly = "readonly" })</td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </fieldset>
+
+    }
+    
+
+}

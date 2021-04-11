@@ -1,0 +1,208 @@
+﻿@model New_Esign.Areas.Employee.Models.FORM_IT_01Model
+@using New_Esign.Common;
+@using New_Esign.AppCode;
+
+@{
+    ViewBag.Title = "FORM_IT_01";
+    Layout = "~/Areas/Employee/Views/Shared/Layout_khang.cshtml";
+}
+
+@using (Html.BeginForm("FORM_IT_01", "ApplicationType", new { area = "Employee" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+    var emp = session.UserID.Trim();
+    var name = session.UserName;
+    <h2></h2>
+
+    <fieldset class="card-header">
+        <h2 class="text-xl-center">
+            <i class="fas fa-fw fa-file-alt"></i>  @Model.Title20
+        </h2>
+    </fieldset>
+
+    <fieldset class="form-group card-body border">
+        <legend class="border-bottom-0" id="title2">@Model.Title2</legend>
+        <div class="form-group row">
+            <div class="row1 col-md-6">
+                <label>@Model.Title4 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title4Content, "", new { @class = "form-control col-md-8", @readonly = "readonly" })
+
+                <label>@Model.Title0 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title0Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title0Example + "" })
+
+                <label>@Model.Title1 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title1Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title1Example + "" })
+
+            </div>
+            <div class="row1 col-md-6">
+                <label>@Model.Title3 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title3Content, "", new { @class = "form-control col-md-8", @readonly = "readonly" })
+
+                <label>@Model.Title5 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title5Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title5Example + "" })
+
+                <label>@Model.Title17 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title17Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title17Example + "" })
+
+            </div>
+
+        </div>
+        <legend class="border-top">@Model.Title6</legend>
+        <br />
+        <div class="form-group row">
+            <div class="row1 col-md-6">
+
+
+                <label>@Model.Title7 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title7Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title7Example + "" })
+
+
+            </div>
+            <div class="row1 col-md-6 ">
+                <label>@Model.Title8 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title8Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title8Example + "" })
+
+            </div>
+
+        </div>
+        <legend class="border-top">@Model.Title9</legend>
+        <br />
+        <div class="form-group row">
+            <div class="row1 col-md-6">
+
+
+                <label>@Model.Title10 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title10Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title10Example + "" })
+
+                <label>@Model.Title11 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title11Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title11Example + "" })
+
+
+            </div>
+            <div class="row1 col-md-6 ">
+                <label>@Model.Title12 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title12Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title12Example + "" })
+
+                <label>@Model.Title13 <span style="color:red">*</span>:</label>
+                @Html.TextBoxFor(model => model.Title13Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title13Example + "" })
+
+            </div>
+
+        </div>
+    </fieldset>
+    <fieldset class="card-header form-group border">
+        <legend>
+            @Model.Title25
+        </legend>
+        <div class="form-group row">
+            <div class="row1 col-md-6">
+
+
+                @Html.TextBoxFor(model => model.Title14, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title14 + "" })
+                @Html.TextBoxFor(model => model.Title14Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title14Example + "" })
+
+                <br />
+                @Html.TextBoxFor(model => model.Title16, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title16 + "" })
+
+                @Html.TextBoxFor(model => model.Title16Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title16Example + "" })
+
+            </div>
+            <div class="row1 col-md-6 ">
+                @*<label>@Model.Title15 :</label>*@
+                @Html.TextBoxFor(model => model.Title15, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title15 + "" })
+
+                @Html.TextBoxFor(model => model.Title15Content, "", new { @class = "form-control col-md-8", @placeholder = "" + Model.Title15Example + "" })
+                <br />
+                <label> @Model.Title22 <span style="color:red">*</span>:</label>
+                <br />
+                @*@Html.TextBox("file", "", new { type = "file" })*@
+                @Html.TextBox("file", "", new { type = "file", @class = "form-control col-md-8" })
+
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <label style="color:red;"><h5>注：Chú ý:</h5> </label>
+            @Html.TextAreaFor(m => m.Title19, 15, 40, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+
+
+    </fieldset>
+    <fieldset>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>序號 / STT</th>
+                    <th>簽核類型 / Loại hình ký</th>
+                    <th>簽核工號 / Mã thẻ người ký</th>
+                    <th>簽核人 / Người phê duyệt</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (int i = 0; i < Model.approvalApps.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.approvalApps[i].step</td>
+                        <td>@Model.approvalApps[i].statusName</td>
+                        @{
+                            if (i == 0)
+                            {
+                                <td>@Html.TextBoxFor(m => m.approvalApps[i].signEmpNo, new { @Value = "" + emp + "", @class = "form-control", @readonly = "readonly" })</td>
+                                <td>@Html.TextBoxFor(m => m.approvalApps[i].SignName, new { @Value = "" + name + "", @class = "form-control", @readonly = "readonly" })</td>
+                            }
+                            else
+                            {
+                                <td>@Html.TextBoxFor(m => m.approvalApps[i].signEmpNo, new { @class = "form-control", @id = "signEmpNo"+ i +"" })</td>
+                                <td>@Html.TextBoxFor(m => m.approvalApps[i].SignName, new { @class = "form-control" , @id = "signEmpName" + i + "" })</td>
+                            }
+                        }
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </fieldset>
+    <div class="text-center center-block col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px; margin-bottom:30px">
+        <input type="submit" value="Next / 下一个" class="btn btn-outline-success col-sm-1 col-md-1 col-lg-1 font-weight-bold" />
+    </div>
+
+    @*<input type="submit" value="submit" />*@
+
+    @section scripts{
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script>
+
+        $(document).ready(function () {          
+            for (let i = 0; i < 50; i++) {
+                $("#signEmpNo"+i+"").change(function () {
+                    var reg = $("#signEmpNo" + i +"").val();
+                    //var reg = $("#UserID").val();
+                    //var json = { empNo: reg };
+                    $.ajax({
+                        type: "Get",
+                        url: 'http://10.224.69.100/postman/api/hr/getEmpObj',
+                        contentType: "application/json; charset=utf-8",
+                        data: { id: reg },
+                        success: function (data) {
+
+                            $("#signEmpName"+i+"").val(data.USER_NAME);
+                            //$("#Department").val(data.DEPARTMENT_NAME);
+                            //$("#Email").val(data.NOTES_ID);
+                            //$("#CodeCost").val(data.CURRENT_OU_CODE);
+                        },
+                        error: function (error) {
+
+                            alert(error);
+                        },
+                    });
+                });
+            }         
+        });
+        </script>
+    }
+}
